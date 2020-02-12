@@ -15,6 +15,4 @@ export default {
 </script>
 
 <style lang="sass" src="bulma" />
-<style lang="scss">
-/* styles here */
-</style>
+<style lang="scss"></style>
