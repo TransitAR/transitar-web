@@ -112,12 +112,12 @@ export default {
     min-height: 2rem;
     &::before {
       border-left: 0.1rem solid #dbdbdb;
-      bottom: 1rem;
+      bottom: 0;
       content: "";
       display: block;
       left: 50%;
       position: absolute;
-      top: 1rem;
+      top: 0;
       -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
       transform: translateX(-50%);
