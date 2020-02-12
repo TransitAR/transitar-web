@@ -26,6 +26,7 @@
             <button class="button is-link">Registrarme</button>
           </div>
         </div>
+        <div class="is-divider-vertical" data-content="OR"></div>
         <div class="level-item has-text-centered">
           <div class="content">
             <fa-icon icon="car" size="2x" class="has-text-link" />
