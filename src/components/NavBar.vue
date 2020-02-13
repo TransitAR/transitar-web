@@ -2,8 +2,10 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item">
-        <fa-icon icon="map-marker-alt" class="has-text-link" />
-        <span class="brand-title has-text-weight-semibold">TransitAR</span>
+        <fa-icon icon="map-marker-alt" class="has-text-primary" />
+        <router-link to="/">
+          <span class="brand-title has-text-weight-semibold">TransitAR</span>
+        </router-link>
       </a>
 
       <a
@@ -38,9 +40,11 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-primary">
-              <strong>Registrarme</strong>
-            </a>
+            <router-link to="/registro">
+              <a class="button is-primary">
+                <strong>Registrarme</strong>
+              </a>
+            </router-link>
             <a class="button is-light">Iniciar sesión</a>
           </div>
         </div>
