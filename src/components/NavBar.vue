@@ -39,13 +39,24 @@
 
       <div class="navbar-end">
         <div class="navbar-item">
-          <div class="buttons">
+          <div v-if="loadingAuth">Loading auth...</div>
+          <div v-else-if="!user" class="buttons">
             <router-link to="/registro">
               <a class="button is-primary">
                 <strong>Registrarme</strong>
               </a>
             </router-link>
-            <a class="button is-light">Iniciar sesión</a>
+            <a class="button is-light" @click="login">Iniciar sesión</a>
+          </div>
+          <div v-else class="level">
+            <div class="level-left">
+              <div class="level-item">
+                <strong>{{ user.email }}</strong>
+              </div>
+              <div class="level-item">
+                <a class="button is-light" @click="logout">Salir</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -54,7 +65,24 @@
 </template>
 
 <script>
-export default {};
+import { mapGetters } from "vuex";
+import { login, logout } from "../utils/auth";
+
+export default {
+  name: "NavBar",
+  computed: {
+    ...mapGetters({
+      loadingAuth: "auth/loading",
+      user: "auth/user"
+    })
+  },
+  methods: {
+    logout,
+    login() {
+      login();
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
