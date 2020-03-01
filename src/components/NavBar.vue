@@ -70,7 +70,7 @@ export default {
   computed: {},
   methods: {
     logout() {
-      this.$auth.logout({ returnTo: window.location.pathname });
+      this.$auth.logout();
     },
     login() {
       this.$auth.loginWithRedirect();
