@@ -1,0 +1,20 @@
+{
+  "language": "es",
+  "allowShowPassword": true,
+  "autoclose": true,
+  "auth": {
+    "sso": false,
+    "redirect": false,
+    "responseType": "token id_token"
+  },
+  "languageDictionary": {
+    "title": "TransitAR"
+  },
+  "theme": {
+    "primaryColor": "#3483FA",
+    "authButtons": {
+      "primaryColor": "#3483FA",
+      "displayName": "TransitAR"
+    }
+  }
+}
