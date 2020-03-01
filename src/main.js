@@ -20,6 +20,7 @@ library.add(faMapMarkerAlt, faPaw, faHome, faCar);
 Vue.component("fa-icon", FontAwesomeIcon);
 
 Vue.use(Auth0Plugin, {
+  // TODO: sacar credenciales del repo
   domain: "dev-n4s3nw3w.auth0.com",
   clientId: "i76ntDFMp2rF18A3qOHfq0I4ceAx3qCL",
   onRedirectCallback: appState => {
