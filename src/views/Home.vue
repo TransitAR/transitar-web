@@ -3,7 +3,7 @@
     <div>
       <!-- Map -->
       <div v-if="!loadedMapInfo">Loading map...</div>
-      <Map v-else :client-pos="clientPos" :hosts="hosts" />
+      <Map v-else-if="clientPos" :client-pos="clientPos" :hosts="hosts" />
 
       <br />
 
@@ -29,7 +29,9 @@
           <div class="content">
             <fa-icon icon="car" size="2x" class="has-text-primary" />
             <p class="title is-5">Ver viajes voluntarios</p>
-            <p class="subtitle is-6">Viajes ofrecidos por voluntarios en su tiempo libre</p>
+            <p class="subtitle is-6">
+              Viajes ofrecidos por voluntarios en su tiempo libre
+            </p>
             <button class="button is-primary">Ver viajes</button>
           </div>
         </div>
@@ -67,7 +69,7 @@ export default {
     try {
       const { data: hosts } = await getHosts();
       this.hosts = hosts;
-    } catch {
+    } catch (err) {
       console.warn("There was an error getting the hosts", err);
     }
 

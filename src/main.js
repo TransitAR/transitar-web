@@ -11,12 +11,15 @@ import {
   faCar
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import 'bulma-extensions/dist/css/bulma-extensions.min.css'
-import 'bulma-extensions/dist/js/bulma-extensions'
+import "bulma-extensions/dist/css/bulma-extensions.min.css";
+import "bulma-extensions/dist/js/bulma-extensions";
+import { startup } from "./utils/auth";
 
 library.add(faMapMarkerAlt, faPaw, faHome, faCar);
 
 Vue.component("fa-icon", FontAwesomeIcon);
+
+startup();
 
 Vue.config.productionTip = false;
 

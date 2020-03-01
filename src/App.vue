@@ -7,9 +7,13 @@
 
 <script>
 import NavBar from "./components/NavBar";
+import auth from "./utils/auth";
 export default {
   components: {
     NavBar
+  },
+  created() {
+    this.$store.dispatch("auth/init");
   }
 };
 </script>
