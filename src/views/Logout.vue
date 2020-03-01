@@ -1,19 +1,15 @@
 <template>
-  <div>
-    Loading...
-  </div>
+  <!-- TODO: agregar un spinner o algo -->
+  <div>Loading out...</div>
 </template>
 
 <script>
-import { unsetToken } from "../utils/auth";
-
 export default {
-  name: "Logout",
+  name: "Callback",
   mounted() {
-    const { returnTo } = this.$route.query;
-    unsetToken();
-    this.$store.commit("auth/logout");
-    this.$router.push(returnTo || "/");
+    // const { returnTo } = this.$route.query
+    // logoutCallback(returnTo || '/')
+    this.$router.push("/");
   }
 };
 </script>
