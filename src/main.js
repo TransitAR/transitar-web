@@ -13,13 +13,23 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import "bulma-extensions/dist/css/bulma-extensions.min.css";
 import "bulma-extensions/dist/js/bulma-extensions";
-import { startup } from "./utils/auth";
+import { Auth0Plugin } from "./plugins/auth0.plugin";
 
 library.add(faMapMarkerAlt, faPaw, faHome, faCar);
 
 Vue.component("fa-icon", FontAwesomeIcon);
 
-startup();
+Vue.use(Auth0Plugin, {
+  domain: "dev-n4s3nw3w.auth0.com",
+  clientId: "i76ntDFMp2rF18A3qOHfq0I4ceAx3qCL",
+  onRedirectCallback: appState => {
+    router.push(
+      appState && appState.targetUrl
+        ? appState.targetUrl
+        : window.location.pathname
+    );
+  }
+});
 
 Vue.config.productionTip = false;
 
