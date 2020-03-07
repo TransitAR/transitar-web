@@ -68,7 +68,7 @@ export const useAuth0 = ({
       getTokenWithPopup(o) {
         return this.auth0Client.getTokenWithPopup(o);
       },
-      logout(o) {
+      logout(o = {}) {
         // TODO: mejor solucion para esto
         o.returnTo = `${baseUrl}/logout`;
         return this.auth0Client.logout(o);
