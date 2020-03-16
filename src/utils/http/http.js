@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:5000";
+const baseURL = "https://transitar-api.now.sh/";
 
 const instance = axios.create({
   baseURL
 });
 
-export const getHosts = () => instance.get("/api/v1/hosts");
+export const getHosts = () => instance.get("/api/hosts");
