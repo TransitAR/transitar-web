@@ -51,7 +51,7 @@ export default {
         },
         layout: {
           "icon-image": "cat",
-          "icon-size": 0.09,
+          "icon-size": 0.02,
           "text-field": "{ hostId }",
           "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
           "text-offset": [0, 0.9],
