@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import catSilhouetteImg from "../assets/cat_silhuette.png";
+import catSilhouetteImg from "../assets/home.png";
 import { getHosts } from "../utils/http";
 import { initMap } from "../utils/map";
 
