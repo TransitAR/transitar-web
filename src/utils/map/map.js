@@ -1,4 +1,9 @@
 import mapboxgl from "mapbox-gl";
+import petSilhouetteImg from "../../assets/pet.png";
+import dogSilhouetteImg from "../../assets/dog.png";
+import hostSilhouetteImg from "../../assets/home.png";
+import refugeSilhouetteImg from "../../assets/home.png";
+import vetSilhouetteImg from "../../assets/vet.png";
 
 // TODO: Sacar el access token del repo 🌚
 const accessToken =
@@ -13,3 +18,29 @@ export const initMap = (elem, { longitude, latitude }) =>
     zoom: 12,
     center: [longitude, latitude]
   });
+
+export const loadHostImage = (map, hostsPoints) => {
+  map.loadImage(hostSilhouetteImg, (error, image) => {
+    if (error) throw error;
+    map.addImage('host', image);
+    map.addLayer({
+      id: "points",
+      type: "symbol",
+      source: {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: hostsPoints
+        }
+      },
+      layout: {
+        "icon-image": "host",
+        "icon-size": 0.02,
+        "text-field": "{ hostId }",
+        "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+        "text-offset": [0, 0.9],
+        "text-anchor": "top"
+      }
+    });
+  });
+}

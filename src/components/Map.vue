@@ -3,15 +3,33 @@
 </template>
 
 <script>
-import catSilhouetteImg from "../assets/home.png";
-import { getHosts } from "../utils/http";
+import petSilhouetteImg from "../assets/pet.png";
+import dogSilhouetteImg from "../assets/dog.png";
+import hostSilhouetteImg from "../assets/home.png";
+import vetSilhouetteImg from "../assets/vet.png";
+import { getHosts, getPets, getRefuges, getVets } from "../utils/http";
 import { initMap } from "../utils/map";
+import {
+  loadHostImage,
+  loadPetImage,
+  loadRefugeImage,
+  loadVetImage
+} from "../utils/map";
 
 export default {
   name: "Map",
   props: {
     hosts: Object,
+    vets: Object,
+    pets: Object,
+    refuges: Object,
     clientPos: GeolocationPosition
+  },
+  methods: {
+    loadHosts() {},
+    loadPets() {},
+    loadRefuge() {},
+    loadVet() {}
   },
   computed: {
     hostsPoints() {
@@ -29,35 +47,65 @@ export default {
           }
         };
       });
+    },
+    petsPoints() {
+      if (!this.pets) return [];
+      return this.pets.data.map(pets => {
+        return {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: pet.location.coordinates
+          },
+          properties: {
+            host: pet.petId,
+            icon: "pet"
+          }
+        };
+      });
+    },
+    refugesPoints() {
+      if (!this.refuges) return [];
+      return this.refuges.data.map(refuge => {
+        return {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: refuge.location.coordinates
+          },
+          properties: {
+            host: refuge.refugeId,
+            icon: "refuge"
+          }
+        };
+      });
+    },
+    vetsPoints() {
+      if (!this.vets) return [];
+      return this.vets.data.map(vet => {
+        return {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: vet.location.coordinates
+          },
+          properties: {
+            vet: vet.vetId,
+            icon: "vet"
+          }
+        };
+      });
     }
   },
   async mounted() {
-    console.info(`Creando mapa con ${this.hosts?.count || 0} Hosts`);
+    console.info(
+      `Creando mapa con ${this.hosts?.count || 0} Hosts, ${this.pets?.count ||
+        0} Pets, ${this.refuges?.count || 0} Refuges, ${this.vets?.count ||
+        0} Vets`
+    );
     const map = initMap(this.$refs.map, this.clientPos.coords);
     map.on("load", () => {
-      map.loadImage(catSilhouetteImg, (error, image) => {
-        if (error) throw error;
-        map.addImage("cat", image);
-      });
-      map.addLayer({
-        id: "points",
-        type: "symbol",
-        source: {
-          type: "geojson",
-          data: {
-            type: "FeatureCollection",
-            features: this.hostsPoints
-          }
-        },
-        layout: {
-          "icon-image": "cat",
-          "icon-size": 0.02,
-          "text-field": "{ hostId }",
-          "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-          "text-offset": [0, 0.9],
-          "text-anchor": "top"
-        }
-      });
+      loadHostImage(map, this.hostsPoints);
     });
   }
 };

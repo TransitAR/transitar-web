@@ -7,3 +7,6 @@ const instance = axios.create({
 });
 
 export const getHosts = () => instance.get("/api/hosts");
+export const getPets = () => instance.get("/api/pets");
+export const getRefuges = () => instance.get("/api/refuges");
+export const getVets = () => instance.get("/api/vets");
