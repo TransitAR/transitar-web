@@ -42,6 +42,10 @@ export const loadHosts = (map, hostsPoints) => {
     })
   })
 
+  map.loadImage(hostSilhouetteImg, (error, image) => {
+    if (error) throw error;
+    map.addImage('host', image);
+  })
   map.addLayer({
     id: "points",
     type: "symbol",
