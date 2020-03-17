@@ -3,18 +3,14 @@
 </template>
 
 <script>
+import mapboxgl from "mapbox-gl";
 import petSilhouetteImg from "../assets/pet.png";
 import dogSilhouetteImg from "../assets/dog.png";
 import hostSilhouetteImg from "../assets/home.png";
 import vetSilhouetteImg from "../assets/vet.png";
 import { getHosts, getPets, getRefuges, getVets } from "../utils/http";
 import { initMap } from "../utils/map";
-import {
-  loadHostImage,
-  loadPetImage,
-  loadRefugeImage,
-  loadVetImage
-} from "../utils/map";
+import { loadHosts, loadPets, loadRefuges, loadVets } from "../utils/map";
 
 export default {
   name: "Map",
@@ -104,8 +100,9 @@ export default {
         0} Vets`
     );
     const map = initMap(this.$refs.map, this.clientPos.coords);
+
     map.on("load", () => {
-      loadHostImage(map, this.hostsPoints);
+      loadHosts(map, this.hostsPoints);
     });
   }
 };
