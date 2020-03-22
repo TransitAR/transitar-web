@@ -30,7 +30,7 @@
           <div class="hero-body">
             <div class="columns is-centered">
               <div class="column is-half">
-                <Form />
+                <RegisterForm />
               </div>
             </div>
           </div>
@@ -49,10 +49,10 @@
 </template>
 
 <script>
-import Form from "../components/Form";
+import RegisterForm from "../components/RegisterForm";
 
 export default {
   name: "home",
-  components: { Form }
+  components: { RegisterForm }
 };
 </script>

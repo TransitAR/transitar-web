@@ -26,7 +26,7 @@ const routes = [
     name: "register",
     component: () =>
       import(/* webpackChunkName: "logout" */ "../views/Register.vue")
-  }
+  },
 ];
 
 const router = new VueRouter({
