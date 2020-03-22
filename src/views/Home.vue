@@ -36,7 +36,9 @@
           <div class="content">
             <fa-icon icon="car" size="2x" class="has-text-primary" />
             <p class="title is-5">Ver viajes voluntarios</p>
-            <p class="subtitle is-6">Viajes ofrecidos por voluntarios en su tiempo libre</p>
+            <p class="subtitle is-6">
+              Viajes ofrecidos por voluntarios en su tiempo libre
+            </p>
             <button class="button is-primary">Ver viajes</button>
           </div>
         </div>
@@ -75,32 +77,32 @@ export default {
 
     // Fetch hosts
     try {
-      const { data: hosts } = await getHosts();
-      this.hosts = hosts;
+      const { data: hostsRes } = await getHosts();
+      this.hosts = hostsRes.data;
     } catch (err) {
       console.warn("There was an error getting the hosts", err);
     }
 
     // Fetch pets
     try {
-      const { data: pets } = await getPets();
-      this.pets = pets;
+      const { data: petsRes } = await getPets();
+      this.pets = petsRes.data;
     } catch (err) {
       console.warn("There was an error getting the pets", err);
     }
 
     // Fetch refuges
     try {
-      const { data: refuges } = await getRefuges();
-      this.refuges = refuges;
+      const { data: refugesRes } = await getRefuges();
+      this.refuges = refugesRes.data;
     } catch (err) {
       console.warn("There was an error getting the refuges", err);
     }
 
     // Fetch vets
     try {
-      const { data: vets } = await getVets();
-      this.vets = vets;
+      const { data: vetsRes } = await getVets();
+      this.vets = vetsRes.data;
     } catch (err) {
       console.warn("There was an error getting the vets", err);
     }

@@ -1,9 +1,4 @@
 import mapboxgl from "mapbox-gl";
-import petSilhouetteImg from "../../assets/pet.png";
-import dogSilhouetteImg from "../../assets/dog.png";
-import hostSilhouetteImg from "../../assets/home.png";
-import refugeSilhouetteImg from "../../assets/home.png";
-import vetSilhouetteImg from "../../assets/vet.png";
 
 // TODO: Sacar el access token del repo 🌚
 const accessToken =
@@ -24,45 +19,68 @@ new mapboxgl.GeolocateControl({
     enableHighAccuracy: true
   },
   trackUserLocation: true
-})
+});
 
-const images = [
-  { imageUrl: '../../assets/pet.png', id: 'pet' },
-  { imageUrl: '../../assets/dog.png', id: 'dog' },
-  { imageUrl: '../../assets/home.png', id: 'host' },
-  { imageUrl: '../../assets/home.png', id: 'refuge' },
-  { imageUrl: '../../assets/vet.png', id: 'vet' },
-]
+export const loadHosts = (map, hosts) => {
+  hosts.forEach(host => {
+    // create a DOM element for the marker
+    var el = document.createElement("div");
+    el.className = "marker host";
+    el.style.width = "40px";
+    el.style.height = "40px";
+    // el.style.backgroundImage = "url(https://placekitten.com/g/50/50/)";
+    el.style.backgroundColor = "green";
+    el.style.borderRadius = "50%";
 
-export const loadHosts = (map, hostsPoints) => {
-  images.forEach(img => {
-    map.loadImage(img.imageUrl, function (error, res) {
-      if (error) throw error;
-      map.addImage(img.id, img)
-    })
-  })
-
-  map.loadImage(hostSilhouetteImg, (error, image) => {
-    if (error) throw error;
-    map.addImage('host', image);
-  })
-  map.addLayer({
-    id: "points",
-    type: "symbol",
-    source: {
-      type: "geojson",
-      data: {
-        type: "FeatureCollection",
-        features: hostsPoints
-      }
-    },
-    layout: {
-      "icon-image": "host",
-      "icon-size": 0.02,
-      "text-field": "{ hostId }",
-      "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-      "text-offset": [0, 0.9],
-      "text-anchor": "top"
-    }
+    // add marker to map
+    new mapboxgl.Marker(el).setLngLat(host.location.coordinates).addTo(map);
   });
-}
+};
+
+export const loadVets = (map, vets) => {
+  vets.forEach(vet => {
+    // create a DOM element for the marker
+    var el = document.createElement("div");
+    el.className = "marker";
+    // el.style.backgroundImage = "url(https://placekitten.com/g/50/50/)";
+    el.style.width = "40px";
+    el.style.height = "40px";
+    el.style.backgroundColor = "red";
+    el.style.borderRadius = "50%";
+
+    // add marker to map
+    new mapboxgl.Marker(el).setLngLat(vet.location.coordinates).addTo(map);
+  });
+};
+
+export const loadPets = (map, pets) => {
+  pets.forEach(pet => {
+    // create a DOM element for the marker
+    var el = document.createElement("div");
+    el.className = "marker";
+    // el.style.backgroundImage = "url(https://placekitten.com/g/50/50/)";
+    el.style.width = "40px";
+    el.style.height = "40px";
+    el.style.backgroundColor = "blue";
+    el.style.borderRadius = "50%";
+
+    // add marker to map
+    new mapboxgl.Marker(el).setLngLat(pet.location.coordinates).addTo(map);
+  });
+};
+
+export const loadRefuges = (map, refuges) => {
+  refuges.forEach(refuge => {
+    // create a DOM element for the marker
+    var el = document.createElement("div");
+    el.className = "marker";
+    // el.style.backgroundImage = "url(https://placekitten.com/g/50/50/)";
+    el.style.width = "40px";
+    el.style.height = "40px";
+    el.style.backgroundColor = "brown";
+    el.style.borderRadius = "50%";
+
+    // add marker to map
+    new mapboxgl.Marker(el).setLngLat(refuge.location.coordinates).addTo(map);
+  });
+};
