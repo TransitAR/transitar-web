@@ -1,4 +1,8 @@
 import mapboxgl from "mapbox-gl";
+import homeSmall from "../../assets/home_small.png";
+import vetSmall from "../../assets/vet_small.png";
+import petSmall from "../../assets/pet_small.png";
+// import refugeSmall from "../../assets/refuge_small.png";
 
 // TODO: Sacar el access token del repo 🌚
 const accessToken =
@@ -28,9 +32,7 @@ export const loadHosts = (map, hosts) => {
     el.className = "marker host";
     el.style.width = "40px";
     el.style.height = "40px";
-    // el.style.backgroundImage = "url(https://placekitten.com/g/50/50/)";
-    el.style.backgroundColor = "green";
-    el.style.borderRadius = "50%";
+    el.style.backgroundImage = `url(${homeSmall})`;
 
     // add marker to map
     new mapboxgl.Marker(el).setLngLat(host.location.coordinates).addTo(map);
@@ -42,11 +44,9 @@ export const loadVets = (map, vets) => {
     // create a DOM element for the marker
     var el = document.createElement("div");
     el.className = "marker";
-    // el.style.backgroundImage = "url(https://placekitten.com/g/50/50/)";
     el.style.width = "40px";
     el.style.height = "40px";
-    el.style.backgroundColor = "red";
-    el.style.borderRadius = "50%";
+    el.style.backgroundImage = `url(${vetSmall})`;
 
     // add marker to map
     new mapboxgl.Marker(el).setLngLat(vet.location.coordinates).addTo(map);
@@ -58,11 +58,9 @@ export const loadPets = (map, pets) => {
     // create a DOM element for the marker
     var el = document.createElement("div");
     el.className = "marker";
-    // el.style.backgroundImage = "url(https://placekitten.com/g/50/50/)";
     el.style.width = "40px";
     el.style.height = "40px";
-    el.style.backgroundColor = "blue";
-    el.style.borderRadius = "50%";
+    el.style.backgroundImage = `url(${petSmall})`;
 
     // add marker to map
     new mapboxgl.Marker(el).setLngLat(pet.location.coordinates).addTo(map);
