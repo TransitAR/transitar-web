@@ -1,8 +1,8 @@
 import mapboxgl from "mapbox-gl";
-import homeSmall from "../../assets/home_small.png";
-import vetSmall from "../../assets/vet_small.png";
-import petSmall from "../../assets/pet_small.png";
-// import refugeSmall from "../../assets/refuge_small.png";
+import homeSmall from "../../assets/png/030-dog-house.png";
+import vetSmall from "../../assets/png/002-veterinarian-2.png";
+import petSmall from "../../assets/png/032-dog.png";
+import refugeSmall from "../../assets/png/016-veterinarian-1.png";
 
 // TODO: Sacar el access token del repo 🌚
 const accessToken =
@@ -32,6 +32,7 @@ export const loadHosts = (map, hosts) => {
     el.className = "marker host";
     el.style.width = "40px";
     el.style.height = "40px";
+    el.style.backgroundSize = "contain";
     el.style.backgroundImage = `url(${homeSmall})`;
 
     // add marker to map
@@ -46,6 +47,7 @@ export const loadVets = (map, vets) => {
     el.className = "marker";
     el.style.width = "40px";
     el.style.height = "40px";
+    el.style.backgroundSize = "contain";
     el.style.backgroundImage = `url(${vetSmall})`;
 
     // add marker to map
@@ -60,6 +62,7 @@ export const loadPets = (map, pets) => {
     el.className = "marker";
     el.style.width = "40px";
     el.style.height = "40px";
+    el.style.backgroundSize = "contain";
     el.style.backgroundImage = `url(${petSmall})`;
 
     // add marker to map
@@ -72,11 +75,10 @@ export const loadRefuges = (map, refuges) => {
     // create a DOM element for the marker
     var el = document.createElement("div");
     el.className = "marker";
-    // el.style.backgroundImage = "url(https://placekitten.com/g/50/50/)";
     el.style.width = "40px";
     el.style.height = "40px";
-    el.style.backgroundColor = "brown";
-    el.style.borderRadius = "50%";
+    el.style.backgroundSize = "contain";
+    el.style.backgroundImage = `url(${refugeSmall})`;
 
     // add marker to map
     new mapboxgl.Marker(el).setLngLat(refuge.location.coordinates).addTo(map);
