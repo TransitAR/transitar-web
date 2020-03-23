@@ -1,7 +1,8 @@
 import mapboxgl from "mapbox-gl";
 import homeSmall from "../../assets/png/030-dog-house.png";
 import vetSmall from "../../assets/png/002-veterinarian-2.png";
-import petSmall from "../../assets/png/032-dog.png";
+import dog from "../../assets/png/032-dog.png";
+import cat from "../../assets/png/036-cat.png";
 import refugeSmall from "../../assets/png/016-veterinarian-1.png";
 
 // TODO: Sacar el access token del repo 🌚
@@ -17,6 +18,13 @@ export const initMap = elem =>
     zoom: 12,
     center: [-58.381592, -34.603722] // Capital Federal
   });
+
+
+function GetPopupText(el) {
+  return new mapboxgl.Popup({ offset: 25 }).setText(
+    el.name
+  );
+}
 
 new mapboxgl.GeolocateControl({
   positionOptions: {
@@ -40,7 +48,7 @@ export const loadHosts = (map, hosts) => {
     el.style.backgroundImage = `url(${homeSmall})`;
 
     // add marker to map
-    new mapboxgl.Marker(el).setLngLat(host.location.coordinates).addTo(map);
+    new mapboxgl.Marker(el).setLngLat(host.location.coordinates).setPopup(GetPopupText(host)).addTo(map);
   });
 };
 
@@ -55,7 +63,8 @@ export const loadVets = (map, vets) => {
     el.style.backgroundImage = `url(${vetSmall})`;
 
     // add marker to map
-    new mapboxgl.Marker(el).setLngLat(vet.location.coordinates).addTo(map);
+    new mapboxgl.Marker(el).setLngLat(vet.location.coordinates).setPopup(GetPopupText(vet)).addTo(map);
+
   });
 };
 
@@ -67,10 +76,16 @@ export const loadPets = (map, pets) => {
     el.style.width = "40px";
     el.style.height = "40px";
     el.style.backgroundSize = "contain";
-    el.style.backgroundImage = `url(${petSmall})`;
+
+    if (pet.type == 'dog') {
+      el.style.backgroundImage = `url(${dog})`;
+    }
+    if (pet.type == 'cat') {
+      el.style.backgroundImage = `url(${cat})`;
+    }
 
     // add marker to map
-    new mapboxgl.Marker(el).setLngLat(pet.location.coordinates).addTo(map);
+    new mapboxgl.Marker(el).setLngLat(pet.location.coordinates).setPopup(GetPopupText(pet)).addTo(map);
   });
 };
 
@@ -85,6 +100,6 @@ export const loadRefuges = (map, refuges) => {
     el.style.backgroundImage = `url(${refugeSmall})`;
 
     // add marker to map
-    new mapboxgl.Marker(el).setLngLat(refuge.location.coordinates).addTo(map);
+    new mapboxgl.Marker(el).setLngLat(refuge.location.coordinates).setPopup(GetPopupText(refuge)).addTo(map);
   });
 };
