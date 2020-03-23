@@ -10,12 +10,12 @@ const accessToken =
 
 mapboxgl.accessToken = accessToken;
 
-export const initMap = (elem, { longitude, latitude }) =>
+export const initMap = elem =>
   new mapboxgl.Map({
     container: elem,
     style: "mapbox://styles/mapbox/outdoors-v11",
     zoom: 12,
-    center: [longitude, latitude]
+    center: [-34.603722, -58.381592] // Capital Federal
   });
 
 new mapboxgl.GeolocateControl({
@@ -24,6 +24,10 @@ new mapboxgl.GeolocateControl({
   },
   trackUserLocation: true
 });
+
+export const flyTo = (map, { longitude, latitude }) => {
+  map.flyTo({ center: [longitude, latitude] });
+};
 
 export const loadHosts = (map, hosts) => {
   hosts.forEach(host => {

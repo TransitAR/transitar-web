@@ -5,11 +5,14 @@
 <script>
 import mapboxgl from "mapbox-gl";
 import { getHosts, getPets, getRefuges, getVets } from "../utils/http";
-import { initMap } from "../utils/map";
+import { initMap, flyTo } from "../utils/map";
 import { loadHosts, loadPets, loadRefuges, loadVets } from "../utils/map";
 
 export default {
   name: "Map",
+  data: () => ({
+    map: null
+  }),
   props: {
     hosts: Array,
     vets: Array,
@@ -18,14 +21,25 @@ export default {
     clientPos: GeolocationPosition
   },
   async mounted() {
-    const map = initMap(this.$refs.map, this.clientPos.coords);
-    map.addControl(new mapboxgl.NavigationControl());
-    map.on("load", () => {
-      loadHosts(map, this.hosts);
-      loadVets(map, this.vets);
-      loadPets(map, this.pets);
-      loadRefuges(map, this.refuges);
-    });
+    this.map = initMap(this.$refs.map);
+    this.map.addControl(new mapboxgl.NavigationControl());
+  },
+  watch: {
+    clientPos(pos) {
+      flyTo(this.map, pos.coords);
+    },
+    hosts(hosts) {
+      loadHosts(this.map, hosts);
+    },
+    vets(vets) {
+      loadVets(this.map, vets);
+    },
+    pets(pets) {
+      loadPets(this.map, pets);
+    },
+    refuges(refuges) {
+      loadRefuges(this.map, refuges);
+    }
   }
 };
 </script>
