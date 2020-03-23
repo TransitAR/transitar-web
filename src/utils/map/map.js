@@ -15,7 +15,7 @@ export const initMap = elem =>
     container: elem,
     style: "mapbox://styles/mapbox/outdoors-v11",
     zoom: 12,
-    center: [-34.603722, -58.381592] // Capital Federal
+    center: [-58.381592, -34.603722] // Capital Federal
   });
 
 new mapboxgl.GeolocateControl({
