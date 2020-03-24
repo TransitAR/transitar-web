@@ -19,87 +19,87 @@ export const initMap = elem =>
     center: [-58.381592, -34.603722] // Capital Federal
   });
 
-
-function GetPopupText(el) {
-  return new mapboxgl.Popup({ offset: 25 }).setText(
-    el.name
-  );
-}
-
-new mapboxgl.GeolocateControl({
-  positionOptions: {
-    enableHighAccuracy: true
-  },
-  trackUserLocation: true
-});
-
 export const flyTo = (map, { longitude, latitude }) => {
   map.flyTo({ center: [longitude, latitude] });
 };
 
 export const loadHosts = (map, hosts) => {
   hosts.forEach(host => {
-    // create a DOM element for the marker
-    var el = document.createElement("div");
-    el.className = "marker host";
-    el.style.width = "40px";
-    el.style.height = "40px";
-    el.style.backgroundSize = "contain";
-    el.style.backgroundImage = `url(${homeSmall})`;
-
-    // add marker to map
-    new mapboxgl.Marker(el).setLngLat(host.location.coordinates).setPopup(GetPopupText(host)).addTo(map);
+    const elem = createMarkerElement(homeSmall);
+    const popup = createPopup(
+      host.name,
+      homeSmall,
+      host.location.formattedAddress
+    );
+    new mapboxgl.Marker(elem)
+      .setLngLat(host.location.coordinates)
+      .setPopup(popup)
+      .addTo(map);
   });
 };
 
 export const loadVets = (map, vets) => {
   vets.forEach(vet => {
-    // create a DOM element for the marker
-    var el = document.createElement("div");
-    el.className = "marker";
-    el.style.width = "40px";
-    el.style.height = "40px";
-    el.style.backgroundSize = "contain";
-    el.style.backgroundImage = `url(${vetSmall})`;
-
-    // add marker to map
-    new mapboxgl.Marker(el).setLngLat(vet.location.coordinates).setPopup(GetPopupText(vet)).addTo(map);
-
+    const elem = createMarkerElement(vetSmall);
+    const popup = createPopup(
+      vet.name,
+      vetSmall,
+      vet.location.formattedAddress
+    );
+    new mapboxgl.Marker(elem)
+      .setLngLat(vet.location.coordinates)
+      .setPopup(popup)
+      .addTo(map);
   });
 };
 
 export const loadPets = (map, pets) => {
   pets.forEach(pet => {
-    // create a DOM element for the marker
-    var el = document.createElement("div");
-    el.className = "marker";
-    el.style.width = "40px";
-    el.style.height = "40px";
-    el.style.backgroundSize = "contain";
-
-    if (pet.type == 'dog') {
-      el.style.backgroundImage = `url(${dog})`;
-    }
-    if (pet.type == 'cat') {
-      el.style.backgroundImage = `url(${cat})`;
-    }
-
-    // add marker to map
-    new mapboxgl.Marker(el).setLngLat(pet.location.coordinates).setPopup(GetPopupText(pet)).addTo(map);
+    const image = pet.type == "dog" ? dog : cat;
+    const elem = createMarkerElement(image);
+    const popup = createPopup(pet.name, image, pet.location.formattedAddress);
+    new mapboxgl.Marker(elem)
+      .setLngLat(pet.location.coordinates)
+      .setPopup(popup)
+      .addTo(map);
   });
 };
 
 export const loadRefuges = (map, refuges) => {
   refuges.forEach(refuge => {
-    // create a DOM element for the marker
-    var el = document.createElement("div");
-    el.className = "marker";
-    el.style.width = "40px";
-    el.style.height = "40px";
-    el.style.backgroundSize = "contain";
-    el.style.backgroundImage = `url(${refugeSmall})`;
-
-    // add marker to map
-    new mapboxgl.Marker(el).setLngLat(refuge.location.coordinates).setPopup(GetPopupText(refuge)).addTo(map);
+    const elem = createMarkerElement(refugeSmall);
+    const popup = createPopup(
+      refuge.name,
+      refugeSmall,
+      refuge.location.formattedAddress
+    );
+    new mapboxgl.Marker(elem)
+      .setLngLat(refuge.location.coordinates)
+      .setPopup(popup)
+      .addTo(map);
   });
+};
+
+// aux fns
+const createPopup = (title, image, address) =>
+  new mapboxgl.Popup({ offset: 25 }).setHTML(`
+    <div style="display: flex; align-items: center; margin-bottom: 0.5rem">
+      <strong>${title}</strong>
+      <img
+        src=${image}
+        height="25" width="25"
+        style="margin-left: 1rem;"
+      >
+    </div>
+    <p>En ${address}</p>
+`);
+
+const createMarkerElement = image => {
+  const el = document.createElement("div");
+  el.className = "marker";
+  el.style.width = "40px";
+  el.style.height = "40px";
+  el.style.backgroundSize = "contain";
+  el.style.backgroundImage = `url(${image})`;
+  return el;
 };
