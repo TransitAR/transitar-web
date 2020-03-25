@@ -23,6 +23,14 @@ export default {
   async mounted() {
     this.map = initMap(this.$refs.map);
     this.map.addControl(new mapboxgl.NavigationControl());
+    if (this.clientPos) flyTo(this.map, this.clientPos.coords);
+    if (this.hosts) loadHosts(this.map, this.hosts);
+    if (this.vets) loadVets(this.map, this.vets);
+    if (this.pets) loadPets(this.map, this.pets);
+    if (this.refuges) loadRefuges(this.map, this.refuges);
+  },
+  destroyed() {
+    this.map.remove();
   },
   watch: {
     clientPos(pos) {
