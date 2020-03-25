@@ -18,7 +18,7 @@ export default {
     vets: Array,
     pets: Array,
     refuges: Array,
-    clientPos: GeolocationPosition
+    clientPos: Object
   },
   async mounted() {
     this.map = initMap(this.$refs.map);
