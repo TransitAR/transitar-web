@@ -16,4 +16,8 @@ export default {
 </script>
 
 <style lang="sass" src="bulma" />
-<style lang="scss"></style>
+<style lang="scss">
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+</style>
