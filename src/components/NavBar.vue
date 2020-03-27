@@ -23,12 +23,15 @@
     </div>
     <div :class="{ 'navbar-menu': true, 'is-active': isActive }">
       <div class="navbar-start">
-        <router-link class="navbar-item" to="/explorar">Explorar</router-link>
         <router-link class="navbar-item" to="/nosotros"
           >Quienes somos</router-link
         >
         <hr class="navbar-divider" />
         <router-link class="navbar-item" to="/perfil">Perfil</router-link>
+        <router-link class="navbar-item" to="/explorar">
+          <fa-icon icon="map-marked-alt" class="has-text-primary" />
+          <span class="ml-2">Explorar</span>
+        </router-link>
       </div>
 
       <div class="navbar-end">

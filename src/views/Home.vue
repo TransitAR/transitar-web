@@ -1,5 +1,5 @@
 <template>
-  <section class="container is-fullhd">
+  <section class="container is-fullhd pt-16">
     <div class="level">
       <div class="level-item has-text-centered">
         <div class="content">
