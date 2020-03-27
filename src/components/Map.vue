@@ -22,9 +22,6 @@ export default {
   },
   async mounted() {
     this.map = initMap(this.$refs.map);
-    this.map.on("load", function() {
-      map.resize();
-    });
     this.map.addControl(new mapboxgl.NavigationControl());
     if (this.clientPos) flyTo(this.map, this.clientPos.coords);
     if (this.hosts) loadHosts(this.map, this.hosts);
