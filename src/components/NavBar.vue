@@ -2,7 +2,7 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item">
-        <fa-icon icon="map-marker-alt" class="has-text-primary" />
+        <fa-icon icon="map-marker-alt" class="has-text-primary" size="lg" />
         <router-link to="/">
           <span class="brand-title has-text-weight-semibold">TransitAR</span>
         </router-link>
@@ -29,7 +29,7 @@
         <hr class="navbar-divider" />
         <router-link class="navbar-item" to="/perfil">Perfil</router-link>
         <router-link class="navbar-item" to="/explorar">
-          <fa-icon icon="map-marked-alt" class="has-text-primary" />
+          <fa-icon icon="map-marked-alt" class="has-text-primary" size="lg" />
           <span class="ml-2">Explorar</span>
         </router-link>
       </div>
