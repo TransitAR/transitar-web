@@ -24,7 +24,7 @@
     <div :class="{ 'navbar-menu': true, 'is-active': isActive }">
       <div class="navbar-start">
         <router-link class="navbar-item" to="/explorar">Explorar</router-link>
-        <router-link class="navbar-item" to="/quienes-somos"
+        <router-link class="navbar-item" to="/nosotros"
           >Quienes somos</router-link
         >
         <hr class="navbar-divider" />

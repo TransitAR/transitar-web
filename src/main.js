@@ -8,14 +8,15 @@ import {
   faMapMarkerAlt,
   faPaw,
   faHome,
-  faCar
+  faCar,
+  faMapMarked
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { Auth0Plugin } from "./plugins/auth0.plugin";
 import "bulma-extensions/dist/css/bulma-extensions.min.css";
 import "bulma-extensions/dist/js/bulma-extensions";
 
-library.add(faMapMarkerAlt, faPaw, faHome, faCar);
+library.add(faMapMarkerAlt, faPaw, faHome, faCar, faMapMarked);
 
 Vue.component("fa-icon", FontAwesomeIcon);
 

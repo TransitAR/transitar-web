@@ -1,5 +1,5 @@
 <template>
-  <div ref="map" class="map"></div>
+  <div ref="map" class="map" />
 </template>
 
 <script>
@@ -22,6 +22,9 @@ export default {
   },
   async mounted() {
     this.map = initMap(this.$refs.map);
+    this.map.on("load", function() {
+      map.resize();
+    });
     this.map.addControl(new mapboxgl.NavigationControl());
     if (this.clientPos) flyTo(this.map, this.clientPos.coords);
     if (this.hosts) loadHosts(this.map, this.hosts);
@@ -58,6 +61,6 @@ export default {
 
 .map {
   width: 100%;
-  height: 600px;
+  height: 100%;
 }
 </style>

@@ -1,14 +1,12 @@
 <template>
-  <section class="container is-fullhd">
-    <div>
-      <Map
-        :client-pos="clientPos"
-        :hosts="hosts"
-        :pets="pets"
-        :refuges="refuges"
-        :vets="vets"
-      />
-    </div>
+  <section class="p-0 md:pt-3">
+    <Map
+      :client-pos="clientPos"
+      :hosts="hosts"
+      :pets="pets"
+      :refuges="refuges"
+      :vets="vets"
+    />
   </section>
 </template>
 
@@ -88,3 +86,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+section {
+  height: calc(100% - 56px);
+}
+</style>
