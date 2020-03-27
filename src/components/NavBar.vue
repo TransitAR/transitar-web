@@ -77,6 +77,11 @@ export default {
     toggle() {
       this.isActive = !this.isActive;
     }
+  },
+  watch: {
+    $route() {
+      this.isActive = false;
+    }
   }
 };
 </script>
