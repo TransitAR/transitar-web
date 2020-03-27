@@ -14,26 +14,21 @@
         aria-label="menu"
         aria-expanded="false"
         data-target="navbarBasicExample"
+        @click="toggle()"
       >
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </a>
     </div>
-    <div id="navbarBasicExample" class="navbar-menu">
+    <div :class="{ 'navbar-menu': true, 'is-active': isActive }">
       <div class="navbar-start">
-        <a class="navbar-item">Documentación</a>
-
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">Más</a>
-
-          <div class="navbar-dropdown">
-            <a class="navbar-item">Quienes somos</a>
-            <a class="navbar-item">Contacto</a>
-            <hr class="navbar-divider" />
-            <a class="navbar-item">Reportar un problema</a>
-          </div>
-        </div>
+        <router-link class="navbar-item" to="/explorar">Explorar</router-link>
+        <router-link class="navbar-item" to="/quienes-somos"
+          >Quienes somos</router-link
+        >
+        <hr class="navbar-divider" />
+        <router-link class="navbar-item" to="/perfil">Perfil</router-link>
       </div>
 
       <div class="navbar-end">
@@ -66,13 +61,18 @@
 <script>
 export default {
   name: "NavBar",
-  computed: {},
+  data: () => ({
+    isActive: false
+  }),
   methods: {
     logout() {
       this.$auth.logout();
     },
     login() {
       this.$auth.loginWithRedirect();
+    },
+    toggle() {
+      this.isActive = !this.isActive;
     }
   }
 };

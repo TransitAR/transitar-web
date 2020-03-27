@@ -12,7 +12,9 @@
               name="exampleCheckboxBackgroundColorSuccess1"
               checked="checked"
             />
-            <label for="exampleCheckboxBackgroundColorSuccess1">Puedo adoptar</label>
+            <label for="exampleCheckboxBackgroundColorSuccess1"
+              >Puedo adoptar</label
+            >
           </div>
           <div class="field">
             <input
@@ -22,7 +24,9 @@
               name="exampleCheckboxBackgroundColorSuccess2"
               checked="checked"
             />
-            <label for="exampleCheckboxBackgroundColorSuccess2">Puedo dar tránsito</label>
+            <label for="exampleCheckboxBackgroundColorSuccess2"
+              >Puedo dar tránsito</label
+            >
           </div>
           <div class="field">
             <input
@@ -32,7 +36,9 @@
               name="exampleCheckboxBackgroundColorSuccess3"
               checked="checked"
             />
-            <label for="exampleCheckboxBackgroundColorSuccess3">Puedo hacer viajes</label>
+            <label for="exampleCheckboxBackgroundColorSuccess3"
+              >Puedo hacer viajes</label
+            >
           </div>
         </div>
       </div>
@@ -48,7 +54,9 @@
           class="switch"
           checked="checked"
         />
-        <label for="switchExample">Quiero ser voluntario en refugios cercanos</label>
+        <label for="switchExample"
+          >Quiero ser voluntario en refugios cercanos</label
+        >
       </div>
     </div>
     <div class="is-divider"></div>
@@ -62,7 +70,9 @@
           class="switch"
           checked="checked"
         />
-        <label for="switchExample">Quiero recibir alertas sobre casos de riesgo cercanos</label>
+        <label for="switchExample"
+          >Quiero recibir alertas sobre casos de riesgo cercanos</label
+        >
       </div>
     </div>
   </div>
