@@ -38,10 +38,8 @@
         <div class="navbar-item">
           <div v-if="$auth.loading">Loading auth...</div>
           <div v-else-if="!$auth.user" class="buttons">
-            <router-link to="/registro">
-              <a class="button is-primary">
-                <strong>Registrarme</strong>
-              </a>
+            <router-link to="/registro" class="button is-primary">
+              <strong>Registrarme</strong>
             </router-link>
             <a class="button is-light" @click="login">Iniciar sesión</a>
           </div>
