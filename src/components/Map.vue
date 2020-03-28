@@ -57,7 +57,7 @@ export default {
 @import "../../node_modules/mapbox-gl/dist/mapbox-gl.css";
 
 .map {
-  width: 100%;
+  width: 100vw;
   height: calc(100vh - 56px);
 }
 </style>
