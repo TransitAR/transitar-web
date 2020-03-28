@@ -86,9 +86,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-section {
-  height: calc(100vh - 56px);
-}
-</style>
