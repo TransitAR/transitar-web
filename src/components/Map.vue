@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import mapboxgl from "mapbox-gl";
 import { getHosts, getPets, getRefuges, getVets } from "../utils/http";
 import { initMap, flyTo } from "../utils/map";
 import { loadHosts, loadPets, loadRefuges, loadVets } from "../utils/map";
@@ -53,11 +52,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/* Capaz hay una manera mas elegante */
-@import "../../node_modules/mapbox-gl/dist/mapbox-gl.css";
-
 .map {
-  width: 100vw;
-  height: calc(100vh - 56px);
+  width: 100%;
+  height: 100%;
 }
 </style>

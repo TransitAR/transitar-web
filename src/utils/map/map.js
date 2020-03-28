@@ -1,4 +1,3 @@
-import mapboxgl from "mapbox-gl";
 import homeSmall from "../../assets/png/030-dog-house.png";
 import vetSmall from "../../assets/png/002-veterinarian-2.png";
 import dog from "../../assets/png/032-dog.png";
