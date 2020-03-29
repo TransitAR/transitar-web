@@ -2,9 +2,11 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item">
-        <fa-icon icon="map-marker-alt" class="has-text-primary" size="lg" />
+        <figure class="image is-16x16 inline-block m-auto">
+          <img src="../assets/png/012-pawprint.png" />
+        </figure>
         <router-link to="/">
-          <span class="brand-title has-text-weight-semibold">TransitAR</span>
+          <span class="brand-title has-text-weight-semibold">RefugiarAR</span>
         </router-link>
       </a>
 
@@ -29,7 +31,9 @@
         <hr class="navbar-divider" />
         <router-link class="navbar-item" to="/perfil">Perfil</router-link>
         <router-link class="navbar-item" to="/explorar">
-          <fa-icon icon="map-marked-alt" class="has-text-primary" size="lg" />
+          <figure class="image is-16x16 inline-block m-auto">
+            <img src="../assets/png/map.png" />
+          </figure>
           <span class="ml-2">Explorar</span>
         </router-link>
       </div>
