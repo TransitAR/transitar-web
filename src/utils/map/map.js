@@ -56,7 +56,12 @@ export const loadPets = (map, pets) => {
   pets.forEach(pet => {
     const image = pet.type == "dog" ? dog : cat;
     const elem = createMarkerElement(image);
-    const popup = createPopup(pet.name, image, pet.location.formattedAddress);
+    const popup = createPopup(
+      pet.name,
+      image,
+      pet.location.formattedAddress,
+      `/mascota/${pet._id}`
+    );
     new mapboxgl.Marker(elem)
       .setLngLat(pet.location.coordinates)
       .setPopup(popup)
@@ -80,10 +85,14 @@ export const loadRefuges = (map, refuges) => {
 };
 
 // aux fns
-const createPopup = (title, image, address) =>
+const createPopup = (title, image, address, link) =>
   new mapboxgl.Popup({ offset: 25 }).setHTML(`
     <div style="display: flex; align-items: center; margin-bottom: 0.5rem">
-      <strong>${title}</strong>
+      ${
+        link
+          ? `<a href="${link}"><strong>${title}</strong></a>`
+          : `<strong>${title}</strong>`
+      }
       <img
         src=${image}
         height="25" width="25"
