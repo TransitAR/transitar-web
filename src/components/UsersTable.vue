@@ -31,7 +31,7 @@
       <!-- Adoptante -->
       <div class="flex-1 m-2 card text-center">
         <header class="p-4">
-          <span class="title is-5">Refugio</span>
+          <span class="title is-5">Adoptante</span>
           <figure class="image is-48x48 mt-4 mx-auto">
             <img src="../assets/png/001-smartphone.png" />
           </figure>
@@ -58,7 +58,7 @@
       <!-- Voluntario -->
       <div class="flex-1 m-2 card text-center">
         <header class="p-4">
-          <span class="title is-5">Refugio</span>
+          <span class="title is-5">Voluntario</span>
           <figure class="image is-48x48 mt-4 mx-auto">
             <img src="../assets/png/volunteer.png" />
           </figure>
@@ -85,7 +85,7 @@
       <!-- Veterinaria -->
       <div class="flex-1 m-2 card text-center">
         <header class="p-4">
-          <span class="title is-5">Refugio</span>
+          <span class="title is-5">Clinica Veterinaria</span>
           <figure class="image is-48x48 mt-4 mx-auto">
             <img src="../assets/png/033-doctor.png" />
           </figure>
