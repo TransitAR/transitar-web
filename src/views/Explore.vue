@@ -1,6 +1,12 @@
 <template>
   <section class="p-0">
-    <Map :client-pos="clientPos" :people="people" :pets="pets" :refuges="refuges" :vets="vets" />
+    <Map
+      :client-pos="clientPos"
+      :people="people"
+      :pets="pets"
+      :refuges="refuges"
+      :vets="vets"
+    />
   </section>
 </template>
 
