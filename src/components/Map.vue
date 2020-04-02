@@ -3,9 +3,9 @@
 </template>
 
 <script>
-import { getHosts, getPets, getRefuges, getVets } from "../utils/http";
+import { getPeople, getPets, getRefuges, getVets } from "../utils/http";
 import { initMap, flyTo } from "../utils/map";
-import { loadHosts, loadPets, loadRefuges, loadVets } from "../utils/map";
+import { loadPeople, loadPets, loadRefuges, loadVets } from "../utils/map";
 
 export default {
   name: "Map",
@@ -13,7 +13,7 @@ export default {
     map: null
   }),
   props: {
-    hosts: Array,
+    people: Array,
     vets: Array,
     pets: Array,
     refuges: Array,
@@ -23,7 +23,7 @@ export default {
     this.map = initMap(this.$refs.map);
     this.map.addControl(new mapboxgl.NavigationControl());
     if (this.clientPos) flyTo(this.map, this.clientPos.coords);
-    if (this.hosts) loadHosts(this.map, this.hosts);
+    if (this.people) loadPeople(this.map, this.people);
     if (this.vets) loadVets(this.map, this.vets);
     if (this.pets) loadPets(this.map, this.pets);
     if (this.refuges) loadRefuges(this.map, this.refuges);
@@ -35,8 +35,8 @@ export default {
     clientPos(pos) {
       flyTo(this.map, pos.coords);
     },
-    hosts(hosts) {
-      loadHosts(this.map, hosts);
+    people(people) {
+      loadPeople(this.map, people);
     },
     vets(vets) {
       loadVets(this.map, vets);

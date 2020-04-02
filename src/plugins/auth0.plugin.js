@@ -1,7 +1,7 @@
 import Vue from "vue";
 import createAuth0Client from "@auth0/auth0-spa-js";
 
-const baseUrl = `${window.location.protocol}//${window.location.host}`;
+const baseUrl = `${window.location.protocol}//${window.location.person}`;
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.pathname);
 

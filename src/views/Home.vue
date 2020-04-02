@@ -3,8 +3,8 @@
     <p class="subtitle is-4 has-text-centered pb-10">
       Somos una organización sin fines de lucro que buscar visibilizar y ayudar
       a refugios, hogares de tránsito y adoptantes facilitando la comunicación
-      entre todos los involucrados en el proceso de encontrar el hogar que se
-      merece a cada mascota.
+      entre todos los involucrados en el proceso de encontrarle a cada mascota el hogar que se
+      merece.
     </p>
 
     <div class="level pb-5">
@@ -84,14 +84,12 @@
       <span class="has-text-weight-semibold">traslados</span> voluntarios o si
       sos parte de una
       <span class="has-text-weight-semibold">veterinaria</span> podés
-      involucrarte y ganar visibilidad.
+      involucrarte y además ganar visibilidad.
     </p>
 
     <div class="level">
       <div class="level-item has-text-centered">
-        <p class="title is-4 has-text-weight-light py-5">
-          ¡Registrate y empezá a ayudar!
-        </p>
+        <p class="title is-4 has-text-weight-light py-5">¡Registrate y empezá a ayudar!</p>
       </div>
     </div>
 

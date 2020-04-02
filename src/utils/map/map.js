@@ -22,16 +22,16 @@ export const flyTo = (map, { longitude, latitude }) => {
   map.flyTo({ center: [longitude, latitude] });
 };
 
-export const loadHosts = (map, hosts) => {
-  hosts.forEach(host => {
+export const loadPeople = (map, people) => {
+  people.forEach(person => {
     const elem = createMarkerElement(homeSmall);
     const popup = createPopup(
-      host.name,
+      person.name,
       homeSmall,
-      host.location.formattedAddress
+      person.location.formattedAddress
     );
     new mapboxgl.Marker(elem)
-      .setLngLat(host.location.coordinates)
+      .setLngLat(person.location.coordinates)
       .setPopup(popup)
       .addTo(map);
   });

@@ -25,15 +25,10 @@
     </div>
     <div :class="{ 'navbar-menu': true, 'is-active': isActive }">
       <div class="navbar-start">
-        <router-link class="navbar-item" to="/nosotros"
-          >Quienes somos</router-link
-        >
+        <router-link class="navbar-item" to="/nosotros">Quienes somos</router-link>
         <hr class="navbar-divider" />
         <router-link class="navbar-item" to="/perfil">Perfil</router-link>
         <router-link class="navbar-item" to="/explorar">
-          <figure class="image is-16x16 inline-block m-auto">
-            <img src="../assets/png/map.png" />
-          </figure>
           <span class="ml-2">Explorar</span>
         </router-link>
       </div>
