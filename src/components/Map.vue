@@ -1,5 +1,76 @@
 <template>
-  <div ref="map" class="map" />
+  <div ref="map" class="map">
+    <div class="card mt-5 ml-5">
+      <header class="card-header">
+        <input class="input m-2" type="text" placeholder="Buscar..." />
+      </header>
+
+      <div class="card-content">
+        <div class="level-item has-text-centered">
+          <div class="mx-3">
+            <div>
+              <div class="inline-flex align-center">
+                <figure class="image is-24x24 inline-block m-auto">
+                  <img src="../assets/png/016-veterinarian-1.png" />
+                </figure>
+              </div>
+            </div>
+            <span>Refugios</span>
+          </div>
+          <div class="mx-3">
+            <div>
+              <div class="inline-flex align-center">
+                <figure class="image is-24x24 inline-block m-auto">
+                  <img src="../assets/png/030-dog-house.png" />
+                </figure>
+              </div>
+            </div>
+            <span>Adoptantes</span>
+          </div>
+          <div class="mx-3">
+            <div>
+              <div class="inline-flex align-center">
+                <figure class="image is-24x24 inline-block m-auto">
+                  <img src="../assets/png/volunteer.png" />
+                </figure>
+              </div>
+            </div>
+            <span>Voluntarios</span>
+          </div>
+          <div class="mx-3">
+            <div>
+              <div class="inline-flex align-center">
+                <figure class="image is-24x24 inline-block m-auto">
+                  <img src="../assets/png/002-veterinarian-2.png" />
+                </figure>
+              </div>
+            </div>
+            <span>Veterinarias</span>
+          </div>
+          <div class="mx-3">
+            <div>
+              <div class="inline-flex align-center">
+                <figure class="image is-24x24 inline-block m-auto">
+                  <img src="../assets/png/032-dog.png" />
+                </figure>
+              </div>
+            </div>
+            <span>Perros</span>
+          </div>
+          <div class="mx-3">
+            <div>
+              <div class="inline-flex align-center">
+                <figure class="image is-24x24 inline-block m-auto">
+                  <img src="../assets/png/036-cat.png" />
+                </figure>
+              </div>
+            </div>
+            <span>Gatos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -55,5 +126,10 @@ export default {
 .map {
   width: 100%;
   height: 100%;
+}
+
+.card {
+  z-index: 1;
+  max-width: 500px;
 }
 </style>
