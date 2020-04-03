@@ -9,7 +9,7 @@
 
     <div class="level pb-5">
       <div class="level-item has-text-centered">
-        <p class="title is-4 has-text-weight-light">Cerca tuyo hay</p>
+        <p class="title is-4 has-text-weight-light">Estamos conectando</p>
       </div>
     </div>
 
@@ -19,10 +19,7 @@
         <div>
           <div class="mb-8">
             <div class="inline-flex align-center">
-              <p class="title is-3 inline-block mr-2">5</p>
-              <figure class="image is-24x24 inline-block m-auto">
-                <img src="../assets/png/016-veterinarian-1.png" />
-              </figure>
+              <p class="title is-3 inline-block mr-2">50</p>
             </div>
           </div>
           <p class="subtitle is-5">Refugios</p>
@@ -34,10 +31,7 @@
         <div>
           <div class="mb-8">
             <div class="inline-flex align-center">
-              <p class="title is-3 inline-block mr-2">2</p>
-              <figure class="image is-24x24 inline-block m-auto">
-                <img src="../assets/png/032-dog.png" />
-              </figure>
+              <p class="title is-3 inline-block mr-2">224</p>
             </div>
           </div>
           <p class="subtitle is-5">Perros</p>
@@ -49,10 +43,7 @@
         <div>
           <div class="mb-8">
             <div class="inline-flex align-center">
-              <p class="title is-3 inline-block mr-2">5</p>
-              <figure class="image is-24x24 inline-block m-auto">
-                <img src="../assets/png/036-cat.png" />
-              </figure>
+              <p class="title is-3 inline-block mr-2">584</p>
             </div>
           </div>
           <p class="subtitle is-5">Gatos</p>
@@ -64,10 +55,7 @@
         <div>
           <div class="mb-8">
             <div class="inline-flex align-center">
-              <p class="title is-3 inline-block mr-2">2</p>
-              <figure class="image is-24x24 inline-block m-auto">
-                <img src="../assets/png/002-veterinarian-2.png" />
-              </figure>
+              <p class="title is-3 inline-block mr-2">126</p>
             </div>
           </div>
           <p class="subtitle is-5">Veterinarias</p>

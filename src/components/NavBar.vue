@@ -2,7 +2,7 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item">
-        <figure class="image is-16x16 inline-block m-auto">
+        <figure class="image is-24x24 inline-block m-auto">
           <img src="../assets/png/012-pawprint.png" />
         </figure>
         <router-link to="/">
@@ -31,7 +31,7 @@
         <hr class="navbar-divider" />
         <router-link class="navbar-item" to="/perfil">Perfil</router-link>
         <router-link class="navbar-item" to="/explorar">
-          <span class="ml-2">Explorar</span>
+          Explorar
         </router-link>
       </div>
 

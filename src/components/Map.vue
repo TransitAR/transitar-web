@@ -76,7 +76,13 @@
 <script>
 import { getPersons, getPets, getRefuges, getVets } from "../utils/http";
 import { initMap, flyTo } from "../utils/map";
-import { loadPersons, loadPets, loadRefuges, loadVets } from "../utils/map";
+import {
+  loadPersons,
+  loadPets,
+  loadRefuges,
+  loadVets,
+  loadVolunteers
+} from "../utils/map";
 
 export default {
   name: "Map",
@@ -88,6 +94,7 @@ export default {
     vets: Array,
     pets: Array,
     refuges: Array,
+    volunteers: Array,
     clientPos: undefined
   },
   async mounted() {
@@ -95,6 +102,7 @@ export default {
     this.map.addControl(new mapboxgl.NavigationControl());
     if (this.clientPos) flyTo(this.map, this.clientPos.coords);
     if (this.persons) loadPersons(this.map, this.persons);
+    if (this.volunteers) loadVolunteers(this.map, this.volunteers);
     if (this.vets) loadVets(this.map, this.vets);
     if (this.pets) loadPets(this.map, this.pets);
     if (this.refuges) loadRefuges(this.map, this.refuges);
@@ -117,6 +125,9 @@ export default {
     },
     refuges(refuges) {
       loadRefuges(this.map, refuges);
+    },
+    volunteers(volunteers) {
+      loadVolunteers(this.map, volunteers);
     }
   }
 };

@@ -1,8 +1,9 @@
 import homeSmall from "../../assets/png/030-dog-house.png";
 import vetSmall from "../../assets/png/002-veterinarian-2.png";
-import dog from "../../assets/png/032-dog.png";
-import cat from "../../assets/png/036-cat.png";
+import dogSmall from "../../assets/png/032-dog.png";
+import catSmall from "../../assets/png/036-cat.png";
 import refugeSmall from "../../assets/png/016-veterinarian-1.png";
+import volunteerSmall from "../../assets/png/volunteer.png";
 
 // TODO: Sacar el access token del repo 🌚
 const accessToken =
@@ -37,6 +38,21 @@ export const loadPersons = (map, persons) => {
   });
 };
 
+export const loadVolunteers = (map, persons) => {
+  persons.forEach(person => {
+    const elem = createMarkerElement(volunteerSmall);
+    const popup = createPopup(
+      person.name,
+      homeSmall,
+      person.location.formattedAddress
+    );
+    new mapboxgl.Marker(elem)
+      .setLngLat(person.location.coordinates)
+      .setPopup(popup)
+      .addTo(map);
+  });
+};
+
 export const loadVets = (map, vets) => {
   vets.forEach(vet => {
     const elem = createMarkerElement(vetSmall);
@@ -54,7 +70,7 @@ export const loadVets = (map, vets) => {
 
 export const loadPets = (map, pets) => {
   pets.forEach(pet => {
-    const image = pet.type == "dog" ? dog : cat;
+    const image = pet.type == "dog" ? dogSmall : catSmall;
     const elem = createMarkerElement(image);
     const popup = createPopup(
       pet.name,

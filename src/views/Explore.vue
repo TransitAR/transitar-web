@@ -1,6 +1,13 @@
 <template>
   <section class="p-0">
-    <Map :client-pos="clientPos" :persons="persons" :pets="pets" :refuges="refuges" :vets="vets" />
+    <Map
+      :client-pos="clientPos"
+      :persons="persons"
+      :pets="pets"
+      :refuges="refuges"
+      :vets="vets"
+      :volunteers="volunteers"
+    />
   </section>
 </template>
 
@@ -17,7 +24,8 @@ export default {
     persons: null,
     pets: null,
     refuges: null,
-    vets: null
+    vets: null,
+    volunteers: null
   }),
   methods: {
     async getCurrentPosition() {
@@ -36,7 +44,10 @@ export default {
       // Fetch persons
       try {
         const { data: PersonsRes } = await getPersons();
-        this.persons = PersonsRes.data;
+        this.persons = PersonsRes.data.filter(person => person.alerts == false);
+        this.volunteers = PersonsRes.data.filter(
+          person => person.alerts == true
+        );
       } catch (err) {
         console.warn("There was an error getting the persons", err);
       }
