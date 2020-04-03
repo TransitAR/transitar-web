@@ -4,6 +4,7 @@ import dogSmall from "../../assets/png/032-dog.png";
 import catSmall from "../../assets/png/036-cat.png";
 import refugeSmall from "../../assets/png/016-veterinarian-1.png";
 import volunteerSmall from "../../assets/png/volunteer.png";
+import carSmall from "../../assets/png/car.png";
 
 // TODO: Sacar el access token del repo 🌚
 const accessToken =
@@ -40,7 +41,8 @@ export const loadPersons = (map, persons) => {
 
 export const loadVolunteers = (map, persons) => {
   persons.forEach(person => {
-    const elem = createMarkerElement(volunteerSmall);
+    const image = person.canTravel == true ? carSmall : volunteerSmall;
+    const elem = createMarkerElement(image);
     const popup = createPopup(
       person.name,
       homeSmall,

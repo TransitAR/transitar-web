@@ -74,7 +74,7 @@
             Realizar donaciones
           </div>
           <div class="bg-gray-100 border-b-2 border-white p-2">
-            Ayudar en emergencias
+            Ayudar ante emergencias
           </div>
           <footer class="p-2">
             <button class="button is-fullwidth is-warning">Ver más</button>

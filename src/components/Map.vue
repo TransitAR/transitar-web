@@ -1,10 +1,9 @@
 <template>
   <div ref="map" class="map">
     <div class="card mt-5 ml-5">
-      <header class="card-header">
-        <input class="input m-2" type="text" placeholder="Buscar..." />
-      </header>
-
+      <input class="input" type="text" placeholder="Buscar..." />
+    </div>
+    <div class="card mt-2 ml-5">
       <div class="card-content">
         <div class="level-item has-text-centered">
           <div class="mx-3">
@@ -36,6 +35,16 @@
               </div>
             </div>
             <span>Voluntarios</span>
+          </div>
+          <div class="mx-3">
+            <div>
+              <div class="inline-flex align-center">
+                <figure class="image is-24x24 inline-block m-auto">
+                  <img src="../assets/png/car.png" />
+                </figure>
+              </div>
+            </div>
+            <span>Viajes</span>
           </div>
           <div class="mx-3">
             <div>

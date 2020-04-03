@@ -44,9 +44,11 @@ export default {
       // Fetch persons
       try {
         const { data: PersonsRes } = await getPersons();
-        this.persons = PersonsRes.data.filter(person => person.alerts == false);
+        this.persons = PersonsRes.data.filter(
+          person => person.canAdopt == true || person.canTransit == true
+        );
         this.volunteers = PersonsRes.data.filter(
-          person => person.alerts == true
+          person => person.canTravel == true || person.alerts == true
         );
       } catch (err) {
         console.warn("There was an error getting the persons", err);
