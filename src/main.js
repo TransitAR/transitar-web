@@ -22,8 +22,8 @@ Vue.component("fa-icon", FontAwesomeIcon);
 
 Vue.use(Auth0Plugin, {
   // TODO: sacar credenciales del repo
-  domain: "dev-n4s3nw3w.auth0.com",
-  clientId: "oFSeqe0VzzrZVQBbEXXdmpiLKs70jWNb",
+  domain: "refugiar.auth0.com",
+  clientId: "3bbnnk6nRSvXpGpGpkGa5GUB8nX3DCgY",
   onRedirectCallback: appState => {
     router.push(
       appState && appState.targetUrl
