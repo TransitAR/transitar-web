@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="steps" id="stepsDemo">
+    <div class="steps pt-6" id="stepsDemo">
       <div class="step-item is-active is-primary">
         <div class="step-marker">1</div>
         <div class="step-details">

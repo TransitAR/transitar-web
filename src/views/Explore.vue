@@ -1,26 +1,20 @@
 <template>
   <section class="p-0">
-    <Map
-      :client-pos="clientPos"
-      :people="people"
-      :pets="pets"
-      :refuges="refuges"
-      :vets="vets"
-    />
+    <Map :client-pos="clientPos" :persons="persons" :pets="pets" :refuges="refuges" :vets="vets" />
   </section>
 </template>
 
 <script>
 import Map from "../components/Map";
 import { getCurrentPosition } from "../utils/navigator";
-import { getPeople, getPets, getRefuges, getVets } from "../utils/http";
+import { getPersons, getPets, getRefuges, getVets } from "../utils/http";
 
 export default {
   name: "explore",
   components: { Map },
   data: () => ({
     clientPos: null,
-    people: null,
+    persons: null,
     pets: null,
     refuges: null,
     vets: null
@@ -38,13 +32,13 @@ export default {
         console.warn("There was an error getting the current pos", err);
       }
     },
-    async getPeople() {
-      // Fetch people
+    async getPersons() {
+      // Fetch persons
       try {
-        const { data: PeopleRes } = await getPeople();
-        this.people = PeopleRes.data;
+        const { data: PersonsRes } = await getPersons();
+        this.persons = PersonsRes.data;
       } catch (err) {
-        console.warn("There was an error getting the people", err);
+        console.warn("There was an error getting the persons", err);
       }
     },
     async getVets() {
@@ -78,7 +72,7 @@ export default {
   async mounted() {
     Promise.allSettled([
       this.getCurrentPosition(),
-      this.getPeople(),
+      this.getPersons(),
       this.getVets(),
       this.getPets(),
       this.getRefuges()

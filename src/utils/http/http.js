@@ -6,8 +6,8 @@ const instance = axios.create({
   baseURL
 });
 
-export const getPeople = () => instance.get("/api/people");
-export const getPerson = id => instance.get(`/api/people/${id}`);
+export const getPersons = () => instance.get("/api/persons");
+export const getPerson = id => instance.get(`/api/persons/${id}`);
 
 export const getPets = () => instance.get("/api/pets");
 export const getPet = id => instance.get(`/api/pets/${id}`);

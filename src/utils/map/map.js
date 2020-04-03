@@ -22,8 +22,8 @@ export const flyTo = (map, { longitude, latitude }) => {
   map.flyTo({ center: [longitude, latitude] });
 };
 
-export const loadPeople = (map, people) => {
-  people.forEach(person => {
+export const loadPersons = (map, persons) => {
+  persons.forEach(person => {
     const elem = createMarkerElement(homeSmall);
     const popup = createPopup(
       person.name,
