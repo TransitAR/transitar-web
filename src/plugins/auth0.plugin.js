@@ -1,6 +1,7 @@
 import Vue from "vue";
 import createAuth0Client from "@auth0/auth0-spa-js";
 
+const baseUrl = `${window.location.protocol}//${window.location.host}`;
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.pathname);
 
@@ -69,7 +70,6 @@ export const useAuth0 = ({
       },
       logout(o = {}) {
         // TODO: mejor solucion para esto
-        const baseUrl = `${window.location.protocol}//${window.location.person}`;
         o.returnTo = `${baseUrl}/logout`;
         return this.auth0Client.logout(o);
       }
