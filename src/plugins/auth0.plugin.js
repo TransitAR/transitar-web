@@ -96,6 +96,11 @@ export const useAuth0 = ({
       } finally {
         this.isAuthenticated = await this.auth0Client.isAuthenticated();
         this.user = await this.auth0Client.getUser();
+        if (this.isAuthenticated) {
+          // Temporal para debuggear la API con Auth
+          const token = await this.auth0Client.getTokenSilently();
+          console.log({ token });
+        }
         this.loading = false;
       }
     }

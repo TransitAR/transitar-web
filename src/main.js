@@ -24,6 +24,7 @@ Vue.use(Auth0Plugin, {
   // TODO: sacar credenciales del repo
   domain: "refugiar.auth0.com",
   clientId: "3bbnnk6nRSvXpGpGpkGa5GUB8nX3DCgY",
+  audience: "https://refugiar-api.now.sh",
   onRedirectCallback: appState => {
     router.push(
       appState && appState.targetUrl
