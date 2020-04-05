@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "https://refugiar-api.now.sh/";
+const baseURL = "https://api.refugiar.org/";
 
 const instance = axios.create({
   baseURL
