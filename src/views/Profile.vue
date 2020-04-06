@@ -1,14 +1,11 @@
 <template>
   <section class="container is-fullhd">
-    <div class="card">
+    <div class="card mt-5">
       <div class="card-content">
         <div class="media">
           <div class="media-left">
             <figure class="image is-48x48">
-              <img
-                src="https://bulma.io/images/placeholders/96x96.png"
-                alt="Placeholder image"
-              />
+              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image" />
             </figure>
           </div>
           <div class="media-content">
@@ -31,10 +28,10 @@
     <div class="tabs is-centered">
       <ul>
         <li class="is-active">
-          <a>En adopción</a>
+          <a>Adopciones</a>
         </li>
         <li>
-          <a>En tránsito</a>
+          <a>Tránsito</a>
         </li>
         <li>
           <a>Viajes</a>

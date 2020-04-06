@@ -22,7 +22,7 @@
               <p class="title is-3 inline-block mr-2">50</p>
             </div>
           </div>
-          <p class="subtitle is-5">Refugios</p>
+          <p class="subtitle is-5">Adoptantes</p>
         </div>
       </div>
       <div class="is-divider-vertical"></div>
@@ -68,7 +68,7 @@
       <span class="has-text-weight-semibold">refugio</span>, si podes dar
       <span class="has-text-weight-semibold">tránsito</span> o
       <span class="has-text-weight-semibold">adoptar</span>, si podés
-      <span class="has-text-weight-semibold">donar,</span> si podes ofrecer
+      <span class="has-text-weight-semibold">donar</span>, si podes ofrecer
       <span class="has-text-weight-semibold">traslados</span> voluntarios o si
       sos parte de una
       <span class="has-text-weight-semibold">veterinaria</span> podés
@@ -77,9 +77,7 @@
 
     <div class="level">
       <div class="level-item has-text-centered">
-        <p class="title is-4 has-text-weight-light py-5">
-          ¡Registrate y empezá a ayudar!
-        </p>
+        <p class="title is-4 has-text-weight-light py-5">¡Registrate y empezá a ayudar!</p>
       </div>
     </div>
 
