@@ -92,6 +92,6 @@ import UsersTable from "../components/UsersTable";
 
 export default {
   name: "home",
-  components: { UsersTable },
+  components: { UsersTable }
 };
 </script>

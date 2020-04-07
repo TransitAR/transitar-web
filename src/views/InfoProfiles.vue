@@ -264,5 +264,17 @@
 <script>
 export default {
   name: "InfoProfiles",
+  methods: {
+    login() {}
+  },
+  mounted() {
+    // TODO: hacer esto mas prolijo o evitarlo, quizas hacer plugin
+    // ahora hay que hacerlo sino no scrollea con hash
+    const hash = this.$route.hash?.replace("#", "");
+    if (hash) {
+      const elem = document.getElementById(hash);
+      elem?.scrollIntoView();
+    }
+  }
 };
 </script>
