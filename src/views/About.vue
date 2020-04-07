@@ -1,6 +1,6 @@
 <template>
-  <section>
-    <div class="container">
+  <section class="container is-fullhd p-16">
+    <div class="container mt-8">
       <h1 class="title is-1 mt-8">Quienes somos</h1>
       <!-- Vision -->
       <div class="grid grid-cols-2">
@@ -55,6 +55,6 @@
 
 <script>
 export default {
-  name: "About"
+  name: "About",
 };
 </script>

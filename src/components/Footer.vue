@@ -1,6 +1,7 @@
 <template>
-  <footer class="footer">
+  <footer class="footer has-background-white">
     <div class="content has-text-centered">
+      <p>contacto@refugiar.org</p>
       <p>
         Icons made by
         <a href="https://www.flaticon.com/authors/freepik" title="Freepik"
@@ -17,6 +18,6 @@
 
 <script>
 export default {
-  name: "Footer"
+  name: "Footer",
 };
 </script>

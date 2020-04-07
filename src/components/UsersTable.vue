@@ -23,7 +23,9 @@
             Recibir donaciones
           </div>
           <footer class="p-2">
-            <button class="button is-fullwidth is-info">Ver más</button>
+            <router-link class="button is-fullwidth is-info" to="/info#refugio"
+              >Ver más</router-link
+            >
           </footer>
         </div>
       </div>
@@ -43,14 +45,16 @@
           <div class="bg-gray-100 border-b-2 border-white p-2">
             <span class="subtitle is-6">Buscar mascotas</span>
           </div>
-          <div class="bg-gray-100 border-b-2 border-white p-2">
-            Adoptar
-          </div>
+          <div class="bg-gray-100 border-b-2 border-white p-2">Adoptar</div>
           <div class="bg-gray-100 border-b-2 border-white p-2">
             Dar tránsito
           </div>
           <footer class="p-2">
-            <button class="button is-fullwidth is-primary">Ver más</button>
+            <router-link
+              class="button is-fullwidth is-primary"
+              to="/info#adoptante"
+              >Ver más</router-link
+            >
           </footer>
         </div>
       </div>
@@ -77,7 +81,11 @@
             Ayudar ante emergencias
           </div>
           <footer class="p-2">
-            <button class="button is-fullwidth is-warning">Ver más</button>
+            <router-link
+              class="button is-fullwidth is-warning"
+              to="/info#voluntario"
+              >Ver más</router-link
+            >
           </footer>
         </div>
       </div>
@@ -104,7 +112,11 @@
             Ayudar a refugios
           </div>
           <footer class="p-2">
-            <button class="button is-fullwidth is-danger">Ver más</button>
+            <router-link
+              class="button is-fullwidth is-danger"
+              to="/info#veterinaria"
+              >Ver más</router-link
+            >
           </footer>
         </div>
       </div>
@@ -114,6 +126,6 @@
 
 <script>
 export default {
-  name: "UsersTable"
+  name: "UsersTable",
 };
 </script>

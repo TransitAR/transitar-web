@@ -77,7 +77,9 @@
 
     <div class="level">
       <div class="level-item has-text-centered">
-        <p class="title is-4 has-text-weight-light py-5">¡Registrate y empezá a ayudar!</p>
+        <p class="title is-4 has-text-weight-light py-5">
+          ¡Definí tu perfil, registrate y empezá a ayudar!
+        </p>
       </div>
     </div>
 
@@ -90,6 +92,6 @@ import UsersTable from "../components/UsersTable";
 
 export default {
   name: "home",
-  components: { UsersTable }
+  components: { UsersTable },
 };
 </script>
