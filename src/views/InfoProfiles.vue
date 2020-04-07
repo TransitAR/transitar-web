@@ -28,28 +28,52 @@
           <h1 class="title is-5 mt-8">Refugios registrados</h1>
           <div class="inline-flex align-center">
             <figure class="image is-64x64 mx-1">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" />
+              <img
+                class="is-rounded"
+                src="https://bulma.io/images/placeholders/64x64.png"
+              />
             </figure>
             <figure class="image is-64x64 mx-1">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" />
+              <img
+                class="is-rounded"
+                src="https://bulma.io/images/placeholders/64x64.png"
+              />
             </figure>
             <figure class="image is-64x64 mx-1">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" />
+              <img
+                class="is-rounded"
+                src="https://bulma.io/images/placeholders/64x64.png"
+              />
             </figure>
             <figure class="image is-64x64 mx-1">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" />
+              <img
+                class="is-rounded"
+                src="https://bulma.io/images/placeholders/64x64.png"
+              />
             </figure>
             <figure class="image is-64x64 mx-1">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" />
+              <img
+                class="is-rounded"
+                src="https://bulma.io/images/placeholders/64x64.png"
+              />
             </figure>
             <figure class="image is-64x64 mx-1">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" />
+              <img
+                class="is-rounded"
+                src="https://bulma.io/images/placeholders/64x64.png"
+              />
             </figure>
             <figure class="image is-64x64 mx-1">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" />
+              <img
+                class="is-rounded"
+                src="https://bulma.io/images/placeholders/64x64.png"
+              />
             </figure>
             <figure class="image is-64x64 mx-1">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" />
+              <img
+                class="is-rounded"
+                src="https://bulma.io/images/placeholders/64x64.png"
+              />
             </figure>
             <button class="button is-text mt-3 mx-1">Ver todos</button>
           </div>
@@ -174,28 +198,52 @@
           <h1 class="title is-5 mt-8">Veterinarias registradas</h1>
           <div class="inline-flex align-center">
             <figure class="image is-64x64 mx-1">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" />
+              <img
+                class="is-rounded"
+                src="https://bulma.io/images/placeholders/64x64.png"
+              />
             </figure>
             <figure class="image is-64x64 mx-1">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" />
+              <img
+                class="is-rounded"
+                src="https://bulma.io/images/placeholders/64x64.png"
+              />
             </figure>
             <figure class="image is-64x64 mx-1">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" />
+              <img
+                class="is-rounded"
+                src="https://bulma.io/images/placeholders/64x64.png"
+              />
             </figure>
             <figure class="image is-64x64 mx-1">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" />
+              <img
+                class="is-rounded"
+                src="https://bulma.io/images/placeholders/64x64.png"
+              />
             </figure>
             <figure class="image is-64x64 mx-1">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" />
+              <img
+                class="is-rounded"
+                src="https://bulma.io/images/placeholders/64x64.png"
+              />
             </figure>
             <figure class="image is-64x64 mx-1">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" />
+              <img
+                class="is-rounded"
+                src="https://bulma.io/images/placeholders/64x64.png"
+              />
             </figure>
             <figure class="image is-64x64 mx-1">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" />
+              <img
+                class="is-rounded"
+                src="https://bulma.io/images/placeholders/64x64.png"
+              />
             </figure>
             <figure class="image is-64x64 mx-1">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" />
+              <img
+                class="is-rounded"
+                src="https://bulma.io/images/placeholders/64x64.png"
+              />
             </figure>
             <button class="button is-text mt-3 mx-1">Ver todos</button>
           </div>
@@ -217,6 +265,18 @@
 
 <script>
 export default {
-  name: "InfoProfiles"
+  name: "InfoProfiles",
+  methods: {
+    login() {}
+  },
+  mounted() {
+    // TODO: hacer esto mas prolijo o evitarlo, quizas hacer plugin
+    // ahora hay que hacerlo sino no scrollea con hash
+    const hash = this.$route.hash?.replace("#", "");
+    if (hash) {
+      const elem = document.getElementById(hash);
+      elem?.scrollIntoView();
+    }
+  }
 };
 </script>
