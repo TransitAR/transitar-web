@@ -24,8 +24,17 @@ export const flyTo = (map, { longitude, latitude }) => {
   map.flyTo({ center: [longitude, latitude] });
 };
 
+/*
+  canTravel: boolean;
+  canAdopt: boolean;
+  canTransit: boolean;
+  canHelp: boolean;
+  alerts: boolean;
+*/
+/*
 export const loadPersons = (map, persons) => {
-  persons.forEach(person => {
+  const hosts = persons.filter(p => p.canTransit == true || p.canAdopt == true);
+  hosts.forEach(person => {
     const elem = createMarkerElement(homeSmall);
     const popup = createPopup(
       person.name,
@@ -38,13 +47,17 @@ export const loadPersons = (map, persons) => {
       .addTo(map);
   });
 };
-
+*/
 export const loadVolunteers = (map, persons) => {
-  persons.forEach(person => {
-    const image = person.canTravel == true ? carSmall : volunteerSmall;
+  const volunteers = persons.filter(
+    p => p.canTransit == false || p.canAdopt == false
+  );
+  volunteers.forEach(person => {
+    const image = volunteerSmall;
     const elem = createMarkerElement(image);
     const popup = createPopup(
       person.name,
+      volunteerSmall,
       homeSmall,
       person.location.formattedAddress
     );

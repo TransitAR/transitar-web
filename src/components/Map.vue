@@ -16,6 +16,7 @@
             </div>
             <span>Refugios</span>
           </div>
+          <!--
           <div class="mx-3">
             <div>
               <div class="inline-flex align-center">
@@ -26,16 +27,21 @@
             </div>
             <span>Adoptantes</span>
           </div>
+          -->
           <div class="mx-3">
             <div>
               <div class="inline-flex align-center">
-                <figure class="image is-24x24 inline-block m-auto">
+                <figure
+                  class="image is-24x24 inline-block m-auto"
+                  v-on:click="this.seeVolunteers = !this.seeVolunteers"
+                >
                   <img src="../assets/png/volunteer.png" />
                 </figure>
               </div>
             </div>
             <span>Voluntarios</span>
           </div>
+          <!--
           <div class="mx-3">
             <div>
               <div class="inline-flex align-center">
@@ -46,10 +52,14 @@
             </div>
             <span>Viajes</span>
           </div>
+          -->
           <div class="mx-3">
             <div>
               <div class="inline-flex align-center">
-                <figure class="image is-24x24 inline-block m-auto">
+                <figure
+                  class="image is-24x24 inline-block m-auto"
+                  v-on:click="this.seeVets = !this.seeVets"
+                >
                   <img src="../assets/png/002-veterinarian-2.png" />
                 </figure>
               </div>
@@ -59,7 +69,10 @@
           <div class="mx-3">
             <div>
               <div class="inline-flex align-center">
-                <figure class="image is-24x24 inline-block m-auto">
+                <figure
+                  class="image is-24x24 inline-block m-auto"
+                  v-on:click="this.seeDogs = !this.seeDogs"
+                >
                   <img src="../assets/png/032-dog.png" />
                 </figure>
               </div>
@@ -69,7 +82,10 @@
           <div class="mx-3">
             <div>
               <div class="inline-flex align-center">
-                <figure class="image is-24x24 inline-block m-auto">
+                <figure
+                  class="image is-24x24 inline-block m-auto"
+                  v-on:click="this.seeCats = !this.seeCats"
+                >
                   <img src="../assets/png/036-cat.png" />
                 </figure>
               </div>
@@ -150,6 +166,6 @@ export default {
 
 .card {
   z-index: 1;
-  max-width: 500px;
+  max-width: 400px;
 }
 </style>

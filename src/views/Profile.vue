@@ -37,7 +37,7 @@
           <a>Tránsito</a>
         </li>
         <li>
-          <a>Viajes</a>
+          <a>Donaciones</a>
         </li>
         <li>
           <a>Configuración</a>

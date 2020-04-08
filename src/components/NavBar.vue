@@ -30,6 +30,9 @@
         >
         <hr class="navbar-divider" />
         <router-link class="navbar-item" to="/perfil">Perfil</router-link>
+        <router-link class="navbar-item" to="/noticias">
+          Noticias
+        </router-link>
         <router-link class="navbar-item" to="/explorar">
           Explorar
         </router-link>
