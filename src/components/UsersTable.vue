@@ -126,6 +126,6 @@
 
 <script>
 export default {
-  name: "UsersTable",
+  name: "UsersTable"
 };
 </script>
