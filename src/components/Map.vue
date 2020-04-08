@@ -100,7 +100,7 @@
 
 <script>
 import { getPersons, getPets, getRefuges, getVets } from "../utils/http";
-import { initMap, flyTo } from "../utils/map";
+import { initMap, flyTo, addSearch, addNavigation } from "../utils/map";
 import {
   loadPersons,
   loadPets,
@@ -124,7 +124,8 @@ export default {
   },
   async mounted() {
     this.map = initMap(this.$refs.map);
-    this.map.addControl(new mapboxgl.NavigationControl());
+    addNavigation(this.map);
+    addSearch(this.map);
     if (this.clientPos) flyTo(this.map, this.clientPos.coords);
     if (this.persons) loadPersons(this.map, this.persons);
     if (this.volunteers) loadVolunteers(this.map, this.volunteers);

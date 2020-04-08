@@ -5,6 +5,7 @@ import catSmall from "../../assets/png/036-cat.png";
 import refugeSmall from "../../assets/png/016-veterinarian-1.png";
 import volunteerSmall from "../../assets/png/volunteer.png";
 import carSmall from "../../assets/png/car.png";
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 
 // TODO: Sacar el access token del repo 🌚
 const accessToken =
@@ -24,6 +25,17 @@ export const flyTo = (map, { longitude, latitude }) => {
   map.flyTo({ center: [longitude, latitude] });
 };
 
+export const addSearch = map =>
+  map.addControl(
+    new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      placeholder: "Enter search e.g. Lincoln Park",
+      mapboxgl: mapboxgl
+    })
+  );
+
+export const addNavigation = map =>
+  map.addControl(new mapboxgl.NavigationControl());
 /*
   canTravel: boolean;
   canAdopt: boolean;
