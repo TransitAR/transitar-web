@@ -30,7 +30,7 @@
           <div
             :class="
               `step-content has-text-centered is-primary ${
-                isActive(1) ? 'is-active' : ''
+                currentStep == 1 ? 'is-active' : ''
               }`
             "
           >
@@ -45,7 +45,7 @@
           <div
             :class="
               `step-content has-text-centered is-primary ${
-                isActive(2) ? 'is-active' : ''
+                currentStep == 2 ? 'is-active' : ''
               }`
             "
           >
