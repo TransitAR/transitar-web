@@ -2,33 +2,25 @@
   <section class="container is-fullhd p-16">
     <div class="container mt-8">
       <div class="steps pt-6" id="stepsDemo">
-        <div
-          :class="`step-item is-primary ${currentStep == 1 ? 'is-active' : ''}`"
-        >
+        <div :class="`step-item is-primary ${isActive(1) ? 'is-active' : ''}`">
           <div class="step-marker">1</div>
           <div class="step-details">
             <p class="step-title">Perfil</p>
           </div>
         </div>
-        <div
-          :class="`step-item is-primary ${currentStep == 2 ? 'is-active' : ''}`"
-        >
+        <div :class="`step-item is-primary ${isActive(2) ? 'is-active' : ''}`">
           <div class="step-marker">2</div>
           <div class="step-details">
             <p class="step-title">Vivienda</p>
           </div>
         </div>
-        <div
-          :class="`step-item is-primary ${currentStep == 3 ? 'is-active' : ''}`"
-        >
+        <div :class="`step-item is-primary ${isActive(3) ? 'is-active' : ''}`">
           <div class="step-marker">3</div>
           <div class="step-details">
             <p class="step-title">Social</p>
           </div>
         </div>
-        <div
-          :class="`step-item is-primary ${currentStep == 4 ? 'is-active' : ''}`"
-        >
+        <div :class="`step-item is-primary ${isActive(4) ? 'is-active' : ''}`">
           <div class="step-marker">4</div>
           <div class="step-details">
             <p class="step-title">Terminar</p>
@@ -38,7 +30,7 @@
           <div
             :class="
               `step-content has-text-centered is-primary ${
-                currentStep == 1 ? 'is-active' : ''
+                isActive(1) ? 'is-active' : ''
               }`
             "
           >
@@ -53,7 +45,7 @@
           <div
             :class="
               `step-content has-text-centered is-primary ${
-                currentStep == 2 ? 'is-active' : ''
+                isActive(2) ? 'is-active' : ''
               }`
             "
           >
@@ -125,6 +117,11 @@ export default {
     mobilitySchedule: {},
     hasTransportBox: null,
     address: ""
-  })
+  }),
+  methods: {
+    isActive(step) {
+      return this.currentStep == step || this.currentStep > step;
+    }
+  }
 };
 </script>
