@@ -149,7 +149,9 @@
           class="switch"
           checked="checked"
         />
-        <label for="switchExample">Tengo experiencia con gatos</label>
+        <label for="switchExample"
+          >Tengo experiencia con perros y/o gatos</label
+        >
       </div>
       <div class="control pt-6">
         <input
@@ -159,7 +161,7 @@
           class="switch"
           checked="checked"
         />
-        <label for="switchExample">Tengo experiencia con perros</label>
+        <label for="switchExample">Tengo caja transportadora o canil</label>
       </div>
     </div>
   </div>

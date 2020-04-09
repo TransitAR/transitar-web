@@ -84,24 +84,24 @@ import Account from "../components/AccountForm";
 import Home from "../components/HomeForm";
 
 /*
-  name: string;
-  birthDate: Date;
-  canTravel: boolean;
-  canAdopt: boolean;
-  canTransit: boolean;
-  canHelp: boolean;
-  alerts: boolean;
-  experience: boolean;
-  adults: number;
-  children: number;
-  otherPets: number;
-  houseType: string;
-  houseProtection: boolean;
-  hourAway: number;
+  name: string; DONE
+  birthDate: Date; DONE
+  canTravel: boolean; DONE
+  canAdopt: boolean; DONE
+  canTransit: boolean; DONE
+  canHelp: boolean; DONE
+  alerts: boolean; DONE
+  experience: boolean; 
+  adults: number; DONE
+  children: number; DONE
+  otherPets: number; DONE
+  houseType: string; DONE
+  houseProtection: boolean; DONE
+  hoursAway: number; DONE
   mobility: boolean;
   travelsSchedule: ITravelsSchedule;
   mobilitySchedule: IMobilitySchedule;
-  hasTransportBox: boolean;
+  hasTransportBox: boolean; DONE
   address: string;
   location: ILocation;
   pets: [string];
