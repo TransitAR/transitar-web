@@ -1,7 +1,18 @@
 <template>
   <div>
     <div class="field">
-      <label class="label">Tipo</label>
+      <label class="label">Datos personales</label>
+      <input class="input" type="text" placeholder="Nombre" />
+    </div>
+    <div class="field">
+      <input class="input" type="text" placeholder="Apellido" />
+    </div>
+    <div class="field">
+      <input class="input" type="date" placeholder="Apellido" />
+    </div>
+    <div class="is-divider"></div>
+    <div class="field">
+      <label class="label">¿Cómo podés ayudar?</label>
       <div class="control">
         <div class="field">
           <div class="field">
@@ -37,26 +48,22 @@
               checked="checked"
             />
             <label for="exampleCheckboxBackgroundColorSuccess3"
-              >Puedo hacer viajes</label
+              >Puedo hacer traslados</label
+            >
+          </div>
+          <div class="field">
+            <input
+              class="is-checkradio has-background-color is-primary"
+              id="exampleCheckboxBackgroundColorSuccess4"
+              type="checkbox"
+              name="exampleCheckboxBackgroundColorSuccess4"
+              checked="checked"
+            />
+            <label for="exampleCheckboxBackgroundColorSuccess4"
+              >Puedo ayudar ante emergencias cerca mío</label
             >
           </div>
         </div>
-      </div>
-    </div>
-    <div class="is-divider"></div>
-    <div class="field">
-      <label class="label">Voluntariado</label>
-      <div class="control">
-        <input
-          id="switchExample"
-          type="checkbox"
-          name="switchExample"
-          class="switch"
-          checked="checked"
-        />
-        <label for="switchExample"
-          >Quiero ser voluntario en refugios cercanos</label
-        >
       </div>
     </div>
     <div class="is-divider"></div>
@@ -77,23 +84,3 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  name: "Form",
-  data: () => ({
-    name: "",
-    canTravel: null,
-    canAdopt: null,
-    canTransit: null,
-    alerts: null,
-    experience: null,
-    persons: 0,
-    mobility: null,
-    travelsSchedule: {},
-    mobilitySchedule: {},
-    hasTransportBox: null,
-    address: ""
-  })
-};
-</script>

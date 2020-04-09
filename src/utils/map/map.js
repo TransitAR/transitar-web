@@ -29,7 +29,7 @@ export const addSearch = map =>
   map.addControl(
     new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
-      placeholder: "Enter search e.g. Lincoln Park",
+      placeholder: "Buscar...",
       mapboxgl: mapboxgl
     })
   );
