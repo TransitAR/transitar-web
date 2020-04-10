@@ -1,14 +1,12 @@
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item">
+      <router-link to="/" class="navbar-item">
         <figure class="image is-24x24 inline-block m-auto">
           <img src="../assets/png/012-pawprint.png" />
         </figure>
-        <router-link to="/">
-          <span class="brand-title has-text-weight-semibold">RefugiarAR</span>
-        </router-link>
-      </a>
+        <span class="brand-title has-text-weight-semibold">RefugiarAR</span>
+      </router-link>
 
       <a
         role="button"
