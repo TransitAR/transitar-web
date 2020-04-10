@@ -8,7 +8,7 @@ export default {
   name: "LoginCallback",
   created() {
     const registerType = localStorage.getItem("register-type");
-    const redirectUrl = registerType ? `/register?type=${registerType}` : "/";
+    const redirectUrl = registerType ? `/registro/${registerType}` : "/";
     this.$router.push(redirectUrl);
   }
 };

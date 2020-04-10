@@ -262,15 +262,15 @@ export default {
   name: "InfoProfiles",
   methods: {
     registerVet() {
-      localStorage.setItem("register-type", "vet");
+      localStorage.setItem("register-type", "veterniaria");
       this.register();
     },
     registerRefuge() {
-      localStorage.setItem("register-type", "refuge");
+      localStorage.setItem("register-type", "refugio");
       this.register();
     },
     registerPerson() {
-      localStorage.setItem("register-type", "person");
+      localStorage.setItem("register-type", "persona");
       this.register();
     },
     register() {

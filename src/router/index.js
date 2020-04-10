@@ -34,7 +34,7 @@ const routes = [
       import(/* webpackChunkName: "login" */ "../views/callbacks/Login.vue")
   },
   {
-    path: "/registro",
+    path: "/registro/:registerType",
     name: "register",
     component: () =>
       import(/* webpackChunkName: "register" */ "../views/Register.vue")
