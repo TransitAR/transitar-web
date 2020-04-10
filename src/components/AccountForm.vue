@@ -8,7 +8,10 @@
       <input class="input" type="text" placeholder="Apellido" />
     </div>
     <div class="field">
-      <input class="input" type="date" placeholder="Apellido" />
+      <input class="input" type="date" />
+    </div>
+    <div class="field">
+      <input class="input" type="text" placeholder="Domicilio" />
     </div>
     <div class="is-divider"></div>
     <div class="field">

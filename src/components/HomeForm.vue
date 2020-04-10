@@ -3,8 +3,7 @@
     <div class="field">
       <label class="label">Tipo</label>
       <div class="select">
-        <select>
-          <option>Tipo de vivienda</option>
+        <select placeholder="Tipo de vivienda">
           <option>Casa</option>
           <option>Departamento</option>
           <option>Quinta</option>
@@ -20,34 +19,35 @@
           <div class="field">
             <input
               class="is-checkradio has-background-color is-primary"
-              id="exampleCheckboxBackgroundColorSuccess1"
-              type="checkbox"
-              name="exampleCheckboxBackgroundColorSuccess1"
-              checked="checked"
+              id="less-than-8"
+              type="radio"
+              name="less-than-8"
+              value="-8"
+              v-model="hoursAway"
             />
-            <label for="exampleCheckboxBackgroundColorSuccess1"
-              >Menos de 8</label
-            >
+            <label for="less-than-8">Menos de 8</label>
           </div>
           <div class="field">
             <input
               class="is-checkradio has-background-color is-primary"
-              id="exampleCheckboxBackgroundColorSuccess2"
-              type="checkbox"
-              name="exampleCheckboxBackgroundColorSuccess2"
-              checked="checked"
+              id="more-than-8"
+              type="radio"
+              name="more-than-8"
+              value="+8"
+              v-model="hoursAway"
             />
-            <label for="exampleCheckboxBackgroundColorSuccess2">Más de 8</label>
+            <label for="more-than-8">Más de 8</label>
           </div>
           <div class="field">
             <input
               class="is-checkradio has-background-color is-primary"
-              id="exampleCheckboxBackgroundColorSuccess3"
-              type="checkbox"
-              name="exampleCheckboxBackgroundColorSuccess3"
-              checked="checked"
+              id="more-than-8-op"
+              type="radio"
+              name="more-than-8-op"
+              value="+16"
+              v-model="hoursAway"
             />
-            <label for="exampleCheckboxBackgroundColorSuccess3"
+            <label for="more-than-8-op"
               >Más de 16, pero hay gente en casa</label
             >
           </div>
@@ -59,20 +59,19 @@
       <label class="label">Protección</label>
       <input
         class="is-checkradio has-background-color is-primary"
-        id="exampleCheckboxBackgroundColorSuccess1"
+        id="houseProtection"
         type="checkbox"
-        name="exampleCheckboxBackgroundColorSuccess1"
-        checked="checked"
+        name="houseProtection"
+        v-model="houseProtection"
       />
-      <label for="exampleCheckboxBackgroundColorSuccess1"
+      <label for="houseProtection"
         >Cuento con protección en balcones y/o medianeras</label
       >
     </div>
 
     <article class="message is-primary mt-5">
       <div class="message-header">
-        <p>Primary</p>
-        <button class="delete" aria-label="delete"></button>
+        <p>¡Atención!</p>
       </div>
       <div class="message-body">
         Las protecciones en balcones y medianeras son
@@ -91,16 +90,19 @@
           <div class="field pt-6">
             <input
               class="is-checkradio has-background-color is-primary"
-              id="exampleCheckboxBackgroundColorSuccess1"
+              id="adults"
               type="checkbox"
-              name="exampleCheckboxBackgroundColorSuccess1"
+              name="adults"
               checked="checked"
             />
-            <label for="exampleCheckboxBackgroundColorSuccess1"
-              >Hay más adultos en mi grupo familiar</label
-            >
+            <label for="adults">Hay más adultos en mi grupo familiar</label>
           </div>
-          <input class="input" type="number" placeholder="¿Cuántos?" />
+          <input
+            class="input"
+            type="number"
+            v-model="adults"
+            placeholder="¿Cuántos?"
+          />
         </div>
       </div>
       <div class="control">
@@ -108,16 +110,21 @@
           <div class="field pt-6">
             <input
               class="is-checkradio has-background-color is-primary"
-              id="exampleCheckboxBackgroundColorSuccess1"
+              id="children"
               type="checkbox"
-              name="exampleCheckboxBackgroundColorSuccess1"
+              name="children"
               checked="checked"
             />
-            <label for="exampleCheckboxBackgroundColorSuccess1"
+            <label for="children"
               >Hay menores de 18 años en mi grupo familiar</label
             >
           </div>
-          <input class="input" type="number" placeholder="¿Cuántos?" />
+          <input
+            class="input"
+            type="number"
+            v-model="children"
+            placeholder="¿Cuántos?"
+          />
         </div>
       </div>
       <div class="control">
@@ -125,16 +132,19 @@
           <div class="field pt-6">
             <input
               class="is-checkradio has-background-color is-primary"
-              id="exampleCheckboxBackgroundColorSuccess1"
+              id="otherPets"
               type="checkbox"
-              name="exampleCheckboxBackgroundColorSuccess1"
+              name="otherPets"
               checked="checked"
             />
-            <label for="exampleCheckboxBackgroundColorSuccess1"
-              >Hay animales en mi grupo familiar</label
-            >
+            <label for="otherPets">Hay animales en mi grupo familiar</label>
           </div>
-          <input class="input" type="number" placeholder="¿Cuántos?" />
+          <input
+            class="input"
+            type="number"
+            v-model="otherPets"
+            placeholder="¿Cuántos?"
+          />
         </div>
       </div>
     </div>
@@ -143,25 +153,23 @@
       <label class="label">Experiencia</label>
       <div class="control pt-6">
         <input
-          id="switchExample"
+          id="experience"
           type="checkbox"
-          name="switchExample"
+          name="experience"
           class="switch"
-          checked="checked"
+          v-model="experience"
         />
-        <label for="switchExample"
-          >Tengo experiencia con perros y/o gatos</label
-        >
+        <label for="experience">Tengo experiencia con perros y/o gatos</label>
       </div>
       <div class="control pt-6">
         <input
-          id="switchExample"
+          id="hasTransportBox"
           type="checkbox"
-          name="switchExample"
+          name="hasTransportBox"
           class="switch"
-          checked="checked"
+          v-model="hasTransportBox"
         />
-        <label for="switchExample">Tengo caja transportadora o canil</label>
+        <label for="hasTransportBox">Tengo caja transportadora o canil</label>
       </div>
     </div>
   </div>
