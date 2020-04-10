@@ -151,8 +151,9 @@
               <div class="columns is-centered">
                 <div class="column is-half">
                   <!-- HOME FORM START -->
-                  <div v-if="canAdopt || canTransit">
-                    <div class="field">
+                  <div>
+                    <!-- TYPE START -->
+                    <div class="field" v-if="canAdopt || canTransit">
                       <label class="label">Tipo</label>
                       <div class="select">
                         <select
@@ -164,9 +165,12 @@
                           <option>Quinta</option>
                         </select>
                       </div>
+                      <div class="is-divider"></div>
                     </div>
-                    <div class="is-divider"></div>
-                    <div class="field">
+                    <!-- TYPE END -->
+
+                    <!-- HOURS AWAY START -->
+                    <div class="field" v-if="canAdopt || canTransit">
                       <label class="label">Horas fuera de casa</label>
 
                       <div class="control">
@@ -208,9 +212,12 @@
                           </div>
                         </div>
                       </div>
+                      <div class="is-divider"></div>
                     </div>
-                    <div class="is-divider"></div>
-                    <div class="field">
+                    <!-- HOURS AWAY END -->
+
+                    <!-- PROTECTION START -->
+                    <div class="field" v-if="canAdopt || canTransit">
                       <label class="label">Protección</label>
                       <input
                         class="is-checkradio has-background-color is-primary"
@@ -222,27 +229,30 @@
                       <label for="houseProtection"
                         >Cuento con protección en balcones y/o medianeras</label
                       >
+                      <article
+                        class="message is-primary mt-5"
+                        v-if="!houseProtection"
+                      >
+                        <div class="message-header">
+                          <p>¡Atención!</p>
+                        </div>
+                        <div class="message-body">
+                          Las protecciones en balcones y medianeras son
+                          <strong
+                            >muy importantes para evitar escapes y posibles
+                            accidentes</strong
+                          >, si no contás con protecciones podés ver los
+                          servicios recomendados por miembros de la comunidad
+                          <a>acá</a>.
+                        </div>
+                      </article>
+                      <div class="is-divider"></div>
                     </div>
 
-                    <article
-                      class="message is-primary mt-5"
-                      v-if="!houseProtection"
-                    >
-                      <div class="message-header">
-                        <p>¡Atención!</p>
-                      </div>
-                      <div class="message-body">
-                        Las protecciones en balcones y medianeras son
-                        <strong
-                          >muy importantes para evitar escapes y posibles
-                          accidentes</strong
-                        >, si no contás con protecciones podés ver los servicios
-                        recomendados por miembros de la comunidad <a>acá</a>.
-                      </div>
-                    </article>
+                    <!-- PROTECTION END -->
 
-                    <div class="is-divider"></div>
-                    <div class="field">
+                    <!-- FAMILY START -->
+                    <div class="field" v-if="canAdopt || canTransit">
                       <label class="label"
                         >Integrantes del grupo familiar</label
                       >
@@ -316,9 +326,15 @@
                           />
                         </div>
                       </div>
+                      <div class="is-divider"></div>
                     </div>
-                    <div class="is-divider"></div>
-                    <div class="field">
+                    <!-- FAMILY END -->
+
+                    <!-- EXPERIENCE START -->
+                    <div
+                      class="field"
+                      v-if="canAdopt || canTransit || canTravel || canHelp"
+                    >
                       <label class="label">Experiencia</label>
                       <div class="control pt-6">
                         <input
@@ -345,6 +361,7 @@
                         >
                       </div>
                     </div>
+                    <!-- EXPERIENCE END -->
                   </div>
                   <!-- HOME FORM END -->
                 </div>
