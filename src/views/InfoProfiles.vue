@@ -86,7 +86,6 @@
               <router-link to="/registro" class="button is-info">
                 <strong>Registrarme</strong>
               </router-link>
-              <a class="button is-light" @click="login">Iniciar sesión</a>
             </div>
           </div>
           <hr />
@@ -122,7 +121,6 @@
               <router-link to="/registro" class="button is-primary">
                 <strong>Registrarme</strong>
               </router-link>
-              <a class="button is-light" @click="login">Iniciar sesión</a>
             </div>
           </div>
           <hr />
@@ -160,7 +158,6 @@
               <router-link to="/registro" class="button is-warning">
                 <strong>Registrarme</strong>
               </router-link>
-              <a class="button is-light" @click="login">Iniciar sesión</a>
             </div>
           </div>
           <hr />
@@ -251,7 +248,6 @@
               <router-link to="/registro" class="button is-danger">
                 <strong>Registrarme</strong>
               </router-link>
-              <a class="button is-light" @click="login">Iniciar sesión</a>
             </div>
           </div>
           <hr />
