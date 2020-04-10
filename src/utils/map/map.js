@@ -36,6 +36,7 @@ export const addSearch = map =>
 
 export const addNavigation = map =>
   map.addControl(new mapboxgl.NavigationControl());
+
 /*
   canTravel: boolean;
   canAdopt: boolean;
@@ -43,9 +44,9 @@ export const addNavigation = map =>
   canHelp: boolean;
   alerts: boolean;
 */
-/*
+
 export const loadPersons = (map, persons) => {
-  const hosts = persons.filter(p => p.canTransit == true || p.canAdopt == true);
+  /* const hosts = persons.filter(p => p.canTransit == true || p.canAdopt == true);
   hosts.forEach(person => {
     const elem = createMarkerElement(homeSmall);
     const popup = createPopup(
@@ -57,9 +58,9 @@ export const loadPersons = (map, persons) => {
       .setLngLat(person.location.coordinates)
       .setPopup(popup)
       .addTo(map);
-  });
+  }); */
 };
-*/
+
 export const loadVolunteers = (map, persons) => {
   const volunteers = persons.filter(
     p => p.canTransit == false || p.canAdopt == false
