@@ -83,9 +83,9 @@
           <div class="py-5">
             <div v-if="$auth.loading">Loading auth...</div>
             <div v-else-if="!$auth.user" class="buttons">
-              <router-link to="/registro" class="button is-info">
+              <button class="button is-info" @click="registerRefuge()">
                 <strong>Registrarme</strong>
-              </router-link>
+              </button>
             </div>
           </div>
           <hr />
@@ -118,9 +118,9 @@
           <div class="py-5">
             <div v-if="$auth.loading">Loading auth...</div>
             <div v-else-if="!$auth.user" class="buttons">
-              <router-link to="/registro" class="button is-primary">
+              <button class="button is-info" @click="registerPerson()">
                 <strong>Registrarme</strong>
-              </router-link>
+              </button>
             </div>
           </div>
           <hr />
@@ -155,9 +155,9 @@
           <div class="py-5">
             <div v-if="$auth.loading">Loading auth...</div>
             <div v-else-if="!$auth.user" class="buttons">
-              <router-link to="/registro" class="button is-warning">
+              <button class="button is-info" @click="registerPerson()">
                 <strong>Registrarme</strong>
-              </router-link>
+              </button>
             </div>
           </div>
           <hr />
@@ -245,9 +245,9 @@
           <div class="py-5">
             <div v-if="$auth.loading">Loading auth...</div>
             <div v-else-if="!$auth.user" class="buttons">
-              <router-link to="/registro" class="button is-danger">
+              <button class="button is-info" @click="registerVet()">
                 <strong>Registrarme</strong>
-              </router-link>
+              </button>
             </div>
           </div>
           <hr />
@@ -261,7 +261,21 @@
 export default {
   name: "InfoProfiles",
   methods: {
-    login() {}
+    registerVet() {
+      localStorage.setItem("register-type", "vet");
+      this.register();
+    },
+    registerRefuge() {
+      localStorage.setItem("register-type", "refuge");
+      this.register();
+    },
+    registerPerson() {
+      localStorage.setItem("register-type", "person");
+      this.register();
+    },
+    register() {
+      this.$auth.loginWithRedirect({ screen_hint: "signup" });
+    }
   },
   mounted() {
     // TODO: hacer esto mas prolijo o evitarlo, quizas hacer plugin

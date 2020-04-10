@@ -6,9 +6,7 @@
 <script>
 export default {
   name: "Callback",
-  mounted() {
-    // const { returnTo } = this.$route.query
-    // logoutCallback(returnTo || '/')
+  created() {
     this.$router.push("/");
   }
 };

@@ -56,8 +56,11 @@ export const useAuth0 = ({
           this.loading = false;
         }
       },
-      loginWithRedirect(o) {
-        return this.auth0Client.loginWithRedirect(o);
+      loginWithRedirect(opts) {
+        return this.auth0Client.loginWithRedirect({
+          redirect_uri: `${window.location.origin}/login`,
+          ...opts
+        });
       },
       getIdTokenClaims(o) {
         return this.auth0Client.getIdTokenClaims(o);
