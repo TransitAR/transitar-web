@@ -124,8 +124,8 @@ export default {
   },
   async mounted() {
     this.map = initMap(this.$refs.map);
-    addNavigation(this.map);
     addSearch(this.map);
+    addNavigation(this.map);
     if (this.clientPos) flyTo(this.map, this.clientPos.coords);
     if (this.persons) loadPersons(this.map, this.persons);
     if (this.volunteers) loadVolunteers(this.map, this.volunteers);
