@@ -37,14 +37,86 @@
             <div class="hero-body">
               <div class="columns is-centered">
                 <div class="column is-half">
-                  <!-- ACCOUNT FORM START -->
+                  <!-- USER TYPE START -->
+
                   <div>
+                    <!-- USER TYPE START -->
+                    <div class="field">
+                      <label class="label">Tipo de usuario</label>
+                      <div class="control">
+                        <div class="field">
+                          <div class="field">
+                            <input
+                              class="is-checkradio has-background-color is-primary"
+                              id="isRefuge"
+                              type="radio"
+                              name="isRefuge"
+                              value="refuge"
+                              v-model="userType"
+                            />
+                            <label for="isRefuge">Refugio</label>
+                          </div>
+                          <div class="field">
+                            <input
+                              class="is-checkradio has-background-color is-primary"
+                              id="isAdoptant"
+                              type="radio"
+                              name="isAdoptant"
+                              value="adoptant"
+                              v-model="userType"
+                            />
+                            <label for="isAdoptant">Adoptante</label>
+                          </div>
+                          <div class="field">
+                            <input
+                              class="is-checkradio has-background-color is-primary"
+                              id="isVolunteer"
+                              type="radio"
+                              name="isVolunteer"
+                              value="volunteer"
+                              v-model="userType"
+                            />
+                            <label for="isVolunteer">Voluntario</label>
+                          </div>
+                          <div class="field">
+                            <input
+                              class="is-checkradio has-background-color is-primary"
+                              id="isVet"
+                              type="radio"
+                              name="isVet"
+                              value="vet"
+                              v-model="userType"
+                            />
+                            <label for="isVet">Veterinaria</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            :class="
+              `step-content has-text-centered is-primary ${
+                currentStep == 2 ? 'is-active' : ''
+              }`
+            "
+          >
+            <div class="hero-body">
+              <div class="columns is-centered">
+                <div class="column is-half">
+                  <!-- ACCOUNT FORM START -->
+
+                  <div>
+                    <!-- PERSONAL DATA START -->
                     <div class="field">
                       <label class="label">Datos personales</label>
                       <input
                         class="input"
                         type="text"
-                        placeholder="Nombre"
+                        placeholder="Nombres"
                         v-model="name"
                       />
                     </div>
@@ -66,15 +138,90 @@
                         placeholder="Domicilio"
                         v-model="address"
                       />
+                      <p class="help">Calle, altura, localidad, provincia.</p>
+                    </div>
+
+                    <div class="field">
+                      <div class="field-body">
+                        <div class="field is-expanded">
+                          <div class="field has-addons">
+                            <p class="control">
+                              <a class="button is-static">
+                                +54
+                              </a>
+                            </p>
+                            <p class="control is-expanded">
+                              <input
+                                class="input"
+                                type="tel"
+                                placeholder="Teléfono fijo"
+                              />
+                            </p>
+                          </div>
+                          <p class="help">Sin guiones y sin el 0</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <div class="field-body">
+                        <div class="field is-expanded">
+                          <div class="field has-addons">
+                            <p class="control">
+                              <a class="button is-static">
+                                +54
+                              </a>
+                            </p>
+                            <p class="control is-expanded">
+                              <input
+                                class="input"
+                                type="tel"
+                                placeholder="Teléfono celular"
+                              />
+                            </p>
+                          </div>
+                          <p class="help">Sin guiones y sin el 0</p>
+                        </div>
+                      </div>
+                      <div class="is-divider"></div>
+                    </div>
+                    <!-- SOCIAL START -->
+                    <div class="field">
+                      <label class="label">Redes sociales</label>
+                      <input
+                        class="input"
+                        type="text"
+                        placeholder="Instagram"
+                        v-model="instagram"
+                      />
+                    </div>
+                    <div class="field">
+                      <input
+                        class="input"
+                        type="text"
+                        placeholder="Twitter"
+                        v-model="twitter"
+                      />
+                    </div>
+                    <div class="field">
+                      <input
+                        class="input"
+                        type="text"
+                        placeholder="Facebook"
+                        v-model="facebook"
+                      />
                     </div>
                     <div class="is-divider"></div>
+
+                    <!-- SOCIAL END -->
+                    <!-- PERSONAL DATA END -->
                     <div class="field">
                       <label class="label">¿Cómo podés ayudar?</label>
                       <div class="control">
                         <div class="field">
                           <div class="field">
                             <input
-                              class="is-checkradio has-background-color is-primary"
+                              class="is-checkradio has-background-color"
                               id="canAdopt"
                               type="checkbox"
                               name="canAdopt"
@@ -84,7 +231,7 @@
                           </div>
                           <div class="field">
                             <input
-                              class="is-checkradio has-background-color is-primary"
+                              class="is-checkradio has-background-color"
                               id="canTransit"
                               type="checkbox"
                               name="canTransit"
@@ -94,7 +241,7 @@
                           </div>
                           <div class="field">
                             <input
-                              class="is-checkradio has-background-color is-primary"
+                              class="is-checkradio has-background-color"
                               id="canTravel"
                               type="checkbox"
                               name="canTravel"
@@ -104,7 +251,7 @@
                           </div>
                           <div class="field">
                             <input
-                              class="is-checkradio has-background-color is-primary"
+                              class="is-checkradio has-background-color"
                               id="canHelp"
                               type="checkbox"
                               name="canHelp"
@@ -143,7 +290,7 @@
           <div
             :class="
               `step-content has-text-centered is-primary ${
-                currentStep == 2 ? 'is-active' : ''
+                currentStep == 3 ? 'is-active' : ''
               }`
             "
           >
@@ -154,7 +301,7 @@
                   <div>
                     <!-- TYPE START -->
                     <div class="field" v-if="canAdopt || canTransit">
-                      <label class="label">Tipo</label>
+                      <label class="label">Tipo de vivienda</label>
                       <div class="select">
                         <select
                           placeholder="Tipo de vivienda"
@@ -218,9 +365,9 @@
 
                     <!-- PROTECTION START -->
                     <div class="field" v-if="canAdopt || canTransit">
-                      <label class="label">Protección</label>
+                      <label class="label">Protección en el edificio</label>
                       <input
-                        class="is-checkradio has-background-color is-primary"
+                        class="is-checkradio has-background-color"
                         id="houseProtection"
                         type="checkbox"
                         name="houseProtection"
@@ -260,7 +407,7 @@
                         <div class="field">
                           <div class="field pt-6">
                             <input
-                              class="is-checkradio has-background-color is-primary"
+                              class="is-checkradio has-background-color"
                               id="adults"
                               type="checkbox"
                               name="adults"
@@ -275,6 +422,7 @@
                             class="input"
                             type="number"
                             v-model="adults"
+                            min="0"
                             placeholder="¿Cuántos?"
                           />
                         </div>
@@ -283,7 +431,7 @@
                         <div class="field">
                           <div class="field pt-6">
                             <input
-                              class="is-checkradio has-background-color is-primary"
+                              class="is-checkradio has-background-color"
                               id="children"
                               type="checkbox"
                               name="children"
@@ -299,6 +447,7 @@
                             class="input"
                             type="number"
                             v-model="children"
+                            min="0"
                             placeholder="¿Cuántos?"
                           />
                         </div>
@@ -307,7 +456,7 @@
                         <div class="field">
                           <div class="field pt-6">
                             <input
-                              class="is-checkradio has-background-color is-primary"
+                              class="is-checkradio has-background-color"
                               id="otherPets"
                               type="checkbox"
                               name="otherPets"
@@ -322,6 +471,7 @@
                             class="input"
                             type="number"
                             v-model="otherPets"
+                            min="0"
                             placeholder="¿Cuántos?"
                           />
                         </div>
@@ -329,13 +479,114 @@
                       <div class="is-divider"></div>
                     </div>
                     <!-- FAMILY END -->
-
+                    <!-- SCHEDULE START -->
+                    <div
+                      class="field"
+                      v-if="canAdopt || canTransit || canTravel || canHelp"
+                    >
+                      <label class="label">Disponibilidad para traslados</label>
+                      <div class="control">
+                        <div class="field">
+                          <div class="field pt-3">
+                            <input
+                              class="is-checkradio has-background-color"
+                              id="mon"
+                              type="checkbox"
+                              name="mon"
+                              value="mon"
+                              v-model="availability"
+                            />
+                            <label for="mon">Lunes</label>
+                          </div>
+                        </div>
+                        <div class="field">
+                          <div class="field pt-3">
+                            <input
+                              class="is-checkradio has-background-color"
+                              id="tue"
+                              type="checkbox"
+                              name="tue"
+                              value="tue"
+                              v-model="availability"
+                            />
+                            <label for="tue">Martes</label>
+                          </div>
+                        </div>
+                        <div class="field">
+                          <div class="field pt-3">
+                            <input
+                              class="is-checkradio has-background-color"
+                              id="wed"
+                              type="checkbox"
+                              name="wed"
+                              value="wed"
+                              v-model="availability"
+                            />
+                            <label for="wed">Miércoles</label>
+                          </div>
+                        </div>
+                        <div class="field">
+                          <div class="field pt-3">
+                            <input
+                              class="is-checkradio has-background-color"
+                              id="thu"
+                              type="checkbox"
+                              name="thu"
+                              value="thu"
+                              v-model="availability"
+                            />
+                            <label for="thu">Jueves</label>
+                          </div>
+                        </div>
+                        <div class="field">
+                          <div class="field pt-3">
+                            <input
+                              class="is-checkradio has-background-color"
+                              id="fri"
+                              type="checkbox"
+                              name="fri"
+                              value="fri"
+                              v-model="availability"
+                            />
+                            <label for="fri">Viernes</label>
+                          </div>
+                        </div>
+                        <div class="field">
+                          <div class="field pt-3">
+                            <input
+                              class="is-checkradio has-background-color"
+                              id="sat"
+                              type="checkbox"
+                              name="sat"
+                              value="sat"
+                              v-model="availability"
+                            />
+                            <label for="sat">Sábado</label>
+                          </div>
+                        </div>
+                        <div class="field">
+                          <div class="field pt-3">
+                            <input
+                              class="is-checkradio has-background-color"
+                              id="sun"
+                              type="checkbox"
+                              name="sun"
+                              value="sun"
+                              v-model="availability"
+                            />
+                            <label for="sun">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="is-divider"></div>
+                    </div>
+                    <!-- SCHEDULE END -->
                     <!-- EXPERIENCE START -->
                     <div
                       class="field"
                       v-if="canAdopt || canTransit || canTravel || canHelp"
                     >
-                      <label class="label">Experiencia</label>
+                      <label class="label">Experiencia con animales</label>
                       <div class="control pt-6">
                         <input
                           id="experience"
@@ -368,13 +619,41 @@
               </div>
             </div>
           </div>
+          <div
+            :class="
+              `step-content has-text-centered is-primary ${
+                currentStep == 4 ? 'is-active' : ''
+              }`
+            "
+          >
+            <div class="hero-body">
+              <div class="columns is-centered">
+                <div class="column is-half">
+                  <!-- END -->
+                  <div>
+                    ¡LISTO!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="steps-actions">
           <div class="steps-action">
-            <a class="button is-light" v-on:click="currentStep--">Anterior</a>
+            <a
+              class="button is-light"
+              v-on:click="currentStep--"
+              :disabled="currentStep == 1"
+              >Anterior</a
+            >
           </div>
           <div class="steps-action">
-            <a class="button is-light" v-on:click="currentStep++">Siguiente</a>
+            <a
+              class="button is-light"
+              v-on:click="currentStep++"
+              :disabled="currentStep == 4"
+              >Siguiente</a
+            >
           </div>
         </div>
       </div>
@@ -412,10 +691,16 @@ export default {
   name: "home",
   components: {},
   data: () => ({
+    currentStep: 1,
+    userType: "",
+    mondayAvai: false,
     hasAdults: false,
     hasChildren: false,
     hasPets: false,
-    currentStep: 1,
+    instagram: "",
+    twitter: "",
+    facebook: "",
+    availability: [],
     name: "",
     lastName: "",
     birthDate: null,

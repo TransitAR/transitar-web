@@ -118,7 +118,7 @@
           <div class="py-5">
             <div v-if="$auth.loading">Loading auth...</div>
             <div v-else-if="!$auth.user" class="buttons">
-              <button class="button is-info" @click="registerPerson()">
+              <button class="button is-primary" @click="registerPerson()">
                 <strong>Registrarme</strong>
               </button>
             </div>
@@ -155,7 +155,7 @@
           <div class="py-5">
             <div v-if="$auth.loading">Loading auth...</div>
             <div v-else-if="!$auth.user" class="buttons">
-              <button class="button is-info" @click="registerPerson()">
+              <button class="button is-warning" @click="registerPerson()">
                 <strong>Registrarme</strong>
               </button>
             </div>
@@ -245,7 +245,7 @@
           <div class="py-5">
             <div v-if="$auth.loading">Loading auth...</div>
             <div v-else-if="!$auth.user" class="buttons">
-              <button class="button is-info" @click="registerVet()">
+              <button class="button is-danger" @click="registerVet()">
                 <strong>Registrarme</strong>
               </button>
             </div>
