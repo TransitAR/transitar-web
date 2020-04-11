@@ -7,9 +7,11 @@
 export default {
   name: "LoginCallback",
   created() {
-    const registerType = localStorage.getItem("register-type");
-    const redirectUrl = registerType ? `/registro/${registerType}` : "/";
+    // TODO pasar a vuex y borrarlo desde mainjs/app o algo asi
+    const justRegistered = localStorage.getItem("just-registered");
+    const redirectUrl = justRegistered ? "/formulario-registro" : "/";
     this.$router.push(redirectUrl);
+    localStorage.removeItem("just-registered");
   }
 };
 </script>

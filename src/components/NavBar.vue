@@ -40,9 +40,9 @@
         <div class="navbar-item">
           <div v-if="$auth.loading">Loading auth...</div>
           <div v-else-if="!$auth.user" class="buttons">
-            <router-link to="/registro" class="button is-primary">
+            <a class="button is-primary" @click="register()">
               <strong>Registrarme</strong>
-            </router-link>
+            </a>
             <a class="button is-light" @click="login">Iniciar sesión</a>
           </div>
           <div v-else class="level">
@@ -68,6 +68,9 @@ export default {
     isActive: false
   }),
   methods: {
+    register() {
+      this.$auth.registerWithRedirect();
+    },
     logout() {
       this.$auth.logout();
     },

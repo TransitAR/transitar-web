@@ -80,14 +80,6 @@
             </figure>
             <button class="button is-text mt-3 mx-1">Ver todos</button>
           </div>
-          <div class="py-5">
-            <div v-if="$auth.loading">Loading auth...</div>
-            <div v-else-if="!$auth.user" class="buttons">
-              <button class="button is-info" @click="registerRefuge()">
-                <strong>Registrarme</strong>
-              </button>
-            </div>
-          </div>
           <hr />
         </div>
       </div>
@@ -115,14 +107,6 @@
           </div>
           <h1 class="title is-3 mt-8">137</h1>
           <h1 class="title is-5 mt-2">Adopciones exitosas</h1>
-          <div class="py-5">
-            <div v-if="$auth.loading">Loading auth...</div>
-            <div v-else-if="!$auth.user" class="buttons">
-              <button class="button is-primary" @click="registerPerson()">
-                <strong>Registrarme</strong>
-              </button>
-            </div>
-          </div>
           <hr />
         </div>
       </div>
@@ -152,14 +136,6 @@
           </div>
           <h1 class="title is-3 mt-8">172</h1>
           <h1 class="title is-5 mt-2">Voluntarios dispuestos a ayudar</h1>
-          <div class="py-5">
-            <div v-if="$auth.loading">Loading auth...</div>
-            <div v-else-if="!$auth.user" class="buttons">
-              <button class="button is-warning" @click="registerPerson()">
-                <strong>Registrarme</strong>
-              </button>
-            </div>
-          </div>
           <hr />
         </div>
       </div>
@@ -242,17 +218,12 @@
             </figure>
             <button class="button is-text mt-3 mx-1">Ver todos</button>
           </div>
-          <div class="py-5">
-            <div v-if="$auth.loading">Loading auth...</div>
-            <div v-else-if="!$auth.user" class="buttons">
-              <button class="button is-danger" @click="registerVet()">
-                <strong>Registrarme</strong>
-              </button>
-            </div>
-          </div>
           <hr />
         </div>
       </div>
+      <button class="button is-info" @click="register()">
+        <strong>Registrarme</strong>
+      </button>
     </div>
   </section>
 </template>
@@ -261,20 +232,8 @@
 export default {
   name: "InfoProfiles",
   methods: {
-    registerVet() {
-      localStorage.setItem("register-type", "veterniaria");
-      this.register();
-    },
-    registerRefuge() {
-      localStorage.setItem("register-type", "refugio");
-      this.register();
-    },
-    registerPerson() {
-      localStorage.setItem("register-type", "persona");
-      this.register();
-    },
     register() {
-      this.$auth.loginWithRedirect({ screen_hint: "signup" });
+      this.$auth.registerWithRedirect();
     }
   },
   mounted() {

@@ -17,3 +17,10 @@ export const getRefuge = id => instance.get(`/api/refuges/${id}`);
 
 export const getVets = () => instance.get("/api/vets");
 export const getVet = id => instance.get(`/api/vets/${id}`);
+
+export const updateUser = (data, accessToken) =>
+  instance.patch(
+    "/api/users",
+    { headers: { Authorization: `Bearer ${accessToken}` } },
+    data
+  );

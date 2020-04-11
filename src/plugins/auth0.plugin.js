@@ -56,6 +56,10 @@ export const useAuth0 = ({
           this.loading = false;
         }
       },
+      registerWithRedirect() {
+        localStorage.setItem("just-registered", true);
+        this.loginWithRedirect({ screen_hint: "signup" });
+      },
       loginWithRedirect(opts) {
         return this.auth0Client.loginWithRedirect({
           redirect_uri: `${window.location.origin}/login`,
@@ -102,7 +106,7 @@ export const useAuth0 = ({
         if (this.isAuthenticated) {
           // Temporal para debuggear la API con Auth
           const token = await this.auth0Client.getTokenSilently();
-          console.log({ token });
+          console.log({ token, user: this.user });
         }
         this.loading = false;
       }

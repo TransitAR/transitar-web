@@ -34,10 +34,10 @@ const routes = [
       import(/* webpackChunkName: "login" */ "../views/callbacks/Login.vue")
   },
   {
-    path: "/registro/:registerType",
-    name: "register",
+    path: "/formulario-registro",
+    name: "register-form",
     component: () =>
-      import(/* webpackChunkName: "register" */ "../views/Register.vue")
+      import(/* webpackChunkName: "registerForm" */ "../views/RegisterForm.vue")
   },
   {
     path: "/perfil",
@@ -53,8 +53,7 @@ const routes = [
   {
     path: "/info",
     name: "info",
-    component: () =>
-      import(/* webpackChunkName: "info" */ "../views/InfoProfiles.vue")
+    component: () => import(/* webpackChunkName: "info" */ "../views/Info.vue")
   },
   {
     path: "/noticias",
