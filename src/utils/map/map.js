@@ -4,7 +4,6 @@ import dogSmall from "../../assets/png/032-dog.png";
 import catSmall from "../../assets/png/036-cat.png";
 import refugeSmall from "../../assets/png/016-veterinarian-1.png";
 import volunteerSmall from "../../assets/png/volunteer.png";
-import carSmall from "../../assets/png/car.png";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 
 // TODO: Sacar el access token del repo 🌚
@@ -28,9 +27,9 @@ export const flyTo = (map, { longitude, latitude }) => {
 export const addSearch = map =>
   map.addControl(
     new MapboxGeocoder({
+      mapboxgl,
       accessToken: mapboxgl.accessToken,
-      placeholder: "Buscar...",
-      mapboxgl: mapboxgl
+      placeholder: "Buscar..."
     })
   );
 
