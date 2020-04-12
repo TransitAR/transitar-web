@@ -29,7 +29,12 @@ export const addSearch = map =>
     new MapboxGeocoder({
       mapboxgl,
       accessToken: mapboxgl.accessToken,
-      placeholder: "Buscar..."
+      placeholder: "Buscar por zona...",
+      countries: "ar",
+      language: "es-AR",
+      marker: {
+        color: "red"
+      }
     })
   );
 
