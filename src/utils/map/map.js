@@ -30,7 +30,8 @@ export const addSearch = map =>
       mapboxgl,
       accessToken: mapboxgl.accessToken,
       placeholder: "Buscar..."
-    })
+    }),
+    "top-left"
   );
 
 export const addNavigation = map =>
