@@ -35,7 +35,8 @@ export const addSearch = map =>
       marker: {
         color: "red"
       }
-    })
+    }),
+    "top-left"
   );
 
 export const addNavigation = map =>
