@@ -76,7 +76,6 @@ export const loadVolunteers = (map, persons) => {
     const popup = createPopup(
       person.name,
       volunteerSmall,
-      homeSmall,
       person.location.formattedAddress
     );
     new mapboxgl.Marker(elem)

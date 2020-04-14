@@ -40,6 +40,14 @@ const routes = [
       import(/* webpackChunkName: "registerForm" */ "../views/RegisterForm.vue")
   },
   {
+    path: "/formulario-mascota",
+    name: "pet-form",
+    component: () =>
+      import(
+        /* webpackChunkName: "registerForm" */ "../components/forms/PetForm.vue"
+      )
+  },
+  {
     path: "/perfil",
     name: "profile",
     component: () =>
