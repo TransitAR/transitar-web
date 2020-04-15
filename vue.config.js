@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   devServer: {
     proxy: {
       "/api": {
@@ -12,3 +12,11 @@ module.exports = {
     }
   }
 };
+
+if (process.env.POINT_PROD || process.env.NODE_ENV === "production") {
+  config.pathRewrite = {
+    "^/": "https://api.refugiar.org"
+  };
+}
+
+module.exports = config;
