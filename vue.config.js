@@ -9,7 +9,7 @@ const apiProxy = {
 
 if (process.env.POINT_PROD || process.env.NODE_ENV === "production") {
   apiProxy.pathRewrite = {
-    "^/": "https://api.refugiar.org"
+    "^/api": "https://api.refugiar.org/api"
   };
 }
 
