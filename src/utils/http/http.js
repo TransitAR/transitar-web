@@ -1,18 +1,26 @@
 import axios from "axios";
 
-export const getPersons = () => axios.get("/api/persons");
-export const getPerson = id => axios.get(`/api/persons/${id}`);
+const pointProd = process.env.VUE_APP_POINT_PROD;
+const isProd = process.env.NODE_ENV === "production";
+const prodBaseURL = "https://api.refugiar.org/";
 
-export const getPets = () => axios.get("/api/pets");
-export const getPet = id => axios.get(`/api/pets/${id}`);
+const instance = axios.create({
+  baseURL: isProd || pointProd ? prodBaseURL : ""
+});
 
-export const getRefuges = () => axios.get("/api/refuges");
-export const getRefuge = id => axios.get(`/api/refuges/${id}`);
+export const getPersons = () => instance.get("/api/persons");
+export const getPerson = id => instance.get(`/api/persons/${id}`);
 
-export const getVets = () => axios.get("/api/vets");
-export const getVet = id => axios.get(`/api/vets/${id}`);
+export const getPets = () => instance.get("/api/pets");
+export const getPet = id => instance.get(`/api/pets/${id}`);
+
+export const getRefuges = () => instance.get("/api/refuges");
+export const getRefuge = id => instance.get(`/api/refuges/${id}`);
+
+export const getVets = () => instance.get("/api/vets");
+export const getVet = id => instance.get(`/api/vets/${id}`);
 
 export const updateUser = (data, accessToken) =>
-  axios.patch("/api/users", data, {
+  instance.patch("/api/users", data, {
     headers: { Authorization: `Bearer ${accessToken}` }
   });
