@@ -5,6 +5,7 @@
   "scripts": {
     "start": "npm run serve -- --open --copy",
     "serve": "vue-cli-service serve",
+    "serve-local-prod": "env POINT_PROD=true vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
