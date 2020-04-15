@@ -105,8 +105,8 @@ export const useAuth0 = ({
         this.user = await this.auth0Client.getUser();
         if (this.isAuthenticated) {
           // Temporal para debuggear la API con Auth
-          const token = await this.auth0Client.getTokenSilently();
-          console.log({ token, user: this.user });
+          this.accessToken = await this.auth0Client.getTokenSilently();
+          console.log({ accessToken: this.accessToken, user: this.user });
         }
         this.loading = false;
       }
