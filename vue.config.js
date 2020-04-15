@@ -8,9 +8,8 @@ const apiProxy = {
 };
 
 if (process.env.POINT_PROD || process.env.NODE_ENV === "production") {
-  apiProxy.pathRewrite = {
-    "^/api": "https://api.refugiar.org/api"
-  };
+  apiProxy.pathRewrite = path =>
+    path.replace("/api", "https://api.refugiar.org/api");
 }
 
 const config = {
