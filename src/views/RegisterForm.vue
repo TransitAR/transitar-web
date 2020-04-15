@@ -111,16 +111,31 @@
                     <!-- PERSONAL DATA START -->
                     <div class="field">
                       <label class="label">Datos personales</label>
-                      <input class="input" type="text" placeholder="Nombres" v-model="name" />
+                      <input
+                        class="input"
+                        type="text"
+                        placeholder="Nombres"
+                        v-model="name"
+                      />
                     </div>
                     <div class="field">
-                      <input class="input" type="text" placeholder="Apellido" v-model="lastName" />
+                      <input
+                        class="input"
+                        type="text"
+                        placeholder="Apellido"
+                        v-model="lastName"
+                      />
                     </div>
                     <div class="field">
                       <input class="input" type="date" />
                     </div>
                     <div class="field">
-                      <input class="input" type="text" placeholder="Domicilio" v-model="address" />
+                      <input
+                        class="input"
+                        type="text"
+                        placeholder="Domicilio"
+                        v-model="address"
+                      />
                       <p class="help">Calle, altura, localidad, provincia.</p>
                     </div>
 
@@ -132,7 +147,11 @@
                               <a class="button is-static">+54</a>
                             </p>
                             <p class="control is-expanded">
-                              <input class="input" type="tel" placeholder="Teléfono fijo" />
+                              <input
+                                class="input"
+                                type="tel"
+                                placeholder="Teléfono fijo"
+                              />
                             </p>
                           </div>
                           <p class="help">Sin guiones y sin el 0</p>
@@ -148,7 +167,11 @@
                               <a class="button is-static">+54</a>
                             </p>
                             <p class="control is-expanded">
-                              <input class="input" type="tel" placeholder="Teléfono celular" />
+                              <input
+                                class="input"
+                                type="tel"
+                                placeholder="Teléfono celular"
+                              />
                             </p>
                           </div>
                           <p class="help">Sin guiones y sin el 0</p>
@@ -159,13 +182,28 @@
                     <!-- SOCIAL START -->
                     <div class="field">
                       <label class="label">Redes sociales</label>
-                      <input class="input" type="text" placeholder="Instagram" v-model="instagram" />
+                      <input
+                        class="input"
+                        type="text"
+                        placeholder="Instagram"
+                        v-model="instagram"
+                      />
                     </div>
                     <div class="field">
-                      <input class="input" type="text" placeholder="Twitter" v-model="twitter" />
+                      <input
+                        class="input"
+                        type="text"
+                        placeholder="Twitter"
+                        v-model="twitter"
+                      />
                     </div>
                     <div class="field">
-                      <input class="input" type="text" placeholder="Facebook" v-model="facebook" />
+                      <input
+                        class="input"
+                        type="text"
+                        placeholder="Facebook"
+                        v-model="facebook"
+                      />
                     </div>
                     <div class="is-divider"></div>
 
@@ -213,7 +251,9 @@
                               name="canHelp"
                               v-model="canHelp"
                             />
-                            <label for="canHelp">Puedo ayudar ante emergencias cerca mío</label>
+                            <label for="canHelp"
+                              >Puedo ayudar ante emergencias cerca mío</label
+                            >
                           </div>
                         </div>
                       </div>
@@ -230,8 +270,7 @@
                           v-model="alerts"
                         />
                         <label for="switchExample">
-                          Quiero recibir alertas sobre casos de riesgo
-                          cercanos
+                          Quiero recibir alertas sobre casos de riesgo cercanos
                         </label>
                       </div>
                     </div>
@@ -257,7 +296,10 @@
                     <div class="field" v-if="canAdopt || canTransit">
                       <label class="label">Tipo de vivienda</label>
                       <div class="select">
-                        <select placeholder="Tipo de vivienda" v-model="houseType">
+                        <select
+                          placeholder="Tipo de vivienda"
+                          v-model="houseType"
+                        >
                           <option>Casa</option>
                           <option>Departamento</option>
                           <option>Quinta</option>
@@ -304,7 +346,9 @@
                               value="+16"
                               v-model="hoursAway"
                             />
-                            <label for="more-than-8-op">Más de 16, pero hay gente en casa</label>
+                            <label for="more-than-8-op"
+                              >Más de 16, pero hay gente en casa</label
+                            >
                           </div>
                         </div>
                       </div>
@@ -322,8 +366,13 @@
                         name="houseProtection"
                         v-model="houseProtection"
                       />
-                      <label for="houseProtection">Cuento con protección en balcones y/o medianeras</label>
-                      <article class="message is-primary mt-5" v-if="!houseProtection">
+                      <label for="houseProtection"
+                        >Cuento con protección en balcones y/o medianeras</label
+                      >
+                      <article
+                        class="message is-primary mt-5"
+                        v-if="!houseProtection"
+                      >
                         <div class="message-header">
                           <p>¡Atención!</p>
                         </div>
@@ -331,8 +380,8 @@
                           Las protecciones en balcones y medianeras son
                           <strong>
                             muy importantes para evitar escapes y posibles
-                            accidentes
-                          </strong>, si no contás con protecciones podés ver los
+                            accidentes </strong
+                          >, si no contás con protecciones podés ver los
                           servicios recomendados por miembros de la comunidad
                           <a>acá</a>.
                         </div>
@@ -344,7 +393,9 @@
 
                     <!-- FAMILY START -->
                     <div class="field" v-if="canAdopt || canTransit">
-                      <label class="label">Integrantes del grupo familiar</label>
+                      <label class="label"
+                        >Integrantes del grupo familiar</label
+                      >
                       <div class="control">
                         <div class="field">
                           <div class="field pt-6">
@@ -355,7 +406,9 @@
                               name="adults"
                               v-model="hasAdults"
                             />
-                            <label for="adults">Hay más adultos en mi grupo familiar</label>
+                            <label for="adults"
+                              >Hay más adultos en mi grupo familiar</label
+                            >
                           </div>
                           <input
                             v-if="hasAdults"
@@ -378,8 +431,7 @@
                               v-model="hasChildren"
                             />
                             <label for="children">
-                              Hay menores de 18 años en mi grupo
-                              familiar
+                              Hay menores de 18 años en mi grupo familiar
                             </label>
                           </div>
                           <input
@@ -402,7 +454,9 @@
                               name="otherPets"
                               v-model="hasPets"
                             />
-                            <label for="otherPets">Hay animales en mi grupo familiar</label>
+                            <label for="otherPets"
+                              >Hay animales en mi grupo familiar</label
+                            >
                           </div>
                           <input
                             v-if="hasPets"
@@ -418,7 +472,10 @@
                     </div>
                     <!-- FAMILY END -->
                     <!-- SCHEDULE START -->
-                    <div class="field" v-if="canAdopt || canTransit || canTravel || canHelp">
+                    <div
+                      class="field"
+                      v-if="canAdopt || canTransit || canTravel || canHelp"
+                    >
                       <label class="label">Disponibilidad para traslados</label>
                       <div class="control">
                         <div class="field">
@@ -517,7 +574,10 @@
                     </div>
                     <!-- SCHEDULE END -->
                     <!-- EXPERIENCE START -->
-                    <div class="field" v-if="canAdopt || canTransit || canTravel || canHelp">
+                    <div
+                      class="field"
+                      v-if="canAdopt || canTransit || canTravel || canHelp"
+                    >
                       <label class="label">Experiencia con animales</label>
                       <div class="control pt-6">
                         <input
@@ -527,7 +587,9 @@
                           class="switch"
                           v-model="experience"
                         />
-                        <label for="experience">Tengo experiencia con perros y/o gatos</label>
+                        <label for="experience"
+                          >Tengo experiencia con perros y/o gatos</label
+                        >
                       </div>
                       <div class="control pt-6">
                         <input
@@ -537,7 +599,9 @@
                           class="switch"
                           v-model="hasTransportBox"
                         />
-                        <label for="hasTransportBox">Tengo caja transportadora o canil</label>
+                        <label for="hasTransportBox"
+                          >Tengo caja transportadora o canil</label
+                        >
                       </div>
                     </div>
                     <!-- EXPERIENCE END -->
@@ -570,14 +634,16 @@
               class="button is-light"
               v-on:click="currentStep--"
               :disabled="currentStep == 1"
-            >Anterior</a>
+              >Anterior</a
+            >
           </div>
           <div class="steps-action">
             <a
               class="button is-light"
-              v-on:click="currentStep++"
+              v-on:click="next()"
               :disabled="currentStep == 4"
-            >Siguiente</a>
+              >Siguiente</a
+            >
           </div>
         </div>
       </div>
@@ -610,6 +676,7 @@
   pets: [string];
   createdAt: Date;
   */
+import { updateUser } from "../utils/http";
 
 export default {
   name: "register-form",
@@ -649,6 +716,22 @@ export default {
   methods: {
     isActive(step) {
       return this.currentStep == step || this.currentStep > step;
+    },
+    next() {
+      // TODO: hardcodeando cosas para testear, sacar luego
+      if (this.currentStep === 1) {
+        if (!this.userType) return;
+        const data = {};
+        if (this.userType === "refuge") {
+          data.isRefuge = true;
+        } else if (this.userType === "vet") {
+          data.isVet = true;
+        } else {
+          data.isPerson = true;
+        }
+        updateUser(data, this.$auth.accessToken);
+      }
+      this.currentStep++;
     }
   }
 };
