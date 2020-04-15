@@ -63,13 +63,45 @@
                               value="dog"
                               v-model="animalType"
                             />
-                            <label for="isDog">Adoptante</label>
+                            <label for="isDog">Perro</label>
                           </div>
                         </div>
                         <div class="is-divider"></div>
                       </div>
                     </div>
                     <!-- ANIMAL TYPE END -->
+                    <!-- ANIMAL SEX START -->
+                    <div class="field">
+                      <label class="label">Sexo</label>
+                      <div class="control">
+                        <div class="field">
+                          <div class="field">
+                            <input
+                              class="is-checkradio has-background-color is-primary"
+                              id="isMale"
+                              type="radio"
+                              name="isMale"
+                              value="male"
+                              v-model="animalSex"
+                            />
+                            <label for="isMale">Macho</label>
+                          </div>
+                          <div class="field">
+                            <input
+                              class="is-checkradio has-background-color is-primary"
+                              id="isFemale"
+                              type="radio"
+                              name="isFemale"
+                              value="female"
+                              v-model="animalSex"
+                            />
+                            <label for="isFemale">Hembra</label>
+                          </div>
+                        </div>
+                        <div class="is-divider"></div>
+                      </div>
+                    </div>
+                    <!-- ANIMAL SEX END -->
                     <!-- NAME ETC START -->
                     <div class="field">
                       <label class="label">Datos del animal</label>
@@ -94,7 +126,7 @@
                         <input class="input" type="text" placeholder="Seleccionar imagen" />
                       </p>
                       <p class="control">
-                        <a class="button is-info">Buscar</a>
+                        <a class="button is-primary">Buscar</a>
                       </p>
                     </div>
                     <div class="is-divider"></div>
@@ -104,9 +136,7 @@
                       <label class="label">Tamaño</label>
                       <div class="select">
                         <select placeholder="Tipo de vivienda" v-model="houseType">
-                          <option>Pequeño</option>
-                          <option>Mediano</option>
-                          <option>Grande</option>
+                          <option v-for="size in petSizes" :key="size">{{ size }}</option>
                         </select>
                       </div>
                       <div class="is-divider"></div>
@@ -117,44 +147,8 @@
                     <div class="field">
                       <label class="label">Personalidad</label>
                       <div class="field is-grouped is-grouped-multiline">
-                        <p class="control">
-                          <a class="button">One</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Two</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Three</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Four</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Five</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Size</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Seven</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Eight</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Nine</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Ten</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Eleven</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Twelve</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Thirteen</a>
+                        <p class="control" v-for="trait in petTraits" :key="trait">
+                          <a class="button">{{ trait }}</a>
                         </p>
                       </div>
                       <div class="is-divider"></div>
@@ -200,6 +194,24 @@
                             placeholder="¿Cuáles?"
                           ></textarea>
                         </div>
+                        <div class="field">
+                          <div class="field pt-6">
+                            <input
+                              class="is-checkradio has-background-color"
+                              id="hadSurgeries"
+                              type="checkbox"
+                              name="hadSurgeries"
+                              v-model="hadSurgeries"
+                            />
+                            <label for="hadSurgeries">Ha tenido cirugías</label>
+                          </div>
+                          <textarea
+                            v-if="hadSurgeries"
+                            class="textarea"
+                            v-model="surgeries"
+                            placeholder="¿Cuáles?"
+                          ></textarea>
+                        </div>
                       </div>
                       <div class="is-divider"></div>
                     </div>
@@ -214,14 +226,14 @@
                         name="sterilized"
                         v-model="sterilized"
                       />
-                      <label for="sterilized">Esterilizado</label>
+                      <label for="sterilized">Está esterilizado</label>
                       <article class="message is-primary mt-5" v-if="!sterilized">
                         <div class="message-header">
                           <p>¡Atención!</p>
                         </div>
                         <div class="message-body">
                           Las esterilización de las mascotas es
-                          <strong>muy importante</strong>, conocé más
+                          <strong>fundamental</strong>, así evitamos camadas no deseadas y posibles abandonos, entre todos podemos mejorar la situación de nuestros amigos peludos. Informate más
                           <a>acá</a>.
                         </div>
                       </article>
@@ -230,46 +242,10 @@
                     <!-- REPRODUCTIVE DATA END -->
                     <!-- VACCINES START -->
                     <div class="field">
-                      <label class="label">Vaccines</label>
+                      <label class="label">Vacunas</label>
                       <div class="field is-grouped is-grouped-multiline">
-                        <p class="control">
-                          <a class="button">One</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Two</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Three</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Four</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Five</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Size</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Seven</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Eight</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Nine</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Ten</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Eleven</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Twelve</a>
-                        </p>
-                        <p class="control">
-                          <a class="button">Thirteen</a>
+                        <p class="control" v-for="vaccine in petVaccines" :key="vaccine">
+                          <a class="button">{{ vaccine }}</a>
                         </p>
                       </div>
                       <div class="is-divider"></div>
@@ -280,9 +256,15 @@
                       <label class="label">Tipo de comida</label>
                       <div class="select">
                         <select placeholder="Tipo de vivienda" v-model="houseType">
-                          <option>Normal</option>
-                          <option>Urinary</option>
-                          <option>Digestive</option>
+                          <option v-for="food in foodTypes" :key="food">{{ food }}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label">Consistencia</label>
+                      <div class="select">
+                        <select placeholder="Tipo de vivienda" v-model="houseType">
+                          <option v-for="type in foodConsistencies" :key="type">{{ type }}</option>
                         </select>
                       </div>
                     </div>
@@ -309,11 +291,22 @@
                     <div class="control">
                       <textarea
                         class="textarea"
-                        placeholder="Contanos brevemente la parte que conozcas sobre su historia.."
+                        placeholder="Contanos brevemente la parte que conozcas sobre su historia..."
                       ></textarea>
                     </div>
+                    <div class="is-divider"></div>
                   </div>
                   <!-- DESCRIPTION END -->
+                  <!-- FAMILY START -->
+                  <div class="field">
+                    <label class="label">¿Con quién se lleva bien?</label>
+                    <div class="field is-grouped is-grouped-multiline">
+                      <p class="control" v-for="item in perfectFamily" :key="item">
+                        <a class="button">{{ item }}</a>
+                      </p>
+                    </div>
+                  </div>
+                  <!-- FAMILY END -->
                 </div>
               </div>
             </div>
@@ -358,67 +351,59 @@
 </template>
 
 <script>
-/*
-  name: string; DONE
-  birthDate: Date; DONE
-  canTravel: boolean; DONE
-  canAdopt: boolean; DONE
-  canTransit: boolean; DONE
-  canHelp: boolean; DONE
-  alerts: boolean; DONE
-  experience: boolean; DONE
-  adults: number; DONE
-  children: number; DONE
-  otherPets: number; DONE
-  houseType: string; DONE
-  houseProtection: boolean; DONE
-  hoursAway: number; DONE
-  mobility: boolean;
-  travelsSchedule: ITravelsSchedule;
-  mobilitySchedule: IMobilitySchedule;
-  hasTransportBox: boolean; DONE
-  address: string; DONE
-  location: ILocation;
-  pets: [string];
-  createdAt: Date;
-  */
-
 export default {
   name: "pet-form",
   components: {},
   data: () => ({
-    /*
-      Animal
-Dirección
-Foto/s
-Nombre
-Tipo
-Perro
-Gato
-Edad
-Peso
-Tamaño
-Grande
-Chico
-Mediano
-Personalidad
-Se lleva bien con animales
-Se lleva bien con personas
-Agresivo
-Activo
-Enfermedades
-Y/N
-Esterilizado
-Castrado
-Vacunado
-Tipo de comida
-Apuntar a “dueño” actual
-Apunta a DB Personas/Refugios
-
-*/
+    petSizes: ["Pequeño", "Mediano", "Grande"],
+    petTraits: [
+      "Tranquilo",
+      "Inquieto",
+      "Miedoso",
+      "Arisco",
+      "Cariñoso",
+      "Amigable",
+      "Hablador"
+    ],
+    petVaccines: [
+      "Moquillo canino",
+      "Hepatitis infecciosa (Adenovirus)",
+      "Parvovirus",
+      "Rabia",
+      "Leptospirosis",
+      "Parainfluenza canina",
+      "Coronavirus",
+      "Trivalente",
+      "Leucemia felina"
+    ],
+    foodTypes: [
+      "Cachorros",
+      "Madre y cachorros",
+      "Geriátrica",
+      "Transtorno Renal",
+      "Transtorno hepático",
+      "Transtorno urinario",
+      "Fibra",
+      "Gastrointestinal",
+      "Light",
+      "Castrados control de peso",
+      "Hembra castrada",
+      "Macho castrado",
+      "Control de estress",
+      "Control de saciedad",
+      "Control de diabetes",
+      "Control de obesidad",
+      "Hipoalergénica",
+      "Otro"
+    ],
+    foodConsistencies: ["Sólida", "Húmeda", "Líquida"],
+    perfectFamily: ["Bebés", "Niños", "Perros", "Gatos"],
     currentStep: 1,
     hadDiseases: false,
+    hadSurgeries: false,
     animalType: null,
+    animalSex: null,
+    surgeries: "",
     description: "",
     petType: "",
     name: "",
@@ -426,7 +411,6 @@ Apunta a DB Personas/Refugios
     age: null,
     weight: null,
     size: null,
-    birthDate: null,
     traits: [],
     diseases: [],
     sterilized: false,
