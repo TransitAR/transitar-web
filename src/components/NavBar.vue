@@ -5,7 +5,7 @@
         <figure class="image is-24x24 inline-block m-auto">
           <img src="../assets/png/012-pawprint.png" />
         </figure>
-        <span class="brand-title has-text-weight-semibold">RefugiarAR</span>
+        <span class="brand-title has-text-weight-semibold">RefugiAR</span>
       </router-link>
 
       <a
