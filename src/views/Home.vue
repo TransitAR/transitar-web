@@ -80,7 +80,7 @@
         <div class="level-item has-text-centered">
           <p
             class="title is-4 has-text-weight-light py-5"
-          >¡Definí tu perfil, registrate y empezá a ayudar!</p>
+          >¡Conocé nuestros tipos de cuentas y empezá a ayudar!</p>
         </div>
       </div>
 
