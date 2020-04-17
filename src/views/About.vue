@@ -17,7 +17,7 @@
           </div>
         </div>
         <p>
-          Los aminales no nos pertenecen, adoptarlos es sumarlos a nuestra familia y por lo tanto nuestro foco de atención está siempre sobre ellos que son quienes más nos necesitan.
+          Los animales no nos pertenecen, adoptarlos es sumarlos a nuestra familia y por lo tanto nuestro foco de atención está siempre sobre ellos que son quienes más nos necesitan.
           Cada uno de ellos tiene su familia ideal y para toda la vida, solo hace falta que se encuentren y nosotros vamos a trabajar para acercarlos.
         </p>
         <hr />
