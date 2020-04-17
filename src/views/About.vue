@@ -20,7 +20,7 @@
           Los aminales no nos pertenecen, adoptarlos es sumarlos a nuestra
           familia y por lo tanto nuestro foco de atención está siempre sobre
           ellos que son quienes más nos necesitan. Cada uno de ellos tiene su
-          familia ideal y para toda la vida, solo hace falta que se encuentren y
+          familia ideal y para toda la vida, sólo hace falta que se encuentren y
           nosotros vamos a trabajar para acercarlos.
         </p>
         <hr />
@@ -36,10 +36,10 @@
           </div>
         </div>
         <p>
-          El fin de Refugiar es formar una comunidad donde todos sus integrantes
+          El fin de RefugiAR es formar una comunidad donde todos sus integrantes
           cuenten con las herramientas para ayudar a los que no tienen voz.
           Queremos conectar de forma práctica y fácil a todas las personas y
-          organizaciones que actualmente sostienen refugios ocupandose del
+          organizaciones que actualmente sostienen refugios ocupándose del
           rescate, cuidado, adopción y posterior seguimiento.
         </p>
         <hr />
@@ -56,9 +56,9 @@
         </div>
         <p>
           La premisa bajo la cual nació RefugiAR es la de brindar herramientas
-          de forma totalmente gratuita, transparente y pensadas para ahorrarle
-          tiempo y energía a todo aquel que quiera ayudar de alguna manera a
-          mejorar la vida de nuestros amigos peludos.
+          de forma <strong>totalmente gratuita</strong>, transparente y pensadas
+          para ahorrarle tiempo y energía a todo aquel que quiera ayudar de
+          alguna manera a mejorar la vida de nuestros amigos peludos.
         </p>
         <hr />
 
