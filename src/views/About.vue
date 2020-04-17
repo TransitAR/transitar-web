@@ -17,16 +17,11 @@
           </div>
         </div>
         <p>
-<<<<<<< HEAD
-          Los animales no nos pertenecen, adoptarlos es sumarlos a nuestra familia y por lo tanto nuestro foco de atención está siempre sobre ellos que son quienes más nos necesitan.
-          Cada uno de ellos tiene su familia ideal y para toda la vida, solo hace falta que se encuentren y nosotros vamos a trabajar para acercarlos.
-=======
-          Los aminales no nos pertenecen, adoptarlos es sumarlos a nuestra
+          Los animales no nos pertenecen, adoptarlos es sumarlos a nuestra
           familia y por lo tanto nuestro foco de atención está siempre sobre
           ellos que son quienes más nos necesitan. Cada uno de ellos tiene su
-          familia ideal y para toda la vida, sólo hace falta que se encuentren y
+          familia ideal y para toda la vida, solo hace falta que se encuentren y
           nosotros vamos a trabajar para acercarlos.
->>>>>>> f117e9bcce36deafc5fc47f93d9a271a39919257
         </p>
         <hr />
         <!-- Mision -->
