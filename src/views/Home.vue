@@ -2,10 +2,10 @@
   <section>
     <div class="container is-fullhd p-16">
       <p class="subtitle is-4 has-text-centered pb-10">
-        Somos una organización sin fines de lucro que buscar visibilizar y ayudar
-        a refugios, hogares de tránsito y adoptantes facilitando la comunicación
-        entre todos los involucrados en el proceso de encontrarle a cada mascota
-        el hogar que se merece.
+        Somos una organización sin fines de lucro que buscar visibilizar y
+        ayudar a refugios, hogares de tránsito y adoptantes facilitando la
+        comunicación entre todos los involucrados en el proceso de encontrarle a
+        cada mascota el hogar que está esperando.
       </p>
 
       <div class="level pb-5">
@@ -14,52 +14,29 @@
         </div>
       </div>
 
-      <div class="level pb-16">
-        <!-- Refugios -->
+      <div class="level pb-10">
         <div class="level-item has-text-centered">
           <div>
-            <div class="mb-8">
-              <div class="inline-flex align-center">
-                <p class="title is-3 inline-block mr-2">50</p>
-              </div>
-            </div>
-            <p class="subtitle is-5">Adoptantes</p>
+            <p class="heading">Animales</p>
+            <p class="title">3,456</p>
           </div>
         </div>
-        <div class="is-divider-vertical"></div>
-        <!-- Perros -->
         <div class="level-item has-text-centered">
           <div>
-            <div class="mb-8">
-              <div class="inline-flex align-center">
-                <p class="title is-3 inline-block mr-2">224</p>
-              </div>
-            </div>
-            <p class="subtitle is-5">Perros</p>
+            <p class="heading">Voluntarios</p>
+            <p class="title">123</p>
           </div>
         </div>
-        <div class="is-divider-vertical"></div>
-        <!-- Gatos -->
         <div class="level-item has-text-centered">
           <div>
-            <div class="mb-8">
-              <div class="inline-flex align-center">
-                <p class="title is-3 inline-block mr-2">584</p>
-              </div>
-            </div>
-            <p class="subtitle is-5">Gatos</p>
+            <p class="heading">Adoptantes</p>
+            <p class="title">456K</p>
           </div>
         </div>
-        <div class="is-divider-vertical"></div>
-        <!-- Veterinarias -->
         <div class="level-item has-text-centered">
           <div>
-            <div class="mb-8">
-              <div class="inline-flex align-center">
-                <p class="title is-3 inline-block mr-2">126</p>
-              </div>
-            </div>
-            <p class="subtitle is-5">Veterinarias</p>
+            <p class="heading">Refugios</p>
+            <p class="title">789</p>
           </div>
         </div>
       </div>
@@ -78,9 +55,9 @@
 
       <div class="level">
         <div class="level-item has-text-centered">
-          <p
-            class="title is-4 has-text-weight-light py-5"
-          >¡Conocé nuestros tipos de cuentas y empezá a ayudar!</p>
+          <p class="title is-4 has-text-weight-light py-5">
+            ¡Conocé nuestros tipos de cuentas y empezá a ayudar!
+          </p>
         </div>
       </div>
 
