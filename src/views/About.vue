@@ -16,12 +16,12 @@
             </div>
           </div>
         </div>
-        <p>
-          Los animales no nos pertenecen, adoptarlos es sumarlos a nuestra
-          familia y por lo tanto nuestro foco de atención está siempre sobre
-          ellos que son quienes más nos necesitan. Cada uno de ellos tiene su
-          familia ideal y para toda la vida, solo hace falta que se encuentren y
-          nosotros vamos a trabajar para acercarlos.
+        <p class="has-text-justified">
+          Los animales <strong>no nos pertenecen</strong>, adoptarlos es
+          sumarlos a nuestra familia y por lo tanto nuestro foco de atención
+          está siempre sobre ellos que son quienes más nos necesitan. Cada uno
+          de ellos tiene su familia ideal y para toda la vida, solo hace falta
+          que se encuentren y nosotros vamos a trabajar para acercarlos.
         </p>
         <hr />
         <!-- Mision -->
@@ -35,12 +35,12 @@
             </div>
           </div>
         </div>
-        <p>
-          El fin de RefugiAR es formar una comunidad donde todos sus integrantes
+        <p class="has-text-justified">
+          Nuestro objetivo es formar una comunidad donde todos sus integrantes
           cuenten con las herramientas para ayudar a los que no tienen voz.
-          Queremos conectar de forma práctica y fácil a todas las personas y
-          organizaciones que actualmente sostienen refugios ocupándose del
-          rescate, cuidado, adopción y posterior seguimiento.
+          Queremos conectar de forma <strong>práctica y sencilla</strong> a
+          todas las personas y organizaciones que actualmente sostienen refugios
+          ocupándose del rescate, cuidado, adopción y posterior seguimiento.
         </p>
         <hr />
         <!-- Valores -->
@@ -54,7 +54,7 @@
             </div>
           </div>
         </div>
-        <p>
+        <p class="has-text-justified">
           La premisa bajo la cual nació RefugiAR es la de brindar herramientas
           de forma <strong>totalmente gratuita</strong>, transparente y pensadas
           para ahorrarle tiempo y energía a todo aquel que quiera ayudar de
@@ -80,7 +80,10 @@
               <div class="media-content pt-10 has-text-centered">
                 <p class="title is-4 pb-8">{{ member.name }}</p>
                 <p class="subtitle is-6">
-                  {{ member.instagram }} -
+                  <a :href="member.instagramURL" target="_blank">{{
+                    member.instagramHandle
+                  }}</a>
+                  -
                   <a :href="member.website" target="_blank">{{
                     member.website
                   }}</a>
@@ -102,13 +105,15 @@ export default {
       {
         name: "Guillermo Maiolo",
         website: "https://gmaiolo.com/",
-        instagram: "@gmaiolo",
+        instagramHandle: "@g.maiolo",
+        instagramURL: "https://www.instagram.com/g.maiolo/",
         img: require("../assets/us/will.png")
       },
       {
         name: "Julieta Juarez",
         website: "https://julietaflux.dev/",
-        instagram: "@julietaflux",
+        instagramHandle: "@julietaflux",
+        instagramURL: "https://www.instagram.com/julietaflux/",
         img: require("../assets/us/jules.png")
       }
     ]
