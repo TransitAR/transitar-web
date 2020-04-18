@@ -1,4 +1,4 @@
-import { getInstance } from "./index";
+import { getInstance } from "../../plugins/auth0.plugin";
 
 export const authGuard = (to, from, next) => {
   const authService = getInstance();
@@ -9,7 +9,7 @@ export const authGuard = (to, from, next) => {
       return next();
     }
 
-    next(false); // avoid navigation
+    next("/"); // avoid navigation
 
     // Otherwise, log in
     // authService.loginWithRedirect({ appState: { targetUrl: to.fullPath } });

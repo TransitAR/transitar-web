@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import { authGuard } from "../utils/auth/authRouteGuard";
 
 Vue.use(VueRouter);
 
@@ -50,6 +51,7 @@ const routes = [
   {
     path: "/perfil",
     name: "profile",
+    beforeEnter: authGuard,
     component: () =>
       import(/* webpackChunkName: "profile" */ "../views/Profile.vue")
   },
