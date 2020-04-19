@@ -7,7 +7,9 @@
     <div class="hero-body">
       <div class="columns is-centered">
         <div class="column is-half">
-          <div>¡LISTO!</div>
+          <div>
+            ¡LISTO!
+          </div>
         </div>
       </div>
     </div>

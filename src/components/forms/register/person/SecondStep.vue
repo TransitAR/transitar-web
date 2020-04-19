@@ -12,7 +12,7 @@
           <div>
             <!-- PERSONAL DATA START -->
             <div class="field">
-              <label class="label">Datos personales</label>
+              <label class="label pb-3">Datos personales</label>
               <input
                 class="input"
                 type="text"
@@ -89,7 +89,7 @@
             </div>
             <!-- SOCIAL START -->
             <div class="field">
-              <label class="label">Redes sociales</label>
+              <label class="label pb-3">Redes sociales</label>
               <input
                 class="input"
                 type="text"
@@ -119,6 +119,9 @@
             <!-- PERSONAL DATA END -->
             <div class="field">
               <label class="label">¿Cómo podés ayudar?</label>
+              <p class="help pb-6">
+                Seleccioná al menos una opción para poder continuar
+              </p>
               <div class="control">
                 <div class="field">
                   <div class="field">
@@ -173,6 +176,9 @@
             <div class="is-divider"></div>
             <div class="field">
               <label class="label">Alertas</label>
+              <p class="help pb-6">
+                Estamos trabajando para habilitar alertas en tiempo real
+              </p>
               <div class="control">
                 <input
                   id="switchExample"

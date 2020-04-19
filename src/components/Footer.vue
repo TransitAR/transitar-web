@@ -2,16 +2,28 @@
   <footer class="footer has-background-white">
     <div class="content has-text-centered">
       <p>
-        <font-awesome-icon icon="envelope" class="mr-2" />contacto@refugiar.org
+        <font-awesome-icon icon="envelope" class="mr-2" /><a
+          href="mailto:contacto@refugiar.org?subject=Contacto desde la web de RefugiAR"
+          target="_blank"
+          >contacto@refugiar.org</a
+        >
       </p>
       <p>
-        <font-awesome-icon icon="at" class="mr-2" />refugiar_ok
+        <font-awesome-icon :icon="['fab', 'instagram']" class="mr-2" /><a
+          href="https://www.instagram.com/refugiar_ok/"
+          target="_blank"
+          >refugiar_ok</a
+        >
       </p>
       <p>
         Icons made by
-        <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>
+        <a href="https://www.flaticon.com/authors/freepik" title="Freepik"
+          >Freepik</a
+        >
         from
-        <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+        <a href="https://www.flaticon.com/" title="Flaticon"
+          >www.flaticon.com</a
+        >
       </p>
     </div>
   </footer>

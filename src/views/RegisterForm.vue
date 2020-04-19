@@ -4,35 +4,51 @@
       <div class="steps pt-6">
         <!-- progress -->
         <div
-          :class="`step-item is-primary ${isHighlighted(1) ? 'is-active' : ''}`"
+          :class="
+            `step-item is-primary ${isHighlighted(1) ? 'is-active' : ''} ${
+              isCompleted(1) ? 'is-completed' : ''
+            }`
+          "
         >
           <div class="step-marker">1</div>
           <div class="step-details">
-            <p class="step-title">Paso 1</p>
+            <p class="step-title">Tipo de usuario</p>
           </div>
         </div>
         <div
-          :class="`step-item is-primary ${isHighlighted(2) ? 'is-active' : ''}`"
+          :class="
+            `step-item is-primary ${isHighlighted(2) ? 'is-active' : ''} ${
+              isCompleted(2) ? 'is-completed' : ''
+            }`
+          "
         >
           <div class="step-marker">2</div>
           <div class="step-details">
-            <p class="step-title">Paso 2</p>
+            <p class="step-title">Datos personales</p>
           </div>
         </div>
         <div
-          :class="`step-item is-primary ${isHighlighted(3) ? 'is-active' : ''}`"
+          :class="
+            `step-item is-primary ${isHighlighted(3) ? 'is-active' : ''} ${
+              isCompleted(3) ? 'is-completed' : ''
+            }`
+          "
         >
           <div class="step-marker">3</div>
           <div class="step-details">
-            <p class="step-title">Paso 3</p>
+            <p class="step-title">Información relevante</p>
           </div>
         </div>
         <div
-          :class="`step-item is-primary ${isHighlighted(4) ? 'is-active' : ''}`"
+          :class="
+            `step-item is-primary ${isHighlighted(4) ? 'is-active' : ''} ${
+              isCompleted(4) ? 'is-completed' : ''
+            }`
+          "
         >
           <div class="step-marker">4</div>
           <div class="step-details">
-            <p class="step-title">Paso 4</p>
+            <p class="step-title">Fin</p>
           </div>
         </div>
 
@@ -87,10 +103,10 @@
 
 <script>
 import { updateUser } from "../utils/http";
-import FirstStep from "../components/forms/register/FirstStep";
-import SecondStep from "../components/forms/register/SecondStep";
-import ThirdStep from "../components/forms/register/ThirdStep";
-import FourthStep from "../components/forms/register/FourthStep";
+import FirstStep from "../components/forms/register/person/FirstStep";
+import SecondStep from "../components/forms/register/person/SecondStep";
+import ThirdStep from "../components/forms/register/person/ThirdStep";
+import FourthStep from "../components/forms/register/person/FourthStep";
 
 export default {
   name: "register-form",
@@ -165,6 +181,9 @@ export default {
     },
     isHighlighted(step) {
       return step <= this.currentStep;
+    },
+    isCompleted(step) {
+      return step < this.currentStep;
     },
     prev() {
       if (this.currentStep > 1) {

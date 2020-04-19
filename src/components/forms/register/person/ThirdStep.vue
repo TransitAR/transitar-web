@@ -12,6 +12,9 @@
             <!-- TYPE START -->
             <div class="field" v-if="showHouseInfo">
               <label class="label">Tipo de vivienda</label>
+              <p class="help pb-6">
+                Seleccioná la opción que mejor describa tu vivienda
+              </p>
               <div class="select">
                 <select
                   placeholder="Tipo de vivienda"
@@ -29,7 +32,7 @@
 
             <!-- HOURS AWAY START -->
             <div class="field" v-if="showHouseInfo">
-              <label class="label">Horas fuera de casa</label>
+              <label class="label pb-3">Horas fuera de casa</label>
 
               <div class="control">
                 <div class="field">
@@ -79,7 +82,7 @@
 
             <!-- PROTECTION START -->
             <div class="field" v-if="showHouseInfo">
-              <label class="label">Protección en el edificio</label>
+              <label class="label pb-3">Protección en el edificio</label>
               <input
                 class="is-checkradio has-background-color"
                 id="houseProtection"
@@ -114,9 +117,10 @@
             <!-- FAMILY START -->
             <div class="field" v-if="showHouseInfo">
               <label class="label">Integrantes del grupo familiar</label>
+              <p class="help pb-6">Seleccioná todas las que apliquen</p>
               <div class="control">
                 <div class="field">
-                  <div class="field pt-6">
+                  <div class="field">
                     <input
                       class="is-checkradio has-background-color"
                       id="adults"
@@ -198,9 +202,10 @@
             <!-- SCHEDULE START -->
             <div class="field" v-if="showExperience">
               <label class="label">Disponibilidad para traslados</label>
+              <p class="help pb-6">Seleccioná todas las que apliquen</p>
               <div class="control">
                 <div class="field">
-                  <div class="field pt-3">
+                  <div class="field">
                     <input
                       class="is-checkradio has-background-color"
                       id="mon"
@@ -303,8 +308,8 @@
             <!-- SCHEDULE END -->
             <!-- EXPERIENCE START -->
             <div class="field" v-if="showExperience">
-              <label class="label">Experiencia con animales</label>
-              <div class="control pt-6">
+              <label class="label pb-3">Experiencia con animales</label>
+              <div class="control">
                 <input
                   id="experience"
                   type="checkbox"

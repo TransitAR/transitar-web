@@ -5,12 +5,13 @@ import router from "./router";
 import store from "./store";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faPaw, faEnvelope, faAt } from "@fortawesome/free-solid-svg-icons";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { Auth0Plugin } from "./plugins/auth0.plugin";
 import "bulma-extensions/dist/css/bulma-extensions.min.css";
 import "bulma-extensions/dist/js/bulma-extensions";
 
-library.add(faPaw, faEnvelope, faAt);
+library.add(faPaw, faEnvelope, faAt, faInstagram);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
