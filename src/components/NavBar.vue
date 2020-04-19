@@ -39,8 +39,9 @@
       </div>
 
       <div class="navbar-end">
-        <div class="navbar-item" v-if="!$auth.loading">
-          <div v-if="!$auth.isAuthenticated" class="buttons">
+        <div class="navbar-item">
+          <Spinner v-if="$auth.loading" size="1.25em" class="mr-6" />
+          <div v-else-if="!$auth.isAuthenticated" class="buttons">
             <a class="button is-primary" @click="register()">
               <strong>Registrarme</strong>
             </a>
@@ -63,8 +64,13 @@
 </template>
 
 <script>
+import Spinner from "../components/Spinner";
+
 export default {
   name: "NavBar",
+  components: {
+    Spinner
+  },
   data: () => ({
     isActive: false
   }),

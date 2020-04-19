@@ -37,6 +37,7 @@ const routes = [
   {
     path: "/formulario-registro",
     name: "register-form",
+    beforeEnter: authGuard,
     component: () =>
       import(/* webpackChunkName: "registerForm" */ "../views/RegisterForm.vue")
   },
