@@ -1,7 +1,18 @@
 <template>
   <section class="container is-fullhd p-16">
     <div class="container mt-8">
-      <div class="steps pt-6">
+      <div v-if="$auth.loading" class="subtitle text-center pt-16">
+        <Spinner size="2.5em" class="mx-auto" />
+      </div>
+      <div v-else-if="!$auth.user.email_verified" class="text-center">
+        <h2 class="subtitle">
+          Tenes que verificar to correo para poder continuar.
+        </h2>
+        <button class="button is-primary" @click="reload()">
+          Ya lo verifiqué
+        </button>
+      </div>
+      <div v-else class="steps pt-6">
         <!-- progress -->
         <div
           :class="
@@ -103,14 +114,18 @@
 
 <script>
 import { updateUser } from "../utils/http";
+import Spinner from "../components/Spinner";
 import FirstStep from "../components/forms/register/person/FirstStep";
 import SecondStep from "../components/forms/register/person/SecondStep";
 import ThirdStep from "../components/forms/register/person/ThirdStep";
 import FourthStep from "../components/forms/register/person/FourthStep";
 
+// NO PUEDE ESTAR SI NO INICIO SESION (TODO: chequear por esto por las dudas)
+
 export default {
   name: "register-form",
   components: {
+    Spinner,
     FirstStep,
     SecondStep,
     ThirdStep,
@@ -176,6 +191,9 @@ export default {
     }
   },
   methods: {
+    reload() {
+      window.location.reload();
+    },
     isActive(step) {
       return this.currentStep == step || this.currentStep > step;
     },
