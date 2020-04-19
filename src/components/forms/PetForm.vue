@@ -143,7 +143,7 @@ export default {
   }),
   methods: {
     isActive(step) {
-      return this.currentStep == step || this.currentStep > step;
+      return this.currentStep == step;
     },
     isHighlighted(step) {
       return step <= this.currentStep;
