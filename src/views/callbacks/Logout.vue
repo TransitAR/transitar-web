@@ -1,13 +1,14 @@
 <template>
-  <!-- TODO: agregar un spinner o algo -->
-  <div>Loading out...</div>
+  <div class="pageloader is-active">
+    <span class="title">Cerrando sesión...</span>
+  </div>
 </template>
 
 <script>
 export default {
   name: "Callback",
   created() {
-    this.$router.push("/");
+    setTimeout(() => this.$router.push("/"), 1500);
   }
 };
 </script>

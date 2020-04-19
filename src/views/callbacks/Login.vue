@@ -1,6 +1,7 @@
 <template>
-  <!-- TODO: agregar un spinner o algo -->
-  <div>Logging in...</div>
+  <div class="pageloader is-active">
+    <span class="title">Iniciando sesión...</span>
+  </div>
 </template>
 
 <script>
@@ -10,8 +11,10 @@ export default {
     // TODO pasar a vuex y borrarlo desde mainjs/app o algo asi
     const justRegistered = localStorage.getItem("just-registered");
     const redirectUrl = justRegistered ? "/formulario-registro" : "/";
-    this.$router.push(redirectUrl);
     localStorage.removeItem("just-registered");
+    setTimeout(() => {
+      this.$router.push(redirectUrl);
+    }, 1500);
   }
 };
 </script>
