@@ -30,8 +30,15 @@
               Seleccioná todas las que apliquen
             </p>
             <div class="field is-grouped is-grouped-multiline">
-              <p class="control" v-for="trait in petTraits" :key="trait">
-                <a class="button">{{ trait }}</a>
+              <p class="control" v-for="trait in petTraitsOptions" :key="trait">
+                <a
+                  :class="{
+                    button: true,
+                    'is-primary': step.traits.includes(trait)
+                  }"
+                  @click="toggleTrait(trait)"
+                  >{{ trait }}</a
+                >
               </p>
             </div>
             <div class="is-divider"></div>
@@ -44,8 +51,19 @@
               Seleccioná todas las que apliquen
             </p>
             <div class="field is-grouped is-grouped-multiline">
-              <p class="control" v-for="item in perfectFamily" :key="item">
-                <a class="button">{{ item }}</a>
+              <p
+                class="control"
+                v-for="familyOption in perfectFamilyOptions"
+                :key="familyOption"
+              >
+                <a
+                  :class="{
+                    button: true,
+                    'is-primary': step.perfectFamily.includes(familyOption)
+                  }"
+                  @click="togglePersonality(familyOption)"
+                  >{{ familyOption }}</a
+                >
               </p>
             </div>
           </div>
@@ -67,7 +85,7 @@ export default {
   name: "ThirdStep",
   data: () => ({
     keys,
-    petTraits: [
+    petTraitsOptions: [
       "Tranquilo",
       "Asustadizo",
       "Inquieto",
@@ -79,7 +97,7 @@ export default {
       "Hogareño",
       "Salidor"
     ],
-    perfectFamily: [
+    perfectFamilyOptions: [
       "Todos",
       "Bebés",
       "Niños",
@@ -104,6 +122,22 @@ export default {
         ...this.step,
         [key]: value
       });
+    },
+    toggleTrait(trait) {
+      if (this.step.traits.includes(trait)) {
+        this.step.traits = this.step.traits.filter(v => v != trait);
+      } else {
+        this.step.traits.push(trait);
+      }
+    },
+    togglePersonality(perfectFamily) {
+      if (this.step.perfectFamily.includes(perfectFamily)) {
+        this.step.perfectFamily = this.step.perfectFamily.filter(
+          p => p != perfectFamily
+        );
+      } else {
+        this.step.perfectFamily.push(perfectFamily);
+      }
     }
   }
 };

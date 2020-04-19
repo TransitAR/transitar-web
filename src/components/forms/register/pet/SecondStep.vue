@@ -96,10 +96,17 @@
               <div class="field is-grouped is-grouped-multiline">
                 <p
                   class="control"
-                  v-for="vaccine in petVaccines"
+                  v-for="vaccine in vaccineOptions"
                   :key="vaccine"
                 >
-                  <a class="button">{{ vaccine }}</a>
+                  <a
+                    :class="{
+                      button: true,
+                      'is-primary': step.vaccines.includes(vaccine)
+                    }"
+                    @click="toggleVaccine(vaccine)"
+                    >{{ vaccine }}</a
+                  >
                 </p>
               </div>
               <div class="is-divider"></div>
@@ -158,7 +165,7 @@ export default {
   },
   data: () => ({
     keys,
-    petVaccines: [
+    vaccineOptions: [
       "Moquillo canino",
       "Hepatitis infecciosa (Adenovirus)",
       "Parvovirus",
@@ -203,6 +210,13 @@ export default {
         ...this.step,
         [key]: value
       });
+    },
+    toggleVaccine(vaccine) {
+      if (this.step.vaccines.includes(vaccine)) {
+        this.step.vaccines = this.step.vaccines.filter(v => v != vaccine);
+      } else {
+        this.step.vaccines.push(vaccine);
+      }
     }
   }
 };
