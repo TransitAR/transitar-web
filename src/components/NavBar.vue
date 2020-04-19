@@ -40,7 +40,12 @@
 
       <div class="navbar-end">
         <div class="navbar-item">
-          <div v-if="$auth.loading">Loading auth...</div>
+          <div
+            class="button is-white has-text-primary is-loading"
+            v-if="$auth.loading"
+          >
+            Loading auth...
+          </div>
           <div v-else-if="!$auth.user" class="buttons">
             <a class="button is-primary" @click="register()">
               <strong>Registrarme</strong>
