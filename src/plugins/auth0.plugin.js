@@ -1,5 +1,6 @@
 import Vue from "vue";
 import createAuth0Client from "@auth0/auth0-spa-js";
+import { getUser } from "../utils/http";
 
 const baseUrl = `${window.location.protocol}//${window.location.host}`;
 const DEFAULT_REDIRECT_CALLBACK = () =>
@@ -106,7 +107,12 @@ export const useAuth0 = ({
         if (this.isAuthenticated) {
           // Temporal para debuggear la API con Auth
           this.accessToken = await this.auth0Client.getTokenSilently();
-          console.log({ accessToken: this.accessToken, user: this.user });
+          this.mongoUser = await getUser(this.accessToken);
+          console.log({
+            accessToken: this.accessToken,
+            user: this.user,
+            mongoUser: this.mongoUser
+          });
         }
         this.loading = false;
       }

@@ -20,6 +20,12 @@ export const getRefuge = id => instance.get(`/api/refuges/${id}`);
 export const getVets = () => instance.get("/api/vets");
 export const getVet = id => instance.get(`/api/vets/${id}`);
 
+export const getUser = async accessToken => {
+  const { data: user } = await instance.get("api/users", {
+    headers: { Authorization: `Bearer ${accessToken}` }
+  });
+  return user;
+};
 export const updateUser = (data, accessToken) =>
   instance.patch("/api/users", data, {
     headers: { Authorization: `Bearer ${accessToken}` }
