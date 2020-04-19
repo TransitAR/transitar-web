@@ -34,9 +34,10 @@
                 <a
                   :class="{
                     button: true,
+                    'is-rounded': true,
                     'is-primary': step.traits.includes(trait)
                   }"
-                  @click="toggleTrait(trait)"
+                  @click="toggleMultiselectOption(keys.traits, trait)"
                   >{{ trait }}</a
                 >
               </p>
@@ -59,9 +60,12 @@
                 <a
                   :class="{
                     button: true,
+                    'is-rounded': true,
                     'is-primary': step.perfectFamily.includes(familyOption)
                   }"
-                  @click="togglePersonality(familyOption)"
+                  @click="
+                    toggleMultiselectOption(keys.perfectFamily, familyOption)
+                  "
                   >{{ familyOption }}</a
                 >
               </p>
@@ -81,32 +85,37 @@ const keys = Object.freeze({
   traits: "traits",
   perfectFamily: "perfectFamily"
 });
+
+const petTraitsOptions = Object.freeze([
+  "Tranquilo",
+  "Asustadizo",
+  "Inquieto",
+  "Miedoso",
+  "Arisco",
+  "Cariñoso",
+  "Amigable",
+  "Hablador",
+  "Hogareño",
+  "Salidor"
+]);
+
+const perfectFamilyOptions = Object.freeze([
+  "Todos",
+  "Bebés",
+  "Niños",
+  "Adultos",
+  "Adultos mayores",
+  "Perros",
+  "Gatos",
+  "No sé"
+]);
+
 export default {
   name: "ThirdStep",
   data: () => ({
     keys,
-    petTraitsOptions: [
-      "Tranquilo",
-      "Asustadizo",
-      "Inquieto",
-      "Miedoso",
-      "Arisco",
-      "Cariñoso",
-      "Amigable",
-      "Hablador",
-      "Hogareño",
-      "Salidor"
-    ],
-    perfectFamilyOptions: [
-      "Todos",
-      "Bebés",
-      "Niños",
-      "Adultos",
-      "Adultos mayores",
-      "Perros",
-      "Gatos",
-      "No sé"
-    ]
+    petTraitsOptions,
+    perfectFamilyOptions
   }),
   props: {
     isActive: Boolean,
@@ -123,20 +132,11 @@ export default {
         [key]: value
       });
     },
-    toggleTrait(trait) {
-      if (this.step.traits.includes(trait)) {
-        this.step.traits = this.step.traits.filter(v => v != trait);
+    toggleMultiselectOption(key, option) {
+      if (this.step[key].includes(option)) {
+        this.step[key] = this.step[key].filter(o => o != option);
       } else {
-        this.step.traits.push(trait);
-      }
-    },
-    togglePersonality(perfectFamily) {
-      if (this.step.perfectFamily.includes(perfectFamily)) {
-        this.step.perfectFamily = this.step.perfectFamily.filter(
-          p => p != perfectFamily
-        );
-      } else {
-        this.step.perfectFamily.push(perfectFamily);
+        this.step[key].push(option);
       }
     }
   }

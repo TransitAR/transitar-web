@@ -102,9 +102,10 @@
                   <a
                     :class="{
                       button: true,
+                      'is-rounded': true,
                       'is-primary': step.vaccines.includes(vaccine)
                     }"
-                    @click="toggleVaccine(vaccine)"
+                    @click="toggleMultiselectOption(keys.vaccines, vaccine)"
                     >{{ vaccine }}</a
                   >
                 </p>
@@ -157,6 +158,49 @@ const keys = Object.freeze({
   foodConsistencyType: "foodConsistencyType"
 });
 
+const vaccineOptions = Object.freeze([
+  "Moquillo canino",
+  "Hepatitis infecciosa (Adenovirus)",
+  "Parvovirus",
+  "Rabia",
+  "Leptospirosis",
+  "Parainfluenza canina",
+  "Coronavirus",
+  "Trivalente",
+  "Leucemia felina"
+]);
+
+const foodTypes = Object.freeze([
+  "Seleccionar",
+  "Cachorros",
+  "Madre y cachorros",
+  "Geriátrica",
+  "Transtorno Renal",
+  "Transtorno hepático",
+  "Transtorno urinario",
+  "Fibra",
+  "Gastrointestinal",
+  "Light",
+  "Castrados control de peso",
+  "Hembra castrada",
+  "Macho castrado",
+  "Control de estress",
+  "Control de saciedad",
+  "Control de diabetes",
+  "Control de obesidad",
+  "Hipoalergénica",
+  "Otro",
+  "No sé"
+]);
+
+const foodConsistencies = Object.freeze([
+  "Seleccionar",
+  "Sólida",
+  "Húmeda",
+  "Líquida",
+  "No sé"
+]);
+
 export default {
   name: "SecondStep",
   props: {
@@ -165,40 +209,9 @@ export default {
   },
   data: () => ({
     keys,
-    vaccineOptions: [
-      "Moquillo canino",
-      "Hepatitis infecciosa (Adenovirus)",
-      "Parvovirus",
-      "Rabia",
-      "Leptospirosis",
-      "Parainfluenza canina",
-      "Coronavirus",
-      "Trivalente",
-      "Leucemia felina"
-    ],
-    foodTypes: [
-      "Seleccionar",
-      "Cachorros",
-      "Madre y cachorros",
-      "Geriátrica",
-      "Transtorno Renal",
-      "Transtorno hepático",
-      "Transtorno urinario",
-      "Fibra",
-      "Gastrointestinal",
-      "Light",
-      "Castrados control de peso",
-      "Hembra castrada",
-      "Macho castrado",
-      "Control de estress",
-      "Control de saciedad",
-      "Control de diabetes",
-      "Control de obesidad",
-      "Hipoalergénica",
-      "Otro",
-      "No sé"
-    ],
-    foodConsistencies: ["Seleccionar", "Sólida", "Húmeda", "Líquida", "No sé"]
+    vaccineOptions,
+    foodTypes,
+    foodConsistencies
   }),
   methods: {
     updateStep(key, $event) {
@@ -211,11 +224,11 @@ export default {
         [key]: value
       });
     },
-    toggleVaccine(vaccine) {
-      if (this.step.vaccines.includes(vaccine)) {
-        this.step.vaccines = this.step.vaccines.filter(v => v != vaccine);
+    toggleMultiselectOption(key, option) {
+      if (this.step[key].includes(option)) {
+        this.step[key] = this.step[key].filter(o => o != option);
       } else {
-        this.step.vaccines.push(vaccine);
+        this.step[key].push(option);
       }
     }
   }
