@@ -23,10 +23,13 @@
                       class="is-checkradio has-background-color"
                       id="hadDiseases"
                       type="checkbox"
+                      name="hadDiseases"
                       :checked="step.hadDiseases"
                       @input="updateStep(keys.hadDiseases, $event)"
                     />
-                    <label>Ha tenido o tiene enfermedades</label>
+                    <label for="hadDiseases"
+                      >Ha tenido o tiene enfermedades</label
+                    >
                   </div>
                   <textarea
                     v-if="step.hadDiseases"
@@ -41,10 +44,11 @@
                       class="is-checkradio has-background-color"
                       id="hadSurgeries"
                       type="checkbox"
+                      name="hadSurgeries"
                       :checked="step.hadSurgeries"
                       @input="updateStep(keys.hadSurgeries, $event)"
                     />
-                    <label>Ha tenido cirugías</label>
+                    <label for="hadSurgeries">Ha tenido cirugías</label>
                   </div>
                   <textarea
                     v-if="step.hadSurgeries"
@@ -62,11 +66,13 @@
               <label class="label pb-3">Esterilización</label>
               <input
                 class="is-checkradio has-background-color"
+                id="sterilized"
                 type="checkbox"
+                name="sterilized"
                 v-model="step.sterilized"
                 @input="updateStep(keys.sterilized, $event)"
               />
-              <label>Está esterilizado</label>
+              <label for="sterilized">Está esterilizado</label>
               <article class="message is-primary mt-5" v-if="!step.sterilized">
                 <div class="message-header">
                   <p>¡Atención!</p>

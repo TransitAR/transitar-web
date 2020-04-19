@@ -9,7 +9,10 @@
         <div class="column is-half">
           <!-- DESCRIPTION START -->
           <div class="field">
-            <label class="label pb-3">Descripción</label>
+            <label class="label">Descripción</label>
+            <p class="help pb-6">
+              Podrás editarla luego
+            </p>
             <div class="control">
               <textarea
                 @input="updateStep(keys.description, $event)"
@@ -66,12 +69,15 @@ export default {
     keys,
     petTraits: [
       "Tranquilo",
+      "Asustadizo",
       "Inquieto",
       "Miedoso",
       "Arisco",
       "Cariñoso",
       "Amigable",
-      "Hablador"
+      "Hablador",
+      "Hogareño",
+      "Salidor"
     ],
     perfectFamily: [
       "Todos",

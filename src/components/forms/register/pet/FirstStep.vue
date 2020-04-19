@@ -104,23 +104,20 @@
                 placeholder="Peso"
                 @input="updateStep(keys.weight, $event)"
               />
+              <div class="is-divider"></div>
             </div>
-
-            <div class="field is-grouped">
-              <p class="control is-expanded">
-                <input
-                  class="input"
-                  type="text"
-                  placeholder="Seleccionar imagen"
-                  @input="updateStep(keys.image, $event)"
-                />
-              </p>
-              <p class="control">
-                <a class="button is-primary">Buscar</a>
-              </p>
-            </div>
-            <div class="is-divider"></div>
             <!-- NAME ETC END -->
+            <!-- PHOTOS START -->
+            <div class="field">
+              <label class="label pb-3">Fotos</label>
+              <div class="field is-grouped">
+                <p class="control is-expanded">
+                  <input type="file" ref="file" />
+                </p>
+              </div>
+              <div class="is-divider"></div>
+            </div>
+            <!-- PHOTOS END -->
             <!-- SIZE START -->
             <div class="field">
               <label class="label">Tamaño</label>

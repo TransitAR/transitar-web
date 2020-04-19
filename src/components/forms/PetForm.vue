@@ -103,6 +103,7 @@ import FirstStep from "../../components/forms/register/pet/FirstStep";
 import SecondStep from "../../components/forms/register/pet/SecondStep";
 import ThirdStep from "../../components/forms/register/pet/ThirdStep";
 import FourthStep from "../../components/forms/register/pet/FourthStep";
+
 export default {
   name: "pet-form",
   components: {
