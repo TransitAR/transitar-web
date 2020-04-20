@@ -1,6 +1,6 @@
 import Vue from "vue";
 import createAuth0Client from "@auth0/auth0-spa-js";
-import { getUser } from "../utils/http";
+import { getUser, updateUser } from "../utils/http";
 
 const baseUrl = `${window.location.protocol}//${window.location.host}`;
 const DEFAULT_REDIRECT_CALLBACK = () =>
@@ -75,6 +75,14 @@ export const useAuth0 = ({
       },
       getTokenWithPopup(o) {
         return this.auth0Client.getTokenWithPopup(o);
+      },
+      async updateUser(data) {
+        try {
+          const user = await updateUser(data, this.accessToken);
+          this.user = user;
+        } catch (err) {
+          console.error("There was an error trying to update the user");
+        }
       },
       logout(o = {}) {
         // TODO: mejor solucion para esto

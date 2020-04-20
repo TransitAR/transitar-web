@@ -97,7 +97,7 @@
           </div>
           <div class="steps-action">
             <a
-              class="button is-light"
+              :class="`button is-light ${submittingStep ? 'is-loading' : ''}`"
               v-on:click="next()"
               :disabled="currentStep == 4"
               >Siguiente</a
@@ -110,7 +110,6 @@
 </template>
 
 <script>
-import { updateUser } from "../utils/http";
 import FirstStep from "../components/forms/register/person/FirstStep";
 import SecondStep from "../components/forms/register/person/SecondStep";
 import ThirdStep from "../components/forms/register/person/ThirdStep";
@@ -128,6 +127,7 @@ export default {
   },
   data: () => ({
     currentStep: 1,
+    submittingStep: false,
     form: {
       firstStep: {
         userType: ""
@@ -203,10 +203,40 @@ export default {
         this.currentStep--;
       }
     },
-    next() {
+    async next() {
+      this.submittingStep = true;
+      if (this.currentStep == 1) {
+        const { userType } = this.form.firstStep;
+        const data = {};
+        if (userType === "refuge") {
+          data.isRefuge = true;
+          data.isPerson = false;
+          data.isVet = false;
+        } else if (userType === "adoptant" || userType === "volunteer") {
+          data.isRefuge = false;
+          data.isPerson = true;
+          data.isVet = false;
+        } else if (userType === "vet") {
+          data.isRefuge = false;
+          data.isPerson = false;
+          data.isVet = true;
+        }
+        // no se si aca es el mejor lugar
+        await this.$auth.updateUser(data);
+      }
       if (this.currentStep < 4) {
         this.currentStep++;
       }
+      this.submittingStep = false;
+    }
+  },
+  mounted() {
+    if (this.$auth.mongoUser.isRefuge) {
+      this.form.firstStep.userType = "refuge";
+    } else if (this.$auth.mongoUser.isVet) {
+      this.form.firstStep.userType = "vet";
+    } else if (this.$auth.mongoUser.isPerson) {
+      this.form.firstStep.userType = "volunteer"; // como diferenciamos entre adoptante y voluntario?
     }
   }
 };
