@@ -142,11 +142,13 @@ export default {
         instagram: "",
         twitter: "",
         facebook: "",
+        alerts: false,
+
+        // person
         canTravel: false,
         canAdopt: false,
         canTransit: false,
-        canHelp: false,
-        alerts: false
+        canHelp: false
       },
       thirdStep: {
         houseType: null,
@@ -207,21 +209,29 @@ export default {
       this.submittingStep = true;
       if (this.currentStep == 1) {
         const { userType } = this.form.firstStep;
-        const data = {};
-        if (userType === "refuge") {
-          data.isRefuge = true;
-          data.isPerson = false;
-          data.isVet = false;
-        } else if (userType === "adoptant" || userType === "volunteer") {
-          data.isRefuge = false;
-          data.isPerson = true;
-          data.isVet = false;
-        } else if (userType === "vet") {
-          data.isRefuge = false;
-          data.isPerson = false;
-          data.isVet = true;
-        }
-        // no se si aca es el mejor lugar
+        const data = {
+          userType
+        };
+        await this.$auth.updateUser(data);
+      } else if (this.currentStep == 2) {
+        const data = {
+          name: this.form.secondStep.name,
+          lastName: this.form.secondStep.lastName,
+          address: this.form.secondStep.address,
+          dob: this.form.secondStep.dob,
+          landlinePhone: this.form.secondStep.landlinePhone,
+          mobilePhone: this.form.secondStep.mobilePhone,
+          instagram: this.form.secondStep.instagram,
+          twitter: this.form.secondStep.twitter,
+          facebook: this.form.secondStep.facebook,
+          alerts: this.form.secondStep.alerts,
+          personInfo: {
+            canTravel: this.form.secondStep.canTravel,
+            canAdopt: this.form.secondStep.canAdopt,
+            canTransit: this.form.secondStep.canTransit,
+            canHelp: this.form.secondStep.canHelp
+          }
+        };
         await this.$auth.updateUser(data);
       }
       if (this.currentStep < 4) {
@@ -231,13 +241,31 @@ export default {
     }
   },
   mounted() {
-    if (this.$auth.mongoUser.isRefuge) {
-      this.form.firstStep.userType = "refuge";
-    } else if (this.$auth.mongoUser.isVet) {
-      this.form.firstStep.userType = "vet";
-    } else if (this.$auth.mongoUser.isPerson) {
-      this.form.firstStep.userType = "volunteer"; // como diferenciamos entre adoptante y voluntario?
-    }
+    const userKeys = Object.keys(this.$auth.mongoUser);
+    const firstStepKeys = Object.keys(this.form.firstStep);
+
+    const secondStepKeys = Object.keys(this.form.secondStep);
+
+    userKeys.forEach(key => {
+      const val = this.$auth.mongoUser[key];
+      if (val != null && typeof val === "object") {
+        Object.keys(val).forEach(k => {
+          const v = val[k];
+          if (firstStepKeys.includes(k)) {
+            this.form.firstStep[k] = v;
+          }
+          if (secondStepKeys.includes(k)) {
+            this.form.secondStep[k] = v;
+          }
+        });
+      }
+      if (firstStepKeys.includes(key)) {
+        this.form.firstStep[key] = val;
+      }
+      if (secondStepKeys.includes(key)) {
+        this.form.secondStep[key] = val;
+      }
+    });
   }
 };
 </script>

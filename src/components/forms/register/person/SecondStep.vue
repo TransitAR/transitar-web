@@ -17,6 +17,7 @@
                 class="input"
                 type="text"
                 placeholder="Nombres"
+                :value="step.name"
                 @input="updateStep(keys.name, $event)"
               />
             </div>
@@ -25,6 +26,7 @@
                 class="input"
                 type="text"
                 placeholder="Apellido"
+                :value="step.lastName"
                 @input="updateStep(keys.lastName, $event)"
               />
             </div>
@@ -32,6 +34,7 @@
               <input
                 class="input"
                 type="date"
+                :value="step.dob"
                 @input="updateStep(keys.dob, $event)"
               />
             </div>
@@ -40,6 +43,7 @@
                 class="input"
                 type="text"
                 placeholder="Domicilio"
+                :value="step.address"
                 @input="updateStep(keys.address, $event)"
               />
               <p class="help">Calle, altura, localidad, provincia.</p>
@@ -57,6 +61,7 @@
                         class="input"
                         type="tel"
                         placeholder="Teléfono fijo"
+                        :value="step.landlinePhone"
                         @input="updateStep(keys.landlinePhone, $event)"
                       />
                     </p>
@@ -78,6 +83,7 @@
                         class="input"
                         type="tel"
                         placeholder="Teléfono celular"
+                        :value="step.mobilePhone"
                         @input="updateStep(keys.mobilePhone, $event)"
                       />
                     </p>
@@ -94,6 +100,7 @@
                 class="input"
                 type="text"
                 placeholder="Instagram"
+                :value="step.instagram"
                 @input="updateStep(keys.instagram, $event)"
               />
             </div>
@@ -102,6 +109,7 @@
                 class="input"
                 type="text"
                 placeholder="Twitter"
+                :value="step.twitter"
                 @input="updateStep(keys.twitter, $event)"
               />
             </div>
@@ -110,6 +118,7 @@
                 class="input"
                 type="text"
                 placeholder="Facebook"
+                :value="step.facebook"
                 @input="updateStep(keys.facebook, $event)"
               />
             </div>
