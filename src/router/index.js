@@ -39,7 +39,7 @@ const routes = [
     name: "register-form",
     beforeEnter: authGuard,
     component: () =>
-      import(/* webpackChunkName: "registerForm" */ "../views/RegisterForm.vue")
+      import(/* webpackChunkName: "registerForm" */ "../views/Register.vue")
   },
   {
     path: "/formulario-mascota",

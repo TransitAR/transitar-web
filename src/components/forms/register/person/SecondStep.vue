@@ -12,7 +12,10 @@
           <div>
             <!-- PERSONAL DATA START -->
             <div class="field">
-              <label class="label pb-3">Datos personales</label>
+              <label class="label">Datos personales</label>
+              <p class="help pb-6">
+                Datos del responsable de esta cuenta
+              </p>
               <input
                 class="input"
                 type="text"
@@ -219,9 +222,11 @@ const keys = Object.freeze({
   dob: "dob",
   landlinePhone: "landlinePhone",
   mobilePhone: "mobilePhone",
+  // Social
   instagram: "instagram",
   twitter: "twitter",
   facebook: "facebook",
+  // User & alerts
   canTravel: "canTravel",
   canAdopt: "canAdopt",
   canTransit: "canTransit",

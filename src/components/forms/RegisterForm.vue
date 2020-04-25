@@ -62,7 +62,7 @@
 
         <!-- steps -->
         <div class="steps-content">
-          <FirstStep
+          <UserTypeStep
             v-if="currentStep === 1"
             :isActive="isActive(1)"
             :step.sync="form.firstStep"
@@ -80,6 +80,7 @@
             :step.sync="form.thirdStep"
             :showHouseInfo="showHouseInfo"
             :showExperience="showExperience"
+            :showAvailability="showAvailability"
           />
 
           <FourthStep v-if="currentStep === 4" :isActive="isActive(4)" />
@@ -110,17 +111,17 @@
 </template>
 
 <script>
-import FirstStep from "../components/forms/register/person/FirstStep";
-import SecondStep from "../components/forms/register/person/SecondStep";
-import ThirdStep from "../components/forms/register/person/ThirdStep";
-import FourthStep from "../components/forms/register/person/FourthStep";
+import UserTypeStep from "../forms/register/UserTypeStep";
+import SecondStep from "../forms/register/person/SecondStep";
+import ThirdStep from "../forms/register/person/ThirdStep";
+import FourthStep from "../forms/register/person/FourthStep";
 
 // NO PUEDE ESTAR SI NO INICIO SESION (TODO: chequear por esto por las dudas)
 
 export default {
   name: "register-form",
   components: {
-    FirstStep,
+    UserTypeStep,
     SecondStep,
     ThirdStep,
     FourthStep
@@ -185,6 +186,9 @@ export default {
         this.form.secondStep.canTravel ||
         this.form.secondStep.canHelp
       );
+    },
+    showAvailability() {
+      return this.form.secondStep.canTravel;
     }
   },
   methods: {

@@ -68,7 +68,7 @@
 
 <script>
 export default {
-  name: "FirstStep",
+  name: "UserTypeStep",
   props: {
     isActive: Boolean,
     step: Object

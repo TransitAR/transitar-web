@@ -200,7 +200,7 @@
             </div>
             <!-- FAMILY END -->
             <!-- SCHEDULE START -->
-            <div class="field" v-if="showExperience">
+            <div class="field" v-if="showAvailability">
               <label class="label">Disponibilidad para traslados</label>
               <p class="help pb-6">Seleccioná todas las que apliquen</p>
               <div class="control">
@@ -371,7 +371,8 @@ export default {
     isActive: Boolean,
     step: Object,
     showHouseInfo: Boolean,
-    showExperience: Boolean
+    showExperience: Boolean,
+    showAvailability: Boolean
   },
   methods: {
     updateStep(key, $event) {
