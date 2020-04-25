@@ -44,7 +44,7 @@
         >
           <div class="step-marker">3</div>
           <div class="step-details">
-            <p class="step-title">Información relevante</p>
+            <p class="step-title">Social</p>
           </div>
         </div>
         <div
@@ -55,6 +55,18 @@
           "
         >
           <div class="step-marker">4</div>
+          <div class="step-details">
+            <p class="step-title">Información relevante</p>
+          </div>
+        </div>
+        <div
+          :class="
+            `step-item is-primary ${isHighlighted(5) ? 'is-active' : ''} ${
+              isCompleted(5) ? 'is-completed' : ''
+            }`
+          "
+        >
+          <div class="step-marker">5</div>
           <div class="step-details">
             <p class="step-title">Fin</p>
           </div>
@@ -68,22 +80,28 @@
             :step.sync="form.firstStep"
           />
 
-          <SecondStep
+          <UserDataStep
             v-if="currentStep === 2"
             :isActive="isActive(2)"
             :step.sync="form.secondStep"
           />
 
-          <ThirdStep
+          <SecondStep
             v-if="currentStep === 3"
             :isActive="isActive(3)"
+            :step.sync="form.secondStep"
+          />
+
+          <ThirdStep
+            v-if="currentStep === 4"
+            :isActive="isActive(4)"
             :step.sync="form.thirdStep"
             :showHouseInfo="showHouseInfo"
             :showExperience="showExperience"
             :showAvailability="showAvailability"
           />
 
-          <FourthStep v-if="currentStep === 4" :isActive="isActive(4)" />
+          <FourthStep v-if="currentStep === 5" :isActive="isActive(5)" />
         </div>
 
         <!-- actions -->
@@ -100,7 +118,7 @@
             <a
               :class="`button is-light ${submittingStep ? 'is-loading' : ''}`"
               v-on:click="next()"
-              :disabled="currentStep == 4"
+              :disabled="currentStep == 5"
               >Siguiente</a
             >
           </div>
@@ -112,6 +130,7 @@
 
 <script>
 import UserTypeStep from "../forms/register/UserTypeStep";
+import UserDataStep from "../forms/register/UserDataStep";
 import SecondStep from "../forms/register/person/SecondStep";
 import ThirdStep from "../forms/register/person/ThirdStep";
 import FourthStep from "../forms/register/person/FourthStep";
@@ -122,6 +141,7 @@ export default {
   name: "register-form",
   components: {
     UserTypeStep,
+    UserDataStep,
     SecondStep,
     ThirdStep,
     FourthStep
@@ -133,13 +153,15 @@ export default {
       firstStep: {
         userType: ""
       },
-      secondStep: {
+      userDataStep: {
         name: "",
         lastName: "",
         address: "",
         dob: "",
         landlinePhone: "",
-        mobilePhone: "",
+        mobilePhone: ""
+      },
+      secondStep: {
         instagram: "",
         twitter: "",
         facebook: "",
@@ -238,7 +260,7 @@ export default {
         };
         await this.$auth.updateUser(data);
       }
-      if (this.currentStep < 4) {
+      if (this.currentStep < 5) {
         this.currentStep++;
       }
       this.submittingStep = false;
