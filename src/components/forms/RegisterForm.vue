@@ -77,7 +77,7 @@
           <UserTypeStep
             v-if="currentStep === 1"
             :isActive="isActive(1)"
-            :step.sync="form.userType"
+            :step.sync="form.userTypeStep"
           />
 
           <PersonalInfoStep
@@ -158,7 +158,7 @@ export default {
     currentStep: 1,
     submittingStep: false,
     form: {
-      userType: {
+      userTypeStep: {
         userType: ""
       },
       personalInfoStep: {
@@ -243,7 +243,7 @@ export default {
       this.submittingStep = true;
       if (this.currentStep == 1) {
         // user type submit
-        const { userType } = this.form.userType;
+        const { userType } = this.form.userTypeStep;
         const data = {
           userType
         };
@@ -268,7 +268,7 @@ export default {
   },
   mounted() {
     const userKeys = Object.keys(this.$auth.mongoUser);
-    const userTypeKeys = Object.keys(this.form.userType);
+    const userTypeStepKeys = Object.keys(this.form.userTypeStep);
 
     const personalInfoStepKeys = Object.keys(this.form.personalInfoStep);
 
@@ -277,16 +277,16 @@ export default {
       if (val != null && typeof val === "object") {
         Object.keys(val).forEach(k => {
           const v = val[k];
-          if (userTypeKeys.includes(k)) {
-            this.form.userType[k] = v;
+          if (userTypeStepKeys.includes(k)) {
+            this.form.userTypeStep[k] = v;
           }
           if (personalInfoStepKeys.includes(k)) {
             this.form.personalInfoStep[k] = v;
           }
         });
       }
-      if (userTypeKeys.includes(key)) {
-        this.form.userType[key] = val;
+      if (userTypeStepKeys.includes(key)) {
+        this.form.userTypeStep[key] = val;
       }
       if (personalInfoStepKeys.includes(key)) {
         this.form.personalInfoStep[key] = val;
