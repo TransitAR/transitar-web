@@ -114,7 +114,7 @@ const keys = Object.freeze({
 });
 
 export default {
-  name: "UserDataStep",
+  name: "PersonalInfoStep",
   props: {
     isActive: Boolean,
     step: Object

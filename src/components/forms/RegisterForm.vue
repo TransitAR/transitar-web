@@ -79,18 +79,18 @@
             :isActive="isActive(1)"
             :step.sync="form.userType"
           />
-          <!-- SET  UserDataStep v-if="currentStep === 2"-->
-          <UserDataStep
-            v-if="false"
+
+          <PersonalInfoStep
+            v-if="currentStep === 2"
             :isActive="isActive(2)"
-            :step.sync="form.userDataStep"
+            :step.sync="form.personalInfoStep"
           />
 
-          <VetInformationStep
+          <!-- <VetInformationStep
             v-if="currentStep === 2"
             :isActive="isActive(2)"
             :step.sync="form.secondStep"
-          />
+          /> -->
 
           <UserSocialStep
             v-if="currentStep === 3"
@@ -136,10 +136,10 @@
 
 <script>
 import UserTypeStep from "../forms/register/UserTypeStep";
-import UserDataStep from "../forms/register/UserDataStep";
+import PersonalInfoStep from "../forms/register/PersonalInfoStep";
 import UserSocialStep from "../forms/register/UserSocialStep";
 import UserHomeAndExperienceStep from "../forms/register/UserHomeAndExperienceStep";
-import VetInformationStep from "../forms/register/VetInformationStep";
+// import VetInformationStep from "../forms/register/VetInformationStep";
 import LastStep from "../forms/register/LastStep";
 
 // NO PUEDE ESTAR SI NO INICIO SESION (TODO: chequear por esto por las dudas)
@@ -148,10 +148,10 @@ export default {
   name: "register-form",
   components: {
     UserTypeStep,
-    UserDataStep,
+    PersonalInfoStep,
     UserSocialStep,
     UserHomeAndExperienceStep,
-    VetInformationStep,
+    // VetInformationStep,
     LastStep
   },
   data: () => ({
@@ -161,7 +161,7 @@ export default {
       userType: {
         userType: ""
       },
-      userDataStep: {
+      personalInfoStep: {
         name: "",
         lastName: "",
         address: "",
@@ -242,29 +242,21 @@ export default {
     async next() {
       this.submittingStep = true;
       if (this.currentStep == 1) {
+        // user type submit
         const { userType } = this.form.userType;
         const data = {
           userType
         };
         await this.$auth.updateUser(data);
       } else if (this.currentStep == 2) {
+        // personal info submit
         const data = {
-          name: this.form.secondStep.name,
-          lastName: this.form.secondStep.lastName,
-          address: this.form.secondStep.address,
-          dob: this.form.secondStep.dob,
-          landlinePhone: this.form.secondStep.landlinePhone,
-          mobilePhone: this.form.secondStep.mobilePhone,
-          instagram: this.form.secondStep.instagram,
-          twitter: this.form.secondStep.twitter,
-          facebook: this.form.secondStep.facebook,
-          alerts: this.form.secondStep.alerts,
-          personInfo: {
-            canTravel: this.form.secondStep.canTravel,
-            canAdopt: this.form.secondStep.canAdopt,
-            canTransit: this.form.secondStep.canTransit,
-            canHelp: this.form.secondStep.canHelp
-          }
+          name: this.form.personalInfoStep.name,
+          lastName: this.form.personalInfoStep.lastName,
+          address: this.form.personalInfoStep.address,
+          dob: this.form.personalInfoStep.dob,
+          landlinePhone: this.form.personalInfoStep.landlinePhone,
+          mobilePhone: this.form.personalInfoStep.mobilePhone
         };
         await this.$auth.updateUser(data);
       }
@@ -278,7 +270,7 @@ export default {
     const userKeys = Object.keys(this.$auth.mongoUser);
     const userTypeKeys = Object.keys(this.form.userType);
 
-    const secondStepKeys = Object.keys(this.form.secondStep);
+    const personalInfoStepKeys = Object.keys(this.form.personalInfoStep);
 
     userKeys.forEach(key => {
       const val = this.$auth.mongoUser[key];
@@ -288,16 +280,16 @@ export default {
           if (userTypeKeys.includes(k)) {
             this.form.userType[k] = v;
           }
-          if (secondStepKeys.includes(k)) {
-            this.form.secondStep[k] = v;
+          if (personalInfoStepKeys.includes(k)) {
+            this.form.personalInfoStep[k] = v;
           }
         });
       }
       if (userTypeKeys.includes(key)) {
         this.form.userType[key] = val;
       }
-      if (secondStepKeys.includes(key)) {
-        this.form.secondStep[key] = val;
+      if (personalInfoStepKeys.includes(key)) {
+        this.form.personalInfoStep[key] = val;
       }
     });
   }
