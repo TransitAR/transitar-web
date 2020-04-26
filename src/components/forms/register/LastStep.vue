@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: "FourthStep",
+  name: "LastStep",
   props: {
     isActive: Boolean
   }

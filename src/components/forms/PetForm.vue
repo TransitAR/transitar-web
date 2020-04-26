@@ -54,25 +54,25 @@
 
         <!-- steps -->
         <div class="steps-content">
-          <FirstStep
+          <PetInformationStep
             v-if="currentStep === 1"
             :isActive="isActive(1)"
             :step.sync="form.firstStep"
           />
 
-          <SecondStep
+          <PetHealth
             v-if="currentStep === 2"
             :isActive="isActive(2)"
             :step.sync="form.secondStep"
           />
 
-          <ThirdStep
+          <PetTraitsAndStory
             v-if="currentStep === 3"
             :isActive="isActive(3)"
             :step.sync="form.thirdStep"
           />
 
-          <FourthStep v-if="currentStep === 4" :isActive="isActive(4)" />
+          <LastStep v-if="currentStep === 4" :isActive="isActive(4)" />
         </div>
         <!-- actions -->
         <div class="steps-actions">
@@ -99,18 +99,18 @@
 </template>
 
 <script>
-import FirstStep from "../../components/forms/register/pet/FirstStep";
-import SecondStep from "../../components/forms/register/pet/SecondStep";
-import ThirdStep from "../../components/forms/register/pet/ThirdStep";
-import FourthStep from "../../components/forms/register/pet/FourthStep";
+import PetInformationStep from "../../components/forms/register/PetInformationStep";
+import PetHealth from "../../components/forms/register/PetHealth";
+import PetTraitsAndStory from "../../components/forms/register/PetTraitsAndStory";
+import LastStep from "../../components/forms/register/LastStep";
 
 export default {
   name: "pet-form",
   components: {
-    FirstStep,
-    SecondStep,
-    ThirdStep,
-    FourthStep
+    PetInformationStep,
+    PetHealth,
+    PetTraitsAndStory,
+    LastStep
   },
   data: () => ({
     currentStep: 1,

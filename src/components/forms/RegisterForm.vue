@@ -79,20 +79,26 @@
             :isActive="isActive(1)"
             :step.sync="form.firstStep"
           />
-
+          <!-- SET  UserDataStep v-if="currentStep === 2"-->
           <UserDataStep
+            v-if="false"
+            :isActive="isActive(2)"
+            :step.sync="form.secondStep"
+          />
+
+          <VetInformationStep
             v-if="currentStep === 2"
             :isActive="isActive(2)"
             :step.sync="form.secondStep"
           />
 
-          <SecondStep
+          <UserSocialStep
             v-if="currentStep === 3"
             :isActive="isActive(3)"
             :step.sync="form.secondStep"
           />
 
-          <ThirdStep
+          <UserHomeAndExperienceStep
             v-if="currentStep === 4"
             :isActive="isActive(4)"
             :step.sync="form.thirdStep"
@@ -101,7 +107,7 @@
             :showAvailability="showAvailability"
           />
 
-          <FourthStep v-if="currentStep === 5" :isActive="isActive(5)" />
+          <LastStep v-if="currentStep === 5" :isActive="isActive(5)" />
         </div>
 
         <!-- actions -->
@@ -131,9 +137,10 @@
 <script>
 import UserTypeStep from "../forms/register/UserTypeStep";
 import UserDataStep from "../forms/register/UserDataStep";
-import SecondStep from "../forms/register/person/SecondStep";
-import ThirdStep from "../forms/register/person/ThirdStep";
-import FourthStep from "../forms/register/person/FourthStep";
+import UserSocialStep from "../forms/register/UserSocialStep";
+import UserHomeAndExperienceStep from "../forms/register/UserHomeAndExperienceStep";
+import VetInformationStep from "../forms/register/VetInformationStep";
+import LastStep from "../forms/register/LastStep";
 
 // NO PUEDE ESTAR SI NO INICIO SESION (TODO: chequear por esto por las dudas)
 
@@ -142,9 +149,10 @@ export default {
   components: {
     UserTypeStep,
     UserDataStep,
-    SecondStep,
-    ThirdStep,
-    FourthStep
+    UserSocialStep,
+    UserHomeAndExperienceStep,
+    VetInformationStep,
+    LastStep
   },
   data: () => ({
     currentStep: 1,
