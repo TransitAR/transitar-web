@@ -11,7 +11,7 @@
       >
         <div class="step-marker">1</div>
         <div class="step-details">
-          <p class="step-title">Tipo de usuario</p>
+          <p class="step-title">Datos personales</p>
         </div>
       </div>
       <div
@@ -23,7 +23,7 @@
       >
         <div class="step-marker">2</div>
         <div class="step-details">
-          <p class="step-title">Datos personales</p>
+          <p class="step-title">Social</p>
         </div>
       </div>
       <div
@@ -35,7 +35,7 @@
       >
         <div class="step-marker">3</div>
         <div class="step-details">
-          <p class="step-title">Social</p>
+          <p class="step-title">Información relevante</p>
         </div>
       </div>
       <div
@@ -47,33 +47,15 @@
       >
         <div class="step-marker">4</div>
         <div class="step-details">
-          <p class="step-title">Información relevante</p>
-        </div>
-      </div>
-      <div
-        :class="
-          `step-item is-primary ${isHighlighted(5) ? 'is-active' : ''} ${
-            isCompleted(5) ? 'is-completed' : ''
-          }`
-        "
-      >
-        <div class="step-marker">5</div>
-        <div class="step-details">
           <p class="step-title">Fin</p>
         </div>
       </div>
 
       <!-- steps -->
       <div class="steps-content">
-        <UserTypeStep
+        <PersonalInfoStep
           v-if="currentStep === 1"
           :isActive="isActive(1)"
-          :step.sync="form.userTypeStep"
-        />
-
-        <PersonalInfoStep
-          v-if="currentStep === 2"
-          :isActive="isActive(2)"
           :step.sync="form.personalInfoStep"
         />
 
@@ -84,21 +66,21 @@
           /> -->
 
         <UserSocialStep
-          v-if="currentStep === 3"
-          :isActive="isActive(3)"
+          v-if="currentStep === 2"
+          :isActive="isActive(2)"
           :step.sync="form.secondStep"
         />
 
         <UserHomeAndExperienceStep
-          v-if="currentStep === 4"
-          :isActive="isActive(4)"
+          v-if="currentStep === 3"
+          :isActive="isActive(3)"
           :step.sync="form.thirdStep"
           :showHouseInfo="showHouseInfo"
           :showExperience="showExperience"
           :showAvailability="showAvailability"
         />
 
-        <LastStep v-if="currentStep === 5" :isActive="isActive(5)" />
+        <LastStep v-if="currentStep === 4" :isActive="isActive(4)" />
       </div>
 
       <!-- actions -->
@@ -115,7 +97,7 @@
           <a
             :class="`button is-light ${submittingStep ? 'is-loading' : ''}`"
             v-on:click="next()"
-            :disabled="currentStep == 5"
+            :disabled="currentStep == 4"
             >Siguiente</a
           >
         </div>
@@ -125,7 +107,6 @@
 </template>
 
 <script>
-import UserTypeStep from "../forms/register/UserTypeStep";
 import PersonalInfoStep from "../forms/register/PersonalInfoStep";
 import UserSocialStep from "../forms/register/UserSocialStep";
 import UserHomeAndExperienceStep from "../forms/register/UserHomeAndExperienceStep";
@@ -137,7 +118,6 @@ import LastStep from "../forms/register/LastStep";
 export default {
   name: "register-form",
   components: {
-    UserTypeStep,
     PersonalInfoStep,
     UserSocialStep,
     UserHomeAndExperienceStep,
@@ -148,9 +128,6 @@ export default {
     currentStep: 1,
     submittingStep: false,
     form: {
-      userTypeStep: {
-        userType: ""
-      },
       personalInfoStep: {
         name: "",
         lastName: "",
@@ -229,13 +206,6 @@ export default {
     async next() {
       this.submittingStep = true;
       if (this.currentStep == 1) {
-        // user type submit
-        const { userType } = this.form.userTypeStep;
-        const data = {
-          userType
-        };
-        await this.$auth.updateUser(data);
-      } else if (this.currentStep == 2) {
         // personal info submit
         const data = {
           name: this.form.personalInfoStep.name,
@@ -246,8 +216,10 @@ export default {
           mobilePhone: this.form.personalInfoStep.mobilePhone
         };
         await this.$auth.updateUser(data);
+      } else if (this.currentStep == 2) {
+        // etc
       }
-      if (this.currentStep < 5) {
+      if (this.currentStep < 4) {
         this.currentStep++;
       }
       this.submittingStep = false;
@@ -255,7 +227,6 @@ export default {
   },
   mounted() {
     const userKeys = Object.keys(this.$auth.mongoUser);
-    const userTypeStepKeys = Object.keys(this.form.userTypeStep);
 
     const personalInfoStepKeys = Object.keys(this.form.personalInfoStep);
 
@@ -264,16 +235,10 @@ export default {
       if (val != null && typeof val === "object") {
         Object.keys(val).forEach(k => {
           const v = val[k];
-          if (userTypeStepKeys.includes(k)) {
-            this.form.userTypeStep[k] = v;
-          }
           if (personalInfoStepKeys.includes(k)) {
             this.form.personalInfoStep[k] = v;
           }
         });
-      }
-      if (userTypeStepKeys.includes(key)) {
-        this.form.userTypeStep[key] = val;
       }
       if (personalInfoStepKeys.includes(key)) {
         this.form.personalInfoStep[key] = val;

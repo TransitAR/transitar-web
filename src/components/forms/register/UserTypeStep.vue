@@ -1,9 +1,5 @@
 <template>
-  <div
-    :class="
-      `step-content has-text-centered is-primary ${isActive ? 'is-active' : ''}`
-    "
-  >
+  <div class="step-content has-text-centered is-primary is-active">
     <div class="hero-body">
       <div class="columns is-centered">
         <div class="column is-narrow">
@@ -70,7 +66,6 @@
 export default {
   name: "UserTypeStep",
   props: {
-    isActive: Boolean,
     step: Object
   },
   methods: {

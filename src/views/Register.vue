@@ -9,20 +9,55 @@
           Ya lo verifiqué
         </button>
       </div>
+      <div v-if="!showFollowingSteps">
+        <UserTypeStep :step.sync="step" />
+        <button
+          class="button is-light"
+          :class="submittingUserType ? 'is-loading' : ''"
+          @click="next()"
+        >
+          Continuar
+        </button>
+      </div>
       <RegisterForm v-else />
     </div>
   </section>
 </template>
 
 <script>
+import UserTypeStep from "../components/forms/register/UserTypeStep";
 import RegisterForm from "../components/forms/RegisterForm";
 export default {
   name: "register",
-  components: { RegisterForm },
+  components: { UserTypeStep, RegisterForm },
+  data: () => ({
+    showFollowingSteps: false,
+    submittingUserType: false,
+    step: {
+      userType: ""
+    }
+  }),
   methods: {
     reload() {
       window.location.reload();
+    },
+    async next() {
+      this.submittingUserType = true;
+      try {
+        if (this.step.userType) {
+          // user type submit
+          await this.$auth.updateUser(this.step);
+          this.showFollowingSteps = true;
+        }
+      } catch (err) {
+        console.error(err);
+        alert("whoops");
+      }
+      this.submittingUserType = false;
     }
+  },
+  mounted() {
+    this.step.userType = this.$auth.mongoUser.userType || "";
   }
 };
 </script>
