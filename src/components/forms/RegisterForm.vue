@@ -77,13 +77,13 @@
           <UserTypeStep
             v-if="currentStep === 1"
             :isActive="isActive(1)"
-            :step.sync="form.firstStep"
+            :step.sync="form.userType"
           />
           <!-- SET  UserDataStep v-if="currentStep === 2"-->
           <UserDataStep
             v-if="false"
             :isActive="isActive(2)"
-            :step.sync="form.secondStep"
+            :step.sync="form.userDataStep"
           />
 
           <VetInformationStep
@@ -158,7 +158,7 @@ export default {
     currentStep: 1,
     submittingStep: false,
     form: {
-      firstStep: {
+      userType: {
         userType: ""
       },
       userDataStep: {
@@ -242,7 +242,7 @@ export default {
     async next() {
       this.submittingStep = true;
       if (this.currentStep == 1) {
-        const { userType } = this.form.firstStep;
+        const { userType } = this.form.userType;
         const data = {
           userType
         };
@@ -276,7 +276,7 @@ export default {
   },
   mounted() {
     const userKeys = Object.keys(this.$auth.mongoUser);
-    const firstStepKeys = Object.keys(this.form.firstStep);
+    const userTypeKeys = Object.keys(this.form.userType);
 
     const secondStepKeys = Object.keys(this.form.secondStep);
 
@@ -285,16 +285,16 @@ export default {
       if (val != null && typeof val === "object") {
         Object.keys(val).forEach(k => {
           const v = val[k];
-          if (firstStepKeys.includes(k)) {
-            this.form.firstStep[k] = v;
+          if (userTypeKeys.includes(k)) {
+            this.form.userType[k] = v;
           }
           if (secondStepKeys.includes(k)) {
             this.form.secondStep[k] = v;
           }
         });
       }
-      if (firstStepKeys.includes(key)) {
-        this.form.firstStep[key] = val;
+      if (userTypeKeys.includes(key)) {
+        this.form.userType[key] = val;
       }
       if (secondStepKeys.includes(key)) {
         this.form.secondStep[key] = val;
