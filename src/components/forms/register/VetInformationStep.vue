@@ -118,8 +118,15 @@
             <div class="field">
               <label class="label">Especialidades</label>
               <p class="help pb-6">
-                Seleccioná al menos una opción para poder continuar
+                Ingresa las especialidades separadas con una coma (por ejemplo
+                "rayos X, internacion")
               </p>
+              <input
+                class="input"
+                type="text"
+                placeholder="Especialidades"
+                :value="step.specialties"
+              />
             </div>
             <div class="is-divider"></div>
           </div>
