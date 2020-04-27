@@ -1,16 +1,12 @@
 <template>
   <div
-    :class="
-      `step-content has-text-centered is-primary ${isActive ? 'is-active' : ''}`
-    "
+    class="step-content has-text-centered is-primary"
+    :class="{ 'is-active': isActive }"
   >
     <div class="hero-body">
       <div class="columns is-centered">
         <div class="column is-half">
-          <!-- ACCOUNT FORM START -->
-
           <div>
-            <!-- PERSONAL DATA START -->
             <div>
               <label class="label">Datos personales</label>
               <p class="help pb-6">
@@ -38,49 +34,18 @@
               :value="step.address"
               @input="updateStep(keys.address, $event)"
             />
-            <div class="field">
-              <div class="field-body">
-                <div class="field is-expanded">
-                  <div class="field has-addons">
-                    <p class="control">
-                      <a class="button is-static">+54</a>
-                    </p>
-                    <p class="control is-expanded">
-                      <input
-                        class="input"
-                        type="tel"
-                        placeholder="Teléfono fijo"
-                        :value="step.landlinePhone"
-                        @input="updateStep(keys.landlinePhone, $event)"
-                      />
-                    </p>
-                  </div>
-                  <p class="help">Sin guiones y sin el 0</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="field">
-              <div class="field-body">
-                <div class="field is-expanded">
-                  <div class="field has-addons">
-                    <p class="control">
-                      <a class="button is-static">+54</a>
-                    </p>
-                    <p class="control is-expanded">
-                      <input
-                        class="input"
-                        type="tel"
-                        placeholder="Teléfono celular"
-                        :value="step.mobilePhone"
-                        @input="updateStep(keys.mobilePhone, $event)"
-                      />
-                    </p>
-                  </div>
-                  <p class="help">Sin guiones y sin el 0</p>
-                </div>
-              </div>
-            </div>
+            <PhoneField
+              placeholder="Teléfono fijo"
+              help-text="Sin guiones y sin el 0."
+              :value="step.landlinePhone"
+              @input="updateStep(keys.landlinePhone, $event)"
+            />
+            <PhoneField
+              placeholder="Teléfono celular"
+              help-text="Sin guiones y sin el 0."
+              :value="step.mobilePhone"
+              @input="updateStep(keys.mobilePhone, $event)"
+            />
           </div>
         </div>
       </div>
@@ -91,6 +56,7 @@
 <script>
 import TextField from "../../inputs/TextField";
 import DateField from "../../inputs/DateField";
+import PhoneField from "../../inputs/PhoneField";
 
 // keys to match exactly in RegisterForm
 const keys = Object.freeze({
@@ -106,7 +72,8 @@ export default {
   name: "PersonalInfoStep",
   components: {
     TextField,
-    DateField
+    DateField,
+    PhoneField
   },
   props: {
     isActive: Boolean,

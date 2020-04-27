@@ -1,48 +1,29 @@
 <template>
   <div
-    :class="
-      `step-content has-text-centered is-primary ${isActive ? 'is-active' : ''}`
-    "
+    class="step-content has-text-centered is-primary"
+    :class="{ 'is-active': isActive }"
   >
     <div class="hero-body">
       <div class="columns is-centered">
         <div class="column is-half">
-          <!-- ACCOUNT FORM START -->
-
           <div>
-            <!-- SOCIAL START -->
-            <div class="field">
-              <label class="label pb-3">Redes sociales</label>
-              <input
-                class="input"
-                type="text"
-                placeholder="Instagram"
-                :value="step.instagram"
-                @input="updateStep(keys.instagram, $event)"
-              />
-            </div>
-            <div class="field">
-              <input
-                class="input"
-                type="text"
-                placeholder="Twitter"
-                :value="step.twitter"
-                @input="updateStep(keys.twitter, $event)"
-              />
-            </div>
-            <div class="field">
-              <input
-                class="input"
-                type="text"
-                placeholder="Facebook"
-                :value="step.facebook"
-                @input="updateStep(keys.facebook, $event)"
-              />
-            </div>
+            <p class="label pb-3">Redes sociales</p>
+            <TextField
+              placeholder="Instagram"
+              :value="step.instagram"
+              @input="updateStep(keys.instagram, $event)"
+            />
+            <TextField
+              placeholder="Twitter"
+              :value="step.twitter"
+              @input="updateStep(keys.twitter, $event)"
+            />
+            <TextField
+              placeholder="Facebook"
+              :value="step.facebook"
+              @input="updateStep(keys.facebook, $event)"
+            />
             <div class="is-divider"></div>
-
-            <!-- SOCIAL END -->
-            <!-- PERSONAL DATA END -->
             <div class="field">
               <label class="label">¿Cómo podés ayudar?</label>
               <p class="help pb-6">
@@ -50,77 +31,45 @@
               </p>
               <div class="control">
                 <div class="field">
-                  <div class="field">
-                    <input
-                      class="is-checkradio has-background-color"
-                      id="canAdopt"
-                      type="checkbox"
-                      name="canAdopt"
-                      :checked="step.canAdopt"
-                      @input="updateStep(keys.canAdopt, $event)"
-                    />
-                    <label for="canAdopt">Puedo adoptar</label>
-                  </div>
-                  <div class="field">
-                    <input
-                      class="is-checkradio has-background-color"
-                      id="canTransit"
-                      type="checkbox"
-                      name="canTransit"
-                      :checked="step.canTransit"
-                      @input="updateStep(keys.canTransit, $event)"
-                    />
-                    <label for="canTransit">Puedo dar tránsito</label>
-                  </div>
-                  <div class="field">
-                    <input
-                      class="is-checkradio has-background-color"
-                      id="canTravel"
-                      type="checkbox"
-                      name="canTravel"
-                      :checked="step.canTravel"
-                      @input="updateStep(keys.canTravel, $event)"
-                    />
-                    <label for="canTravel">Puedo hacer traslados</label>
-                  </div>
-                  <div class="field">
-                    <input
-                      class="is-checkradio has-background-color"
-                      id="canHelp"
-                      type="checkbox"
-                      name="canHelp"
-                      :checked="step.canHelp"
-                      @input="updateStep(keys.canHelp, $event)"
-                    />
-                    <label for="canHelp"
-                      >Puedo ayudar ante emergencias cerca mío</label
-                    >
-                  </div>
+                  <CheckboxField
+                    label="Puedo adoptar"
+                    name="can-adopt"
+                    :checked="step.canAdopt"
+                    @input="updateStep(keys.canAdopt, $event)"
+                  />
+                  <CheckboxField
+                    label="Puedo dar tránsito"
+                    name="can-transit"
+                    :checked="step.canTransit"
+                    @input="updateStep(keys.canTransit, $event)"
+                  />
+                  <CheckboxField
+                    label="Puedo hacer traslados"
+                    name="can-travel"
+                    :checked="step.canTravel"
+                    @input="updateStep(keys.canTravel, $event)"
+                  />
+                  <CheckboxField
+                    label="Puedo ayudar ante emergencias cerca mío"
+                    name="can-help"
+                    :checked="step.canHelp"
+                    @input="updateStep(keys.canHelp, $event)"
+                  />
                 </div>
               </div>
             </div>
             <div class="is-divider"></div>
-            <div class="field">
-              <label class="label">Alertas</label>
-              <p class="help pb-6">
-                Estamos trabajando para habilitar alertas en tiempo real
-              </p>
-              <div class="control">
-                <input
-                  id="switchExample"
-                  type="checkbox"
-                  name="switchExample"
-                  class="switch"
-                  :checked="step.alerts"
-                  @input="updateStep(keys.alerts, $event)"
-                />
-                <label for="switchExample">
-                  Quiero recibir alertas sobre casos de riesgo cercanos
-                </label>
-              </div>
-            </div>
+            <p class="label">Alertas</p>
+            <p class="help pb-6">
+              Estamos trabajando para habilitar alertas en tiempo real
+            </p>
+            <ToggleField
+              name="alerts"
+              label="Quiero recibir alertas sobre casos de riesgo cercanos."
+              :checked="step.alerts"
+              @input="updateStep(keys.alerts, $event)"
+            />
           </div>
-          <!-- ACCOUNT FORM END -->
         </div>
       </div>
     </div>
@@ -128,6 +77,10 @@
 </template>
 
 <script>
+import TextField from "../../inputs/TextField";
+import CheckboxField from "../../inputs/CheckboxField";
+import ToggleField from "../../inputs/ToggleField";
+
 // keys to match exactly in RegisterForm
 const keys = Object.freeze({
   // Social
@@ -144,6 +97,11 @@ const keys = Object.freeze({
 
 export default {
   name: "SecondStep",
+  components: {
+    TextField,
+    CheckboxField,
+    ToggleField
+  },
   props: {
     isActive: Boolean,
     step: Object
