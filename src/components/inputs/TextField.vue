@@ -7,7 +7,7 @@
       :value="value"
       @input="onInput"
     />
-    <p v-if="helpText" class="help">Calle, altura, localidad, provincia.</p>
+    <p v-if="helpText" class="help">{{ helpText }}</p>
   </div>
 </template>
 
