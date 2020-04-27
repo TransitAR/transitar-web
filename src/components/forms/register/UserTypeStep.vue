@@ -3,59 +3,12 @@
     <div class="hero-body">
       <div class="columns is-centered">
         <div class="column is-narrow">
-          <div class="field">
-            <label class="label pb-3">Tipo de usuario</label>
-            <div class="control">
-              <div class="field">
-                <input
-                  class="is-checkradio has-background-color is-primary"
-                  id="isRefuge"
-                  type="radio"
-                  name="isRefuge"
-                  value="refuge"
-                  :checked="step.userType === 'refuge'"
-                  @input="updateUserType"
-                />
-                <label for="isRefuge">Refugio</label>
-              </div>
-              <div class="field">
-                <input
-                  class="is-checkradio has-background-color is-primary"
-                  id="isAdoptant"
-                  type="radio"
-                  name="isAdoptant"
-                  value="adoptant"
-                  :checked="step.userType === 'adoptant'"
-                  @input="updateUserType"
-                />
-                <label for="isAdoptant">Adoptante</label>
-              </div>
-              <div class="field">
-                <input
-                  class="is-checkradio has-background-color is-primary"
-                  id="isVolunteer"
-                  type="radio"
-                  name="isVolunteer"
-                  value="volunteer"
-                  :checked="step.userType === 'volunteer'"
-                  @input="updateUserType"
-                />
-                <label for="isVolunteer">Voluntario</label>
-              </div>
-              <div class="field">
-                <input
-                  class="is-checkradio has-background-color is-primary"
-                  id="isVet"
-                  type="radio"
-                  name="isVet"
-                  value="vet"
-                  :checked="step.userType === 'vet'"
-                  @input="updateUserType"
-                />
-                <label for="isVet">Veterinaria</label>
-              </div>
-            </div>
-          </div>
+          <RadioGroup
+            name="user-type"
+            :value="step.userType"
+            :options="options"
+            @input="updateUserType"
+          />
         </div>
       </div>
     </div>
@@ -63,14 +16,37 @@
 </template>
 
 <script>
+import RadioGroup from "../../inputs/RadioGroup";
+
 export default {
   name: "UserTypeStep",
+  components: { RadioGroup },
+  data: () => ({
+    options: [
+      {
+        val: "refuge",
+        text: "Refugio"
+      },
+      {
+        val: "adoptant",
+        text: "Adoptante"
+      },
+      {
+        val: "volunteer",
+        text: "Voluntario"
+      },
+      {
+        val: "vet",
+        text: "Clinica Veterinaria"
+      }
+    ]
+  }),
   props: {
     step: Object
   },
   methods: {
-    updateUserType(e) {
-      this.$emit("update:step", { userType: event.target.value });
+    updateUserType(val) {
+      this.$emit("update:step", { userType: val });
     }
   }
 };
