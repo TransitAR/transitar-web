@@ -83,12 +83,6 @@ export default {
     keys
   }),
   methods: {
-    updateStepRefactor(key, val) {
-      this.$emit("update:step", {
-        ...this.step,
-        [key]: val
-      });
-    },
     updateStep(key, $event) {
       const value =
         $event.target.type === "checkbox"
