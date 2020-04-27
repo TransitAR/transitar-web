@@ -27,14 +27,11 @@
               :value="step.lastName"
               @input="updateStep(keys.lastName, $event)"
             />
-            <div class="field">
-              <input
-                class="input"
-                type="date"
-                :value="step.dob"
-                @input="updateStep(keys.dob, $event)"
-              />
-            </div>
+            <DateField
+              placeholder="Fecha de nacimiento"
+              :value="step.dob"
+              @input="updateStep(keys.dob, $event)"
+            />
             <div class="field">
               <input
                 class="input"
@@ -98,6 +95,7 @@
 
 <script>
 import TextField from "../../inputs/TextField";
+import DateField from "../../inputs/DateField";
 
 // keys to match exactly in RegisterForm
 const keys = Object.freeze({
@@ -112,7 +110,8 @@ const keys = Object.freeze({
 export default {
   name: "PersonalInfoStep",
   components: {
-    TextField
+    TextField,
+    DateField
   },
   props: {
     isActive: Boolean,
