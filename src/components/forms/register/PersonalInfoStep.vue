@@ -11,28 +11,22 @@
 
           <div>
             <!-- PERSONAL DATA START -->
-            <div class="field">
+            <div>
               <label class="label">Datos personales</label>
               <p class="help pb-6">
                 Datos del responsable de esta cuenta
               </p>
-              <input
-                class="input"
-                type="text"
-                placeholder="Nombres"
-                :value="step.name"
-                @input="updateStep(keys.name, $event)"
-              />
             </div>
-            <div class="field">
-              <input
-                class="input"
-                type="text"
-                placeholder="Apellido"
-                :value="step.lastName"
-                @input="updateStep(keys.lastName, $event)"
-              />
-            </div>
+            <TextField
+              placeholder="Nombres"
+              :value="step.name"
+              @input="updateStep(keys.name, $event)"
+            />
+            <TextField
+              placeholder="Apellido"
+              :value="step.lastName"
+              @input="updateStep(keys.lastName, $event)"
+            />
             <div class="field">
               <input
                 class="input"
@@ -103,6 +97,8 @@
 </template>
 
 <script>
+import TextField from "../../inputs/TextField";
+
 // keys to match exactly in RegisterForm
 const keys = Object.freeze({
   name: "name",
@@ -115,6 +111,9 @@ const keys = Object.freeze({
 
 export default {
   name: "PersonalInfoStep",
+  components: {
+    TextField
+  },
   props: {
     isActive: Boolean,
     step: Object
@@ -123,6 +122,12 @@ export default {
     keys
   }),
   methods: {
+    updateStepRefactor(key, val) {
+      this.$emit("update:step", {
+        ...this.step,
+        [key]: val
+      });
+    },
     updateStep(key, $event) {
       const value =
         $event.target.type === "checkbox"
