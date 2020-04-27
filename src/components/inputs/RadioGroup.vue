@@ -21,7 +21,6 @@
 <script>
 export default {
   name: "RadioGroup",
-  data: () => ({}),
   props: {
     label: String,
     name: {
