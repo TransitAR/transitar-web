@@ -32,17 +32,12 @@
               :value="step.dob"
               @input="updateStep(keys.dob, $event)"
             />
-            <div class="field">
-              <input
-                class="input"
-                type="text"
-                placeholder="Domicilio"
-                :value="step.address"
-                @input="updateStep(keys.address, $event)"
-              />
-              <p class="help">Calle, altura, localidad, provincia.</p>
-            </div>
-
+            <TextField
+              placeholder="Domicilio"
+              help-text="Calle, altura, localidad, provincia."
+              :value="step.address"
+              @input="updateStep(keys.address, $event)"
+            />
             <div class="field">
               <div class="field-body">
                 <div class="field is-expanded">

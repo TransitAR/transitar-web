@@ -7,6 +7,7 @@
       :value="value"
       @input="onInput"
     />
+    <p v-if="helpText" class="help">Calle, altura, localidad, provincia.</p>
   </div>
 </template>
 
@@ -15,6 +16,7 @@ export default {
   name: "TextField",
   props: {
     placeholder: String,
+    helpText: String,
     value: {
       type: String,
       required: true
