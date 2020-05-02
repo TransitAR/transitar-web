@@ -2,54 +2,14 @@
   <section class="container is-fullhd p-16">
     <div class="steps pt-6">
       <!-- progress -->
-      <div
-        :class="
-          `step-item is-primary ${isHighlighted(1) ? 'is-active' : ''} ${
-            isCompleted(1) ? 'is-completed' : ''
-          }`
-        "
-      >
-        <div class="step-marker">1</div>
-        <div class="step-details">
-          <p class="step-title">Datos personales</p>
-        </div>
-      </div>
-      <div
-        :class="
-          `step-item is-primary ${isHighlighted(2) ? 'is-active' : ''} ${
-            isCompleted(2) ? 'is-completed' : ''
-          }`
-        "
-      >
-        <div class="step-marker">2</div>
-        <div class="step-details">
-          <p class="step-title">Social</p>
-        </div>
-      </div>
-      <div
-        :class="
-          `step-item is-primary ${isHighlighted(3) ? 'is-active' : ''} ${
-            isCompleted(3) ? 'is-completed' : ''
-          }`
-        "
-      >
-        <div class="step-marker">3</div>
-        <div class="step-details">
-          <p class="step-title">Información relevante</p>
-        </div>
-      </div>
-      <div
-        :class="
-          `step-item is-primary ${isHighlighted(4) ? 'is-active' : ''} ${
-            isCompleted(4) ? 'is-completed' : ''
-          }`
-        "
-      >
-        <div class="step-marker">4</div>
-        <div class="step-details">
-          <p class="step-title">Fin</p>
-        </div>
-      </div>
+
+      <FormStepMarker
+        v-for="(markerTitle, i) in stepMarkers"
+        :key="markerTitle"
+        :marker="markerTitle"
+        :number="i + 1"
+        :current-step="currentStep"
+      />
 
       <!-- steps -->
       <div class="steps-content">
@@ -58,12 +18,6 @@
           :isActive="isActive(1)"
           :step.sync="form.personalInfoStep"
         />
-
-        <!-- <VetInformationStep
-            v-if="currentStep === 2"
-            :isActive="isActive(2)"
-            :step.sync="form.secondStep"
-          /> -->
 
         <UserSocialStep
           v-if="currentStep === 2"
@@ -95,7 +49,8 @@
         </div>
         <div class="steps-action">
           <a
-            :class="`button is-light ${submittingStep ? 'is-loading' : ''}`"
+            class="button is-light"
+            :class="{ 'is-loading': submittingStep }"
             v-on:click="next()"
             :disabled="currentStep == 4"
             >Siguiente</a
@@ -112,6 +67,14 @@ import UserSocialStep from "../forms/register/UserSocialStep";
 import UserHomeAndExperienceStep from "../forms/register/UserHomeAndExperienceStep";
 // import VetInformationStep from "../forms/register/VetInformationStep";
 import LastStep from "../forms/register/LastStep";
+import FormStepMarker from "./FormStepMarker";
+
+const stepMarkers = Object.assign([
+  "Datos Personales",
+  "Social",
+  "Informacion Relevante",
+  "Fin"
+]);
 
 // NO PUEDE ESTAR SI NO INICIO SESION (TODO: chequear por esto por las dudas)
 
@@ -119,12 +82,14 @@ export default {
   name: "register-form",
   components: {
     PersonalInfoStep,
+    FormStepMarker,
     UserSocialStep,
     UserHomeAndExperienceStep,
     // VetInformationStep,
     LastStep
   },
   data: () => ({
+    stepMarkers,
     currentStep: 1,
     submittingStep: false,
     form: {
@@ -191,12 +156,6 @@ export default {
   methods: {
     isActive(step) {
       return this.currentStep == step || this.currentStep > step;
-    },
-    isHighlighted(step) {
-      return step <= this.currentStep;
-    },
-    isCompleted(step) {
-      return step < this.currentStep;
     },
     prev() {
       if (this.currentStep > 1) {
