@@ -1,8 +1,8 @@
-import homeSmall from "../../assets/png/030-dog-house.png";
-import vetSmall from "../../assets/png/002-veterinarian-2.png";
-import dogSmall from "../../assets/png/032-dog.png";
-import catSmall from "../../assets/png/036-cat.png";
-import refugeSmall from "../../assets/png/016-veterinarian-1.png";
+import homeSmall from "../../assets/png/home.png";
+import vetSmall from "../../assets/png/vet.png";
+import dogSmall from "../../assets/png/dog.png";
+import catSmall from "../../assets/png/cat.png";
+import refugeSmall from "../../assets/png/refuge.png";
 import volunteerSmall from "../../assets/png/volunteer.png";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 

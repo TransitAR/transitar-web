@@ -7,7 +7,7 @@
             <div>
               <div class="inline-flex align-center">
                 <figure class="image is-24x24 inline-block m-auto">
-                  <img src="../assets/png/016-veterinarian-1.png" />
+                  <img src="../assets/png/refuge.png" />
                 </figure>
               </div>
             </div>
@@ -33,7 +33,7 @@
                   class="image is-24x24 inline-block m-auto"
                   v-on:click="this.seeVets = !this.seeVets"
                 >
-                  <img src="../assets/png/002-veterinarian-2.png" />
+                  <img src="../assets/png/vet.png" />
                 </figure>
               </div>
             </div>
@@ -46,7 +46,7 @@
                   class="image is-24x24 inline-block m-auto"
                   v-on:click="this.seeDogs = !this.seeDogs"
                 >
-                  <img src="../assets/png/032-dog.png" />
+                  <img src="../assets/png/dog.png" />
                 </figure>
               </div>
             </div>
@@ -59,7 +59,7 @@
                   class="image is-24x24 inline-block m-auto"
                   v-on:click="this.seeCats = !this.seeCats"
                 >
-                  <img src="../assets/png/036-cat.png" />
+                  <img src="../assets/png/cat.png" />
                 </figure>
               </div>
             </div>

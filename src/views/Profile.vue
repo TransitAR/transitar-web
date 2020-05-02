@@ -20,11 +20,10 @@
         </div>
 
         <div class="content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-          iaculis mauris.
-          <a>@bulmaio</a>.
-          <a href="#">#css</a>
-          <a href="#">#responsive</a>
+          <div class="image is-24x24 inline-block">
+            <img :src="UserImage" />
+          </div>
+          {{ UserType }}
           <br />
           <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
         </div>
@@ -64,6 +63,17 @@ export default {
     User() {
       console.log(this.$auth.mongoUser);
       return this.$auth.mongoUser;
+    },
+    UserImage() {
+      let img = require(`../assets/png/${this.$auth.mongoUser.userType}.png`);
+      return img;
+    },
+    UserType() {
+      let type = this.$auth.mongoUser.userType;
+
+      if (type == "refuge") return "Refugio";
+      else if (type == "volunteer") return "Voluntario";
+      else return "Veterinaria";
     }
   }
 };
