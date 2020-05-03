@@ -1,9 +1,5 @@
 <template>
-  <div
-    :class="
-      `step-content has-text-centered is-primary ${isActive ? 'is-active' : ''}`
-    "
-  >
+  <div class="step-content has-text-centered is-primary is-active">
     <div class="hero-body">
       <div class="columns is-centered">
         <div class="column is-half">
@@ -18,9 +14,6 @@
 
 <script>
 export default {
-  name: "LastStep",
-  props: {
-    isActive: Boolean
-  }
+  name: "LastStep"
 };
 </script>

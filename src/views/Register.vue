@@ -1,5 +1,5 @@
 <template>
-  <section class="container is-fullhd p-16">
+  <section class="container is-fullhd p-4 md:p-16">
     <div class="columns is-centered is-vcentered">
       <!-- verify email -->
       <VerifyEmail v-if="!$auth.user.email_verified" />
@@ -7,7 +7,7 @@
       <div v-else-if="!submittedUserType">
         <RadioGroup name="user-type" v-model="userType" :options="userTypes" />
         <button
-          class="button is-light"
+          class="button is-light mt-8"
           :class="submittingUserType ? 'is-loading' : ''"
           @click="next()"
         >
@@ -15,7 +15,11 @@
         </button>
       </div>
       <!-- register form -->
-      <RegisterForm v-else :user-type="userType" />
+      <RegisterForm
+        v-else
+        @change-user-type="submittedUserType = false"
+        :user-type="userType"
+      />
     </div>
   </section>
 </template>

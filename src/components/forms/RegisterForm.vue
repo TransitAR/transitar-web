@@ -1,5 +1,5 @@
 <template>
-  <section class="container is-fullhd p-16">
+  <section class="container is-fullhd">
     <div class="steps pt-6">
       <!-- progress -->
 
@@ -38,19 +38,14 @@
       <!-- actions -->
       <div class="steps-actions">
         <div class="steps-action">
-          <a
-            class="button is-light"
-            v-on:click="prev()"
-            :disabled="currentStep == 1"
-            >Anterior</a
-          >
+          <a class="button is-light" v-on:click="prev()">Anterior</a>
         </div>
         <div class="steps-action">
           <a
             class="button is-light"
             :class="{ 'is-loading': submittingStep }"
             v-on:click="next()"
-            :disabled="currentStep == 4"
+            :disabled="currentStep == 3"
             >Siguiente</a
           >
         </div>
@@ -95,27 +90,15 @@ export default {
         canAdopt: false,
         canTransit: false,
         canHelp: false,
-
-        // bla
-        houseType: ""
-      },
-      relevantInfoOrganizationStep: {},
-      secondStep: {
-        instagram: "",
-        twitter: "",
-        facebook: "",
-        alerts: false
-      },
-      thirdStep: {
-        houseType: null,
-        hoursAway: "-8",
+        houseType: "",
+        hoursAway: "8-",
         houseProtection: false,
         hasAdults: false,
-        adults: 0,
+        adults: "",
         hasChildren: false,
-        children: 0,
+        children: "",
         hasPets: false,
-        otherPets: 0,
+        otherPets: "",
         availability: {
           mon: false,
           tue: false,
@@ -127,6 +110,11 @@ export default {
         },
         experience: false,
         hasTransportBox: false
+      },
+      relevantInfoOrganizationStep: {
+        showInMap: false,
+        displayName: "",
+        specialization: ""
       }
     }
   }),
@@ -142,23 +130,9 @@ export default {
         volunteer: "Voluntario",
         adoptant: "Adoptante",
         refuge: "del Refugio",
-        vet: "la Clinica Veterinaria"
+        vet: "de la Clinica Veterinaria"
       };
       return ["Datos Personales", `Informacion ${map[this.userType]}`, "Fin"];
-    },
-    showHouseInfo() {
-      return this.form.secondStep.canAdopt || this.form.secondStep.canTransit;
-    },
-    showExperience() {
-      return (
-        this.form.secondStep.canAdopt ||
-        this.form.secondStep.canTransit ||
-        this.form.secondStep.canTravel ||
-        this.form.secondStep.canHelp
-      );
-    },
-    showAvailability() {
-      return this.form.secondStep.canTravel;
     }
   },
   methods: {
@@ -166,7 +140,9 @@ export default {
       return this.currentStep == step || this.currentStep > step;
     },
     prev() {
-      if (this.currentStep > 1) {
+      if (this.currentStep == 1) {
+        this.$emit("change-user-type");
+      } else if (this.currentStep > 1) {
         this.currentStep--;
       }
     },
@@ -184,7 +160,8 @@ export default {
         };
         await this.$auth.updateUser(data);
       } else if (this.currentStep == 2) {
-        // etc
+        const data = {};
+        await this.$auth.updateUser(data);
       }
       if (this.currentStep < 4) {
         this.currentStep++;
