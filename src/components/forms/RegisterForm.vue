@@ -74,7 +74,7 @@ export default {
     userType: String
   },
   data: () => ({
-    currentStep: 2,
+    currentStep: 1,
     submittingStep: false,
     form: {
       personalInfoStep: {
@@ -168,9 +168,38 @@ export default {
         await this.$auth.updateUser(data);
       } else if (this.currentStep == 2) {
         const data = {};
+        if (this.userType === "refuge" || this.userType === "vet") {
+          const key = this.userType === "refuge" ? "refugeInfo" : "vetInfo";
+          data[key] = {
+            displayName: this.form.relevantInfoOrganizationStep.displayName,
+            specialization: this.form.relevantInfoOrganizationStep.specialization
+              .split(",")
+              .map(str => str.trim()),
+            showInMap: this.form.relevantInfoOrganizationStep.showInMap
+          };
+        } else {
+          data.personInfo = {
+            canTravel: this.form.relevantInfoPersonStep.canTravel,
+            canAdopt: this.form.relevantInfoPersonStep.canAdopt,
+            canTransit: this.form.relevantInfoPersonStep.canTransit,
+            canHelp: this.form.relevantInfoPersonStep.canHelp,
+            houseType: this.form.relevantInfoPersonStep.houseType,
+            hoursAway: this.form.relevantInfoPersonStep.hoursAway,
+            houseProtection: this.form.relevantInfoPersonStep.houseProtection,
+            hasAdults: this.form.relevantInfoPersonStep.hasAdults,
+            adults: this.form.relevantInfoPersonStep.adults,
+            hasChildren: this.form.relevantInfoPersonStep.hasChildren,
+            children: this.form.relevantInfoPersonStep.children,
+            hasPets: this.form.relevantInfoPersonStep.hasPets,
+            otherPets: this.form.relevantInfoPersonStep.otherPets,
+            availability: this.form.relevantInfoPersonStep.availability,
+            experience: this.form.relevantInfoPersonStep.experience,
+            hasTransportBox: this.form.relevantInfoPersonStep.hasTransportBox
+          };
+        }
         await this.$auth.updateUser(data);
       }
-      if (this.currentStep < 4) {
+      if (this.currentStep < 3) {
         this.currentStep++;
       }
       this.submittingStep = false;
@@ -180,21 +209,50 @@ export default {
     const userKeys = Object.keys(this.$auth.mongoUser);
 
     const personalInfoStepKeys = Object.keys(this.form.personalInfoStep);
-
+    const relevantInfoPersonStepKeys = Object.keys(
+      this.form.relevantInfoPersonStep
+    );
+    const relevantInfoOrganizationStepKeys = Object.keys(
+      this.form.relevantInfoOrganizationStep
+    );
     userKeys.forEach(key => {
       const val = this.$auth.mongoUser[key];
-      if (val != null && typeof val === "object") {
-        Object.keys(val).forEach(k => {
-          const v = val[k];
-          if (personalInfoStepKeys.includes(k)) {
-            this.form.personalInfoStep[k] = v;
-          }
-        });
-      }
       if (personalInfoStepKeys.includes(key)) {
         this.form.personalInfoStep[key] = val;
       }
     });
+    if (this.userType === "refuge") {
+      Object.entries(this.$auth.mongoUser.refugeInfo).forEach(
+        ([refugeKey, val]) => {
+          if (relevantInfoOrganizationStepKeys.includes(refugeKey)) {
+            this.form.relevantInfoOrganizationStep[refugeKey] = val;
+            if (refugeKey === "specialization") {
+              this.form.relevantInfoOrganizationStep[refugeKey] =
+                Array.isArray(val) && val.join(", ");
+            }
+          }
+        }
+      );
+    } else if (this.userType === "vet") {
+      Object.entries(this.$auth.mongoUser.vetInfo).forEach(([vetKey, val]) => {
+        if (relevantInfoOrganizationStepKeys.includes(vetKey)) {
+          this.form.relevantInfoOrganizationStep[vetKey] = val;
+          if (vetKey === "specialization") {
+            this.form.relevantInfoOrganizationStep[vetKey] =
+              Array.isArray(val) && val.join(", ");
+          }
+        }
+      });
+    } else {
+      // es persona
+      Object.entries(this.$auth.mongoUser.personInfo).forEach(
+        ([personKey, val]) => {
+          if (relevantInfoPersonStepKeys.includes(personKey)) {
+            this.form.relevantInfoPersonStep[personKey] = val;
+          }
+        }
+      );
+    }
   }
 };
 </script>

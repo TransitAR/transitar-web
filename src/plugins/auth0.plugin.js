@@ -78,7 +78,7 @@ export const useAuth0 = ({
       },
       async updateUser(data) {
         try {
-          const user = await updateUser(data, this.accessToken);
+          const { data: user } = await updateUser(data, this.accessToken);
           this.mongoUser = user;
         } catch (err) {
           console.error("There was an error trying to update the user");
