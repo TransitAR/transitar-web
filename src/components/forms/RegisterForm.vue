@@ -15,26 +15,24 @@
       <div class="steps-content">
         <PersonalInfoStep
           v-if="currentStep === 1"
-          :isActive="isActive(1)"
           :step.sync="form.personalInfoStep"
         />
 
-        <UserSocialStep
-          v-if="currentStep === 2"
-          :isActive="isActive(2)"
-          :step.sync="form.secondStep"
-        />
+        <template v-if="currentStep === 2">
+          <RelevantInfoPersonStep
+            v-if="isPerson"
+            :user-type="userType"
+            :step.sync="form.relevantInfoPersonStep"
+          />
 
-        <UserHomeAndExperienceStep
-          v-if="currentStep === 3"
-          :isActive="isActive(3)"
-          :step.sync="form.thirdStep"
-          :showHouseInfo="showHouseInfo"
-          :showExperience="showExperience"
-          :showAvailability="showAvailability"
-        />
+          <RelevantInfoOrganizationStep
+            v-if="isOrganization"
+            :user-type="userType"
+            :step.sync="form.relevantInfoOrganizationStep"
+          />
+        </template>
 
-        <LastStep v-if="currentStep === 4" :isActive="isActive(4)" />
+        <LastStep v-if="currentStep === 3" :isActive="isActive(4)" />
       </div>
 
       <!-- actions -->
@@ -63,34 +61,25 @@
 
 <script>
 import PersonalInfoStep from "../forms/register/PersonalInfoStep";
-import UserSocialStep from "../forms/register/UserSocialStep";
-import UserHomeAndExperienceStep from "../forms/register/UserHomeAndExperienceStep";
-// import VetInformationStep from "../forms/register/VetInformationStep";
-import LastStep from "../forms/register/LastStep";
+import RelevantInfoPersonStep from "../forms/register/RelevantInfoPersonStep";
+import RelevantInfoOrganizationStep from "../forms/register/RelevantInfoOrganizationStep";
+import LastStep from "../forms/LastStep";
 import FormStepMarker from "./FormStepMarker";
-
-const stepMarkers = Object.assign([
-  "Datos Personales",
-  "Social",
-  "Informacion Relevante",
-  "Fin"
-]);
-
-// NO PUEDE ESTAR SI NO INICIO SESION (TODO: chequear por esto por las dudas)
 
 export default {
   name: "register-form",
   components: {
-    PersonalInfoStep,
     FormStepMarker,
-    UserSocialStep,
-    UserHomeAndExperienceStep,
-    // VetInformationStep,
+    PersonalInfoStep,
+    RelevantInfoPersonStep,
+    RelevantInfoOrganizationStep,
     LastStep
   },
+  props: {
+    userType: String
+  },
   data: () => ({
-    stepMarkers,
-    currentStep: 1,
+    currentStep: 2,
     submittingStep: false,
     form: {
       personalInfoStep: {
@@ -101,17 +90,21 @@ export default {
         landlinePhone: "",
         mobilePhone: ""
       },
+      relevantInfoPersonStep: {
+        canTravel: false,
+        canAdopt: false,
+        canTransit: false,
+        canHelp: false,
+
+        // bla
+        houseType: ""
+      },
+      relevantInfoOrganizationStep: {},
       secondStep: {
         instagram: "",
         twitter: "",
         facebook: "",
-        alerts: false,
-
-        // person
-        canTravel: false,
-        canAdopt: false,
-        canTransit: false,
-        canHelp: false
+        alerts: false
       },
       thirdStep: {
         houseType: null,
@@ -138,6 +131,21 @@ export default {
     }
   }),
   computed: {
+    isPerson() {
+      return this.userType === "volunteer" || this.userType === "adoptant";
+    },
+    isOrganization() {
+      return this.userType === "refuge" || this.userType === "vet";
+    },
+    stepMarkers() {
+      const map = {
+        volunteer: "Voluntario",
+        adoptant: "Adoptante",
+        refuge: "del Refugio",
+        vet: "la Clinica Veterinaria"
+      };
+      return ["Datos Personales", `Informacion ${map[this.userType]}`, "Fin"];
+    },
     showHouseInfo() {
       return this.form.secondStep.canAdopt || this.form.secondStep.canTransit;
     },

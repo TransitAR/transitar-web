@@ -99,10 +99,10 @@
 </template>
 
 <script>
-import PetInformationStep from "../../components/forms/register/PetInformationStep";
-import PetHealth from "../../components/forms/register/PetHealth";
-import PetTraitsAndStory from "../../components/forms/register/PetTraitsAndStory";
-import LastStep from "../../components/forms/register/LastStep";
+import PetInformationStep from "../../components/forms/pet/PetInformationStep";
+import PetHealth from "../../components/forms/pet/PetHealth";
+import PetTraitsAndStory from "../../components/forms/pet/PetTraitsAndStory";
+import LastStep from "../../components/forms/LastStep";
 
 export default {
   name: "pet-form",

@@ -15,7 +15,7 @@
         </button>
       </div>
       <!-- register form -->
-      <RegisterForm v-else />
+      <RegisterForm v-else :user-type="userType" />
     </div>
   </section>
 </template>

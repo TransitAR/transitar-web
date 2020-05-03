@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="step-content has-text-centered is-primary"
-    :class="{ 'is-active': isActive }"
-  >
+  <div class="step-content has-text-centered is-primary is-active">
     <div class="hero-body">
       <div class="columns is-centered">
         <div class="column is-half">
@@ -76,7 +73,6 @@ export default {
     PhoneField
   },
   props: {
-    isActive: Boolean,
     step: Object
   },
   data: () => ({
