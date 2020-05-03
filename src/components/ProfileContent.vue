@@ -14,7 +14,7 @@
     </div>
     <div class="columns">
       <div class="column">
-        <Register />
+        <Register v-if="isCurrentTabConfig" />
       </div>
     </div>
   </div>
@@ -29,6 +29,9 @@ export default {
   data: () => ({
     tabActive: ""
   }),
+  mounted() {
+    this.tabActive = this.Tabs.tabsNames[0];
+  },
   computed: {
     Tabs() {
       let tabs = [];
@@ -75,6 +78,9 @@ export default {
           tabsType: "founder"
         });
       else return null;
+    },
+    isCurrentTabConfig() {
+      return this.tabActive.includes("Configuración");
     }
   },
   methods: {
