@@ -1,15 +1,19 @@
 <template>
   <div>
     <div class="tabs is-centered">
-      <ul v-for="tab in Tabs" :key="tab">
-        <li class="is-active">
+      <ul>
+        <li
+          @click="toggleTab(tab)"
+          v-for="tab in Tabs.tabsNames"
+          :key="tab"
+          :class="{ 'is-active': tabActive == tab }"
+        >
           <a>{{ tab }}</a>
         </li>
       </ul>
     </div>
     <div class="columns">
       <div class="column">
-        <PetCard v-if="false" />
         <Register />
       </div>
     </div>
@@ -18,42 +22,65 @@
 
 <script>
 import Register from "../views/Register";
-import PetCard from "../components/cards/PetCard";
 export default {
   name: "ProfileContent",
-  components: { PetCard, Register },
+  components: { Register },
   props: ["user", "userType"],
+  data: () => ({
+    tabActive: ""
+  }),
   computed: {
     Tabs() {
       let tabs = [];
       if (this.userType == "refuge")
-        return (tabs = [
-          "Adopciones",
-          "Tránsito",
-          "Donaciones",
-          `Configuración ${this.userType}`
-        ]);
+        return (tabs = {
+          tabsNames: [
+            "Adopciones",
+            "Tránsito",
+            "Donaciones",
+            `Configuración del refugio`
+          ],
+          tabsType: "refuge"
+        });
       else if (this.userType == "volunteer")
-        return (tabs = [
-          "Adopciones",
-          "Tránsito",
-          "Donaciones",
-          "Traslados",
-          `Configuración ${userType}`
-        ]);
+        return (tabs = {
+          tabsNames: [
+            "Adopciones",
+            "Tránsito",
+            "Donaciones",
+            "Traslados",
+            `Configuración del voluntario`
+          ],
+          tabsType: "volunteer"
+        });
       else if (this.userType == "adoptant")
-        return (tabs = [`Configuración ${this.userType}`]);
+        return (tabs = {
+          tabsNames: [`Configuración del adoptante`],
+          tabsType: "adoptant"
+        });
       else if (this.userType == "vet")
-        return (tabs = [
-          "Adopciones",
-          "Tránsito",
-          "Donaciones",
-          "Especialidades",
-          `Configuración ${this.userType}`
-        ]);
+        return (tabs = {
+          tabsNames: [
+            "Adopciones",
+            "Tránsito",
+            "Donaciones",
+            "Especialidades",
+            `Configuración de la clínica`
+          ],
+          tabsType: "vet"
+        });
       else if (this.userType == "founder")
-        return (tabs = [`Configuración ${this.userType}`]);
+        return (tabs = {
+          tabsNames: [`Configuración del fundador`],
+          tabsType: "founder"
+        });
       else return null;
+    }
+  },
+  methods: {
+    toggleTab: function(tab) {
+      console.log(tab);
+      this.tabActive = tab;
     }
   }
 };

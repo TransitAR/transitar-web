@@ -121,7 +121,11 @@ export default {
   }),
   computed: {
     isPerson() {
-      return this.userType === "volunteer" || this.userType === "adoptant";
+      return (
+        this.userType === "volunteer" ||
+        this.userType === "adoptant" ||
+        this.userType === "founder"
+      );
     },
     isOrganization() {
       return this.userType === "refuge" || this.userType === "vet";
@@ -131,7 +135,8 @@ export default {
         volunteer: "Voluntario",
         adoptant: "Adoptante",
         refuge: "del Refugio",
-        vet: "de la Clinica Veterinaria"
+        vet: "de la Clinica Veterinaria",
+        founder: "del Fundador"
       };
       return ["Datos Personales", `Informacion ${map[this.userType]}`, "Fin"];
     }

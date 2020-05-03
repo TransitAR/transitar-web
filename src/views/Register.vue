@@ -45,6 +45,10 @@ const userTypes = Object.freeze([
   {
     val: "vet",
     text: "Clinica Veterinaria"
+  },
+  {
+    val: "founder",
+    text: "Fundador"
   }
 ]);
 
