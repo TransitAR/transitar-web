@@ -2,7 +2,10 @@
   <div class="card">
     <div class="card-image">
       <figure class="image is-4by3">
-        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image" />
+        <img
+          :src="`https://picsum.photos/id/${randomNumber}/300/225`"
+          alt="Placeholder image"
+        />
       </figure>
     </div>
     <div class="card-content">
@@ -27,6 +30,11 @@
 
 <script>
 export default {
-  name: "PetCard"
+  name: "PetCard",
+  computed: {
+    randomNumber() {
+      return Math.ceil(Math.random() * 100);
+    }
+  }
 };
 </script>

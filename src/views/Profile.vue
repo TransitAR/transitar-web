@@ -1,6 +1,6 @@
 <template>
   <section class="container is-fullhd">
-    <div class="card mt-5">
+    <div class="card mt-5 mb-10">
       <div class="card-content">
         <div class="media">
           <div class="media-left">
