@@ -78,6 +78,7 @@ export default {
     submittingStep: false,
     form: {
       personalInfoStep: {
+        nickname: "",
         name: "",
         lastName: "",
         address: "",
@@ -151,6 +152,7 @@ export default {
       if (this.currentStep == 1) {
         // personal info submit
         const data = {
+          nickname: this.form.personalInfoStep.nickname,
           name: this.form.personalInfoStep.name,
           lastName: this.form.personalInfoStep.lastName,
           address: this.form.personalInfoStep.address,

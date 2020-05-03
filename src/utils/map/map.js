@@ -1,4 +1,4 @@
-import homeSmall from "../../assets/png/home.png";
+import adoptantSmall from "../../assets/png/adoptant.png";
 import vetSmall from "../../assets/png/vet.png";
 import dogSmall from "../../assets/png/dog.png";
 import catSmall from "../../assets/png/cat.png";

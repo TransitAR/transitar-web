@@ -20,48 +20,34 @@
         </div>
 
         <div class="content">
-          <div class="image is-24x24 inline-block">
+          <div class="image is-24x24 inline-block pt-1 m-1">
             <img :src="UserImage" />
           </div>
           {{ UserType }}
           <br />
-          <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+          <div class="image is-24x24 inline-block pt-1 m-1">
+            <img src="../assets/png/celebrate.png" />
+          </div>
+          Se unió el {{ createdAt }}
+          <br />
+          <div class="image is-24x24 inline-block pt-1 m-1">
+            <img src="../assets/png/email.png" />
+          </div>
+          {{ User.email }}
         </div>
       </div>
     </div>
-    <div class="tabs is-centered">
-      <ul>
-        <li class="is-active">
-          <a>Adopciones</a>
-        </li>
-        <li>
-          <a>Tránsito</a>
-        </li>
-        <li>
-          <a>Donaciones</a>
-        </li>
-        <li>
-          <a>Configuración</a>
-        </li>
-      </ul>
-    </div>
-    <div class="columns">
-      <div class="column" v-for="n in 4" v-bind:key="n">
-        <PetCard />
-      </div>
-    </div>
+    <ProfileContent :user="User" :userType="this.$auth.mongoUser.userType" />
   </section>
 </template>
 
 <script>
-import PetCard from "../components/cards/PetCard";
-
+import ProfileContent from "../components/ProfileContent";
 export default {
   name: "profile",
-  components: { PetCard },
+  components: { ProfileContent },
   computed: {
     User() {
-      console.log(this.$auth.mongoUser);
       return this.$auth.mongoUser;
     },
     UserImage() {
@@ -73,7 +59,15 @@ export default {
 
       if (type == "refuge") return "Refugio";
       else if (type == "volunteer") return "Voluntario";
-      else return "Veterinaria";
+      else if (type == "adoptant") return "Adoptante";
+      else if (type == "vet") return "Veterinaria";
+      else if (type == "founder") return "Fundador";
+      else return null;
+    },
+    createdAt() {
+      const DateObj = new Date(Date.parse(this.$auth.mongoUser.createdAt));
+      let parsedDate = `${DateObj.getDate()}/${DateObj.getMonth()}/${DateObj.getFullYear()}`;
+      return parsedDate;
     }
   }
 };

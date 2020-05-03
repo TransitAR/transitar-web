@@ -11,6 +11,11 @@
               </p>
             </div>
             <TextField
+              placeholder="Nombre de usuario"
+              :value="step.nickname"
+              @input="updateStep(keys.nickname, $event)"
+            />
+            <TextField
               placeholder="Nombres"
               :value="step.name"
               @input="updateStep(keys.name, $event)"
@@ -57,6 +62,7 @@ import PhoneField from "../../inputs/PhoneField";
 
 // keys to match exactly in RegisterForm
 const keys = Object.freeze({
+  nickname: "nickname",
   name: "name",
   lastName: "lastName",
   address: "address",
