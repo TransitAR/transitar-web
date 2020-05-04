@@ -21,7 +21,7 @@ export const getVets = () => instance.get("/api/vets");
 export const getVet = id => instance.get(`/api/vets/${id}`);
 
 export const getUser = async accessToken => {
-  const { data: user } = await instance.get("api/users", {
+  const { data: user } = await instance.get("/api/users", {
     headers: { Authorization: `Bearer ${accessToken}` }
   });
   return user;
