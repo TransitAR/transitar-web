@@ -113,7 +113,7 @@ export default {
         hasTransportBox: false
       },
       relevantInfoOrganizationStep: {
-        showInMap: false,
+        showInMap: true,
         displayName: "",
         specialization: ""
       }
