@@ -163,11 +163,7 @@ export default {
     keys
   }),
   methods: {
-    updateStep(key, $event) {
-      const value =
-        $event.target.type === "checkbox"
-          ? $event.target.checked
-          : $event.target.value;
+    updateStep(key, value) {
       this.$emit("update:step", {
         ...this.step,
         [key]: value

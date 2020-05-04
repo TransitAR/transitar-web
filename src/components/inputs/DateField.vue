@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     onInput($event) {
-      this.$emit("input", $event);
+      this.$emit("input", $event.target.value);
     }
   }
 };

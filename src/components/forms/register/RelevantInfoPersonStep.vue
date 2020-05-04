@@ -237,11 +237,7 @@ export default {
     }
   },
   methods: {
-    updateStep(key, $event) {
-      const value =
-        $event.target.type === "checkbox"
-          ? $event.target.checked
-          : $event.target.value;
+    updateStep(key, value) {
       this.$emit("update:step", {
         ...this.step,
         [key]: value
@@ -253,13 +249,12 @@ export default {
         [key]: value
       });
     },
-    updateAvailability(day, $event) {
-      const { checked } = $event.target;
+    updateAvailability(day, value) {
       this.$emit("update:step", {
         ...this.step,
         [this.keys.availability]: {
           ...this.step.availability,
-          [day]: checked
+          [day]: value
         }
       });
     },

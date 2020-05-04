@@ -221,7 +221,7 @@ export default {
         this.form.personalInfoStep[key] = val;
       }
     });
-    if (this.userType === "refuge") {
+    if (this.userType === "refuge" && this.$auth.mongoUser.refugeInfo) {
       Object.entries(this.$auth.mongoUser.refugeInfo).forEach(
         ([refugeKey, val]) => {
           if (relevantInfoOrganizationStepKeys.includes(refugeKey)) {
@@ -233,7 +233,7 @@ export default {
           }
         }
       );
-    } else if (this.userType === "vet") {
+    } else if (this.userType === "vet" && this.$auth.mongoUser.vetInfo) {
       Object.entries(this.$auth.mongoUser.vetInfo).forEach(([vetKey, val]) => {
         if (relevantInfoOrganizationStepKeys.includes(vetKey)) {
           this.form.relevantInfoOrganizationStep[vetKey] = val;
@@ -243,7 +243,7 @@ export default {
           }
         }
       });
-    } else {
+    } else if (this.$auth.mongoUser.personInfo) {
       // es persona
       Object.entries(this.$auth.mongoUser.personInfo).forEach(
         ([personKey, val]) => {

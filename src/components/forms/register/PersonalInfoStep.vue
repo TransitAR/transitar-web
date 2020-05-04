@@ -85,10 +85,10 @@ export default {
     keys
   }),
   methods: {
-    updateStep(key, $event) {
+    updateStep(key, value) {
       this.$emit("update:step", {
         ...this.step,
-        [key]: $event.target.value
+        [key]: value
       });
     }
   }
