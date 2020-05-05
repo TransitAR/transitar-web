@@ -57,6 +57,13 @@ const routes = [
       import(/* webpackChunkName: "profile" */ "../views/Profile.vue")
   },
   {
+    path: "/perfil-test",
+    name: "profile-test",
+    beforeEnter: authGuard,
+    component: () =>
+      import(/* webpackChunkName: "profile-test" */ "../views/ProfileTest.vue")
+  },
+  {
     path: "/mascota/:id",
     name: "pet",
     component: () => import(/* webpackChunkName: "pet" */ "../views/Pet.vue")

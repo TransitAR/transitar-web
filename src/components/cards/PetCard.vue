@@ -3,7 +3,7 @@
     <div class="card-image">
       <figure class="image is-4by3">
         <img
-          :src="`https://picsum.photos/id/${randomNumber}/300/225`"
+          :src="`https://loremflickr.com/256/192/kitten?${randomNumber}`"
           alt="Placeholder image"
         />
       </figure>

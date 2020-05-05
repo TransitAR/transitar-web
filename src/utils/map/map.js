@@ -12,6 +12,21 @@ const accessToken =
 
 mapboxgl.accessToken = accessToken;
 
+// TODO: mover a un lugar mas sensato
+export const initMapProfile = (elem, location) => {
+  const map = new mapboxgl.Map({
+    container: elem,
+    style: "mapbox://styles/mapbox/outdoors-v11",
+    zoom: 14,
+    center: location?.coordinates
+  });
+
+  const markerElem = createMarkerElement(refugeSmall);
+  new mapboxgl.Marker(markerElem).setLngLat(location?.coordinates).addTo(map);
+
+  return map;
+};
+
 export const initMap = elem =>
   new mapboxgl.Map({
     container: elem,
