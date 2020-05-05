@@ -42,10 +42,10 @@
         <div class="w-3/5 text-center">
           <p>
             <i class="capitalize">{{ refuge.displayName }}</i> es un lugar muy
-            colorido lleno de peludos con ganas de hacer cosas y ser felices en
-            lugares y comer y dormir muchísimas horas – Quizás hasta a veces
-            juegan con cartones o cajas e incluso en algunas ocaciones
-            especiales comen zapallos desaforados haciendo mucho ruido.
+            colorido lleno de peludos con ganas de hacer cosas, ser felices en
+            lugares, comer y dormir muchísimas horas – A veces juegan con
+            cartones o cajas, e incluso en algunas ocaciones especiales comen
+            zapallo desaforadadamente haciendo mucho ruido.
           </p>
         </div>
       </div>
