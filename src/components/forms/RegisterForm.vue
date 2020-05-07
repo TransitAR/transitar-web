@@ -15,20 +15,20 @@
       <div class="steps-content">
         <PersonalInfoStep
           v-if="currentStep === 1"
-          :step.sync="form.personalInfoStep"
+          :step.sync="form.personalInfo"
         />
 
         <template v-if="currentStep === 2">
           <RelevantInfoPersonStep
             v-if="isPerson"
             :user-type="userType"
-            :step.sync="form.relevantInfoPersonStep"
+            :step.sync="form.relevantInfoPerson"
           />
 
           <RelevantInfoOrganizationStep
             v-if="isOrganization"
             :user-type="userType"
-            :step.sync="form.relevantInfoOrganizationStep"
+            :step.sync="form.relevantInfoOrganization"
           />
         </template>
 
@@ -55,6 +55,7 @@
 </template>
 
 <script>
+import { UserFormHelper } from "../../utils/forms";
 import PersonalInfoStep from "../forms/register/PersonalInfoStep";
 import RelevantInfoPersonStep from "../forms/register/RelevantInfoPersonStep";
 import RelevantInfoOrganizationStep from "../forms/register/RelevantInfoOrganizationStep";
@@ -76,48 +77,7 @@ export default {
   data: () => ({
     currentStep: 1,
     submittingStep: false,
-    form: {
-      personalInfoStep: {
-        nickname: "",
-        name: "",
-        lastName: "",
-        address: "",
-        dob: "",
-        landlinePhone: "",
-        mobilePhone: ""
-      },
-      relevantInfoPersonStep: {
-        canTravel: false,
-        canAdopt: false,
-        canTransit: false,
-        canHelp: false,
-        houseType: "",
-        hoursAway: "8-",
-        houseProtection: false,
-        hasAdults: false,
-        adults: "",
-        hasChildren: false,
-        children: "",
-        hasPets: false,
-        otherPets: "",
-        availability: {
-          mon: false,
-          tue: false,
-          wed: false,
-          thu: false,
-          fri: false,
-          sat: false,
-          sun: false
-        },
-        experience: false,
-        hasTransportBox: false
-      },
-      relevantInfoOrganizationStep: {
-        showInMap: true,
-        displayName: "",
-        specialization: ""
-      }
-    }
+    form: UserFormHelper.getCleanForm()
   }),
   computed: {
     isPerson() {
@@ -129,6 +89,12 @@ export default {
     },
     isOrganization() {
       return this.userType === "refuge" || this.userType === "vet";
+    },
+    isRefuge() {
+      return this.userType === "refuge";
+    },
+    isVet() {
+      return this.userType === "vet";
     },
     stepMarkers() {
       const map = {
@@ -155,49 +121,21 @@ export default {
     async next() {
       this.submittingStep = true;
       if (this.currentStep == 1) {
-        // personal info submit
-        const data = {
-          nickname: this.form.personalInfoStep.nickname,
-          name: this.form.personalInfoStep.name,
-          lastName: this.form.personalInfoStep.lastName,
-          address: this.form.personalInfoStep.address,
-          dob: this.form.personalInfoStep.dob,
-          landlinePhone: this.form.personalInfoStep.landlinePhone,
-          mobilePhone: this.form.personalInfoStep.mobilePhone
-        };
-        await this.$auth.updateUser(data);
+        await UserFormHelper.submitPersonalInfo(this.form.personalInfo);
       } else if (this.currentStep == 2) {
-        const data = {};
-        if (this.userType === "refuge" || this.userType === "vet") {
-          const key = this.userType === "refuge" ? "refugeInfo" : "vetInfo";
-          data[key] = {
-            displayName: this.form.relevantInfoOrganizationStep.displayName,
-            specialization: this.form.relevantInfoOrganizationStep.specialization
-              .split(",")
-              .map(str => str.trim()),
-            showInMap: this.form.relevantInfoOrganizationStep.showInMap
-          };
-        } else {
-          data.personInfo = {
-            canTravel: this.form.relevantInfoPersonStep.canTravel,
-            canAdopt: this.form.relevantInfoPersonStep.canAdopt,
-            canTransit: this.form.relevantInfoPersonStep.canTransit,
-            canHelp: this.form.relevantInfoPersonStep.canHelp,
-            houseType: this.form.relevantInfoPersonStep.houseType,
-            hoursAway: this.form.relevantInfoPersonStep.hoursAway,
-            houseProtection: this.form.relevantInfoPersonStep.houseProtection,
-            hasAdults: this.form.relevantInfoPersonStep.hasAdults,
-            adults: this.form.relevantInfoPersonStep.adults,
-            hasChildren: this.form.relevantInfoPersonStep.hasChildren,
-            children: this.form.relevantInfoPersonStep.children,
-            hasPets: this.form.relevantInfoPersonStep.hasPets,
-            otherPets: this.form.relevantInfoPersonStep.otherPets,
-            availability: this.form.relevantInfoPersonStep.availability,
-            experience: this.form.relevantInfoPersonStep.experience,
-            hasTransportBox: this.form.relevantInfoPersonStep.hasTransportBox
-          };
+        if (this.isRefuge) {
+          await UserFormHelper.submitRelevantInfoRefuge(
+            this.form.relevantInfoOrganization
+          );
+        } else if (this.isVet) {
+          await UserFormHelper.submitRelevantInfoVet(
+            this.form.relevantInfoOrganization
+          );
+        } else if (this.isPerson) {
+          await UserFormHelper.submitRelevantInfoPerson(
+            this.form.relevantInfoPerson
+          );
         }
-        await this.$auth.updateUser(data);
       }
       if (this.currentStep < 3) {
         this.currentStep++;
@@ -206,53 +144,7 @@ export default {
     }
   },
   mounted() {
-    const userKeys = Object.keys(this.$auth.mongoUser);
-
-    const personalInfoStepKeys = Object.keys(this.form.personalInfoStep);
-    const relevantInfoPersonStepKeys = Object.keys(
-      this.form.relevantInfoPersonStep
-    );
-    const relevantInfoOrganizationStepKeys = Object.keys(
-      this.form.relevantInfoOrganizationStep
-    );
-    userKeys.forEach(key => {
-      const val = this.$auth.mongoUser[key];
-      if (personalInfoStepKeys.includes(key)) {
-        this.form.personalInfoStep[key] = val;
-      }
-    });
-    if (this.userType === "refuge" && this.$auth.mongoUser.refugeInfo) {
-      Object.entries(this.$auth.mongoUser.refugeInfo).forEach(
-        ([refugeKey, val]) => {
-          if (relevantInfoOrganizationStepKeys.includes(refugeKey)) {
-            this.form.relevantInfoOrganizationStep[refugeKey] = val;
-            if (refugeKey === "specialization") {
-              this.form.relevantInfoOrganizationStep[refugeKey] =
-                Array.isArray(val) && val.join(", ");
-            }
-          }
-        }
-      );
-    } else if (this.userType === "vet" && this.$auth.mongoUser.vetInfo) {
-      Object.entries(this.$auth.mongoUser.vetInfo).forEach(([vetKey, val]) => {
-        if (relevantInfoOrganizationStepKeys.includes(vetKey)) {
-          this.form.relevantInfoOrganizationStep[vetKey] = val;
-          if (vetKey === "specialization") {
-            this.form.relevantInfoOrganizationStep[vetKey] =
-              Array.isArray(val) && val.join(", ");
-          }
-        }
-      });
-    } else if (this.$auth.mongoUser.personInfo) {
-      // es persona
-      Object.entries(this.$auth.mongoUser.personInfo).forEach(
-        ([personKey, val]) => {
-          if (relevantInfoPersonStepKeys.includes(personKey)) {
-            this.form.relevantInfoPersonStep[personKey] = val;
-          }
-        }
-      );
-    }
+    this.form = getPopulatedForm(this.$auth.mongoUser, this.userType);
   }
 };
 </script>
