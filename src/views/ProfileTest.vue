@@ -1,10 +1,16 @@
 <template>
-  <section class="container">
-    <div class="my-24 pt-8 px-8 pb-16 card">
+  <section class="container relative">
+    <div
+      class="flex md:hidden justify-center fixed z-10 bottom-0 inset-x-0 border-t border-solid border-gray-200 bg-gray-100 p-2"
+    >
+      <button class="button is-primary mr-8">Contactar</button>
+      <button class="button is-secondary">Donar</button>
+    </div>
+    <div class="my-16 md:my-24 pt-8 px-8 pb-16 card">
       <!-- 1st row -->
-      <div class="flex mb-8">
-        <!-- left -->
-        <div class="flex-1 flex text-center">
+      <div class="flex mb-8 flex-col md:flex-row">
+        <!-- mobile:2nd desktop:left -->
+        <div class="flex-1 flex text-center mt-8 md:mt-0 order-1 md:order-0">
           <div class="mr-4">
             <p class="heading mb-0">Animales</p>
             <p class="title">23</p>
@@ -18,8 +24,8 @@
             <p class="title">12</p>
           </div>
         </div>
-        <!-- center -->
-        <div class="flex-1 flex flex-col items-center">
+        <!-- mobile:1st desktop:center -->
+        <div class="flex-1 flex flex-col items-center order-0 md:order-1">
           <figure
             class="refuge-image rounded-full border-solid border-4 border-gray-600 -my-16 mb-8"
           >
@@ -31,15 +37,15 @@
           <h1 class="title capitalize">{{ refuge.displayName }}</h1>
           <h2 class="subtitle">@{{ user.nickname }}</h2>
         </div>
-        <!-- right -->
-        <div class="flex-1 flex justify-end">
+        <!-- mobile:hidden desktop:right -->
+        <div class="hidden md:flex flex-1 justify-end order-2">
           <button class="button is-primary mr-8">Contactar</button>
           <button class="button is-secondary">Donar</button>
         </div>
       </div>
       <!-- 2nd row -->
       <div class="flex justify-center">
-        <div class="w-3/5 text-center">
+        <div class="md:w-3/5 text-center">
           <p>
             <i class="capitalize">{{ refuge.displayName }}</i> es un lugar muy
             colorido lleno de peludos con ganas de hacer cosas, ser felices en
@@ -163,6 +169,7 @@ export default {
 .map {
   height: 300px;
   width: 400px;
+  max-width: 100%;
 }
 .map-placeholder {
   height: 300px;
