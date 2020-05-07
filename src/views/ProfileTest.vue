@@ -3,8 +3,14 @@
     <div
       class="flex md:hidden justify-center fixed z-10 bottom-0 inset-x-0 border-t border-solid border-gray-200 bg-gray-100 p-2"
     >
-      <button class="button is-primary mr-8">Contactar</button>
-      <button class="button is-secondary">Donar</button>
+      <button class="button is-primary mr-6 flex items-center is-rounded">
+        Contactar
+        <font-awesome-icon icon="envelope" class="ml-2" />
+      </button>
+      <button class="button is-secondary is-rounded">
+        Donar
+        <font-awesome-icon icon="hand-holding-heart" class="ml-2" />
+      </button>
     </div>
     <div class="my-16 md:my-24 pt-8 px-8 pb-16 card">
       <!-- 1st row -->
@@ -39,8 +45,14 @@
         </div>
         <!-- mobile:hidden desktop:right -->
         <div class="hidden md:flex flex-1 justify-end order-2">
-          <button class="button is-primary mr-8">Contactar</button>
-          <button class="button is-secondary">Donar</button>
+          <button class="button is-primary mr-6 flex items-center is-rounded">
+            Contactar
+            <font-awesome-icon icon="envelope" class="ml-2" />
+          </button>
+          <button class="button is-secondary is-rounded">
+            Donar
+            <font-awesome-icon icon="hand-holding-heart" class="ml-2" />
+          </button>
         </div>
       </div>
       <!-- 2nd row -->
