@@ -40,7 +40,7 @@
               src="../assets/refuge-example-image.jpg"
             />
           </figure>
-          <h1 class="title capitalize">{{ refuge.displayName }}</h1>
+          <h1 class="title capitalize text-center">{{ refuge.displayName }}</h1>
           <h2 class="subtitle">@{{ user.nickname }}</h2>
         </div>
         <!-- mobile:hidden desktop:right -->
