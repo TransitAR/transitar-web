@@ -144,7 +144,10 @@ export default {
     }
   },
   mounted() {
-    this.form = getPopulatedForm(this.$auth.mongoUser, this.userType);
+    this.form = UserFormHelper.getPopulatedForm(
+      this.$auth.mongoUser,
+      this.userType
+    );
   }
 };
 </script>
