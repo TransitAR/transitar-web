@@ -3,13 +3,11 @@
     <div
       class="flex md:hidden justify-center fixed z-10 bottom-0 inset-x-0 border-t border-solid border-gray-200 bg-gray-100 p-2"
     >
-      <button class="button is-primary mr-6 flex items-center is-rounded">
-        Contactar
-        <font-awesome-icon icon="envelope" class="ml-2" />
-      </button>
-      <button class="button is-secondary is-rounded">
+      <button class="button is-danger">
         Donar
-        <font-awesome-icon icon="hand-holding-heart" class="ml-2" />
+        <div class="image is-24x24 inline-block pl-1">
+          <img src="../assets/png/donation.png" />
+        </div>
       </button>
     </div>
     <div class="my-16 md:my-24 pt-8 px-8 pb-16 card">
@@ -45,13 +43,11 @@
         </div>
         <!-- mobile:hidden desktop:right -->
         <div class="hidden md:flex flex-1 justify-end order-2">
-          <button class="button is-primary mr-6 flex items-center is-rounded">
-            Contactar
-            <font-awesome-icon icon="envelope" class="ml-2" />
-          </button>
-          <button class="button is-secondary is-rounded">
+          <button class="button is-danger">
             Donar
-            <font-awesome-icon icon="hand-holding-heart" class="ml-2" />
+            <div class="image is-24x24 inline-block pl-1">
+              <img src="../assets/png/donation.png" />
+            </div>
           </button>
         </div>
       </div>
@@ -67,59 +63,99 @@
           </p>
         </div>
       </div>
-      <hr class="my-16" />
-      <!-- 3rd row -->
-      <div class="flex items-center flex-col">
-        <p class="title is-4">Especializaciones</p>
-        <p class="subtitle is-6">
-          Areas particulares a la cuales
-          <i class="capitalize">{{ refuge.displayName }}</i> se dedica y
-          compromete
-        </p>
-        <div class="max-w-sm text-center">
-          <span
-            class="tag is-info capitalize m-1"
-            v-for="specialization in refuge.specialization"
-            :key="specialization"
-            >{{ specialization }}</span
+      <!-- 3rd row (tabs) -->
+      <div class="tabs is-centered my-16 pb-16">
+        <ul>
+          <li
+            v-for="tab in tabs"
+            :key="tab.key"
+            :class="{ 'is-active': currentTab === tab.key }"
+            @click="selectTab(tab.key)"
           >
-        </div>
+            <a class="capitalize">{{ tab.title }}</a>
+          </li>
+        </ul>
       </div>
-      <hr class="mx-auto my-16 w-64" />
-      <!-- 4th row -->
-      <div class="flex items-center flex-col">
-        <p class="title is-4">
-          Ubicacion
-        </p>
-        <p class="subtitle is-6">
-          Por motivos de privacidad la ubicacion es aproximada y no exacta
-        </p>
-        <div
-          v-if="!mapLoaded"
-          class="map-placeholder bg-gray-100 flex justify-center items-center rounded-md border-solid border-2 border-gray-600"
-        >
-          <Spinner size="2rem" />
-        </div>
-        <div
-          ref="map"
-          class="map rounded-md border-solid border-2 border-gray-600"
-          v-show="mapLoaded"
-        ></div>
+      <!-- home tab -->
+      <div
+        v-show="currentTab === tabs.home.key"
+        class="flex items-center flex-col"
+      >
+        Home
       </div>
-      <hr class="mx-auto my-16 w-64" />
-      <!-- 5th row -->
-      <div class="flex items-center flex-col">
-        <p class="title is-4">
-          Adopciones
-        </p>
-        <p class="subtitle is-6">
-          Animales que <i class="capitalize">{{ refuge.displayName }}</i> cuida
-          mientras buscan hogar para ser felices
-        </p>
+      <!-- adoptions tab -->
+      <div
+        v-show="currentTab === tabs.adoptions.key"
+        class="flex items-center flex-col"
+      >
         <div class="flex flex-wrap justify-center px-8">
           <div v-for="n in 5" :key="n" class="m-4">
             <PetCard class="w-64" />
           </div>
+        </div>
+      </div>
+      <!-- info tab -->
+      <div
+        v-show="currentTab === tabs.info.key"
+        class="flex items-center flex-col"
+      >
+        <!-- specializations -->
+        <div class="flex items-center flex-col">
+          <p class="title is-4">Especializaciones</p>
+          <p class="subtitle is-6">
+            Areas particulares a la cuales
+            <i class="capitalize">{{ refuge.displayName }}</i> se dedica y
+            compromete
+          </p>
+          <div class="max-w-sm text-center">
+            <span
+              class="tag is-primary capitalize m-1"
+              v-for="specialization in refuge.specialization"
+              :key="specialization"
+              >{{ specialization }}</span
+            >
+          </div>
+        </div>
+        <hr class="mx-auto my-16" />
+        <!-- location -->
+        <div class="flex items-center flex-col">
+          <p class="title is-4">
+            Ubicacion
+          </p>
+          <p class="subtitle is-6">
+            Por motivos de privacidad la ubicacion es aproximada y no exacta
+          </p>
+          <div
+            v-if="!mapLoaded"
+            class="map-placeholder bg-gray-100 flex justify-center items-center rounded-md border-solid border-2 border-gray-600"
+          >
+            <Spinner size="2rem" />
+          </div>
+          <div
+            ref="map"
+            class="map rounded-md border-solid border-2 border-gray-600"
+            v-show="mapLoaded"
+          ></div>
+        </div>
+      </div>
+      <!-- contact tab -->
+      <div
+        v-show="currentTab === tabs.contact.key"
+        class="flex items-center flex-col"
+      >
+        <!-- data -->
+        <div class="flex items-center flex-col">
+          <p class="title is-4">Información de contacto</p>
+          <p class="subtitle is-6">
+            {{ user.email }}
+          </p>
+        </div>
+        <hr class="mx-auto my-16" />
+        <div class="flex items-center flex-col">
+          <p class="title is-4">Redes sociales</p>
+          <p class="subtitle is-6">
+            {{ user.email }}
+          </p>
         </div>
       </div>
     </div>
@@ -131,6 +167,25 @@ import Spinner from "../components/Spinner";
 import PetCard from "../components/cards/PetCard";
 import { initMapProfile } from "../utils/map";
 
+const tabs = Object.freeze({
+  home: {
+    key: "home",
+    title: "Inicio"
+  },
+  adoptions: {
+    key: "adoptions",
+    title: "Adopciones"
+  },
+  info: {
+    key: "info",
+    title: "Info"
+  },
+  contact: {
+    key: "contact",
+    title: "Contacto"
+  }
+});
+
 export default {
   name: "ProfileTest",
   components: {
@@ -138,7 +193,9 @@ export default {
     PetCard
   },
   data: () => ({
-    mapLoaded: false
+    tabs,
+    mapLoaded: false,
+    currentTab: tabs.home.key
   }),
   computed: {
     user() {
@@ -159,6 +216,11 @@ export default {
               "trastornos neurotico-compulsivos"
             ]
       };
+    }
+  },
+  methods: {
+    selectTab(key) {
+      this.currentTab = key;
     }
   },
   mounted() {
