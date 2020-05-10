@@ -34,12 +34,18 @@ export const getCleanForm = () => ({
       sun: false
     },
     experience: false,
-    hasTransportBox: false
+    hasTransportBox: false,
+    instagram: "",
+    twitter: "",
+    facebook: ""
   },
   relevantInfoOrganization: {
     showInMap: true,
     displayName: "",
-    specialization: ""
+    specialization: "",
+    instagram: "",
+    twitter: "",
+    facebook: ""
   }
 });
 
@@ -74,7 +80,10 @@ export const submitRelevantInfoPerson = async step => {
       otherPets: step.otherPets,
       availability: step.availability,
       experience: step.experience,
-      hasTransportBox: step.hasTransportBox
+      hasTransportBox: step.hasTransportBox,
+      instagram: step.instagram,
+      twitter: step.twitter,
+      facebook: step.facebook
     }
   };
   return getInstance().updateUser(data);
@@ -85,7 +94,10 @@ export const submitRelevantInfoRefuge = step => {
     refugeInfo: {
       displayName: step.displayName,
       specialization: step.specialization.split(",").map(str => str.trim()),
-      showInMap: step.showInMap
+      showInMap: step.showInMap,
+      twitter: step.twitter,
+      instagram: step.instagram,
+      facebook: step.facebook
     }
   };
   return getInstance().updateUser(data);
@@ -96,7 +108,10 @@ export const submitRelevantInfoVet = step => {
     vetInfo: {
       displayName: step.displayName,
       specialization: step.specialization.split(",").map(str => str.trim()),
-      showInMap: step.showInMap
+      showInMap: step.showInMap,
+      twitter: step.twitter,
+      instagram: step.instagram,
+      facebook: step.facebook
     }
   };
   return getInstance().updateUser(data);

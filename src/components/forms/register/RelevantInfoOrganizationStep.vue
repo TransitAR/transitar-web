@@ -29,6 +29,23 @@
                 :value="step.specialization"
                 @input="updateStep(keys.specialization, $event)"
               />
+              <div class="is-divider"></div>
+              <p class="label">Redes sociales</p>
+              <TextField
+                placeholder="Usuario Twitter"
+                :value="step.twitter"
+                @input="updateStep(keys.twitter, $event)"
+              />
+              <TextField
+                placeholder="Usuario Instagram"
+                :value="step.instagram"
+                @input="updateStep(keys.instagram, $event)"
+              />
+              <TextField
+                placeholder="Usuario Facebook"
+                :value="step.facebook"
+                @input="updateStep(keys.facebook, $event)"
+              />
             </div>
           </div>
         </div>
@@ -43,7 +60,10 @@ import CheckboxField from "../../inputs/CheckboxField";
 const keys = Object.freeze({
   displayName: "displayName",
   showInMap: "showInMap",
-  specialization: "specialization"
+  specialization: "specialization",
+  twitter: "twitter",
+  instagram: "instagram",
+  facebook: "facebook"
 });
 
 export default {
