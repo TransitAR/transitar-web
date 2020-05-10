@@ -129,6 +129,7 @@
                 />
                 <div class="is-divider"></div>
               </div>
+              <div class="is-divider"></div>
             </template>
             <template v-if="showExperience">
               <p class="label pb-3">Experiencia con animales</p>
@@ -144,7 +145,26 @@
                 :checked="step.hasTransportBox"
                 @input="updateStep(keys.hasTransportBox, $event)"
               />
+              <div class="is-divider"></div>
             </template>
+            <div>
+              <p class="label pb-3">Redes sociales</p>
+              <TextField
+                placeholder="Usuario Twitter"
+                :value="step.twitter"
+                @input="updateStep(keys.twitter, $event)"
+              />
+              <TextField
+                placeholder="Usuario Instagram"
+                :value="step.instagram"
+                @input="updateStep(keys.instagram, $event)"
+              />
+              <TextField
+                placeholder="Usuario Facebook"
+                :value="step.facebook"
+                @input="updateStep(keys.facebook, $event)"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -181,7 +201,10 @@ const keys = Object.freeze({
   otherPets: "otherPets",
   availability: "availability",
   experience: "experience",
-  hasTransportBox: "hasTransportBox"
+  hasTransportBox: "hasTransportBox",
+  twitter: "twitter",
+  instagram: "instagram",
+  facebook: "facebook"
 });
 
 export default {
@@ -191,6 +214,7 @@ export default {
     SelectField,
     RadioGroup,
     NumberField,
+    TextField,
     Message
   },
   props: {
