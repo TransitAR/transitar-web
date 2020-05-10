@@ -9,7 +9,7 @@
         >
       </p>
       <p>
-        <font-awesome-icon :icon="['fab', 'instagram']" class="mr-2" /><a
+        <font-awesome-icon :icon="['fab', 'instagram-square']" class="mr-2" /><a
           href="https://www.instagram.com/refugiar_ok/"
           target="_blank"
           >refugiar_ok</a

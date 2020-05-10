@@ -52,19 +52,7 @@
           </button>
         </div>
       </div>
-      <!-- 2nd row -->
-      <div class="flex justify-center">
-        <div class="md:w-3/5 text-center">
-          <p>
-            <i class="capitalize">{{ refuge.displayName }}</i> es un lugar muy
-            colorido lleno de peludos con ganas de hacer cosas, ser felices en
-            lugares, comer y dormir muchísimas horas – A veces juegan con
-            cartones o cajas, e incluso en algunas ocaciones especiales comen
-            zapallo desaforadadamente haciendo mucho ruido.
-          </p>
-        </div>
-      </div>
-      <!-- 3rd row (tabs) -->
+      <!-- 2nd row (tabs) -->
       <div class="tabs is-centered my-16 pb-16">
         <ul>
           <li
@@ -81,17 +69,7 @@
       <div
         v-show="currentTab === tabs.home.key"
         class="flex items-center flex-col"
-      >
-        <div class="md:w-3/5 text-center">
-          <p>
-            <i class="capitalize">{{ refuge.displayName }}</i> es un lugar muy
-            colorido lleno de peludos con ganas de hacer cosas, ser felices en
-            lugares, comer y dormir muchísimas horas – A veces juegan con
-            cartones o cajas, e incluso en algunas ocaciones especiales comen
-            zapallo desaforadadamente haciendo mucho ruido.
-          </p>
-        </div>
-      </div>
+      ></div>
       <!-- adoptions tab -->
       <div
         v-show="currentTab === tabs.adoptions.key"
@@ -108,6 +86,18 @@
         v-show="currentTab === tabs.info.key"
         class="flex items-center flex-col"
       >
+        <div class="flex items-center flex-col">
+          <div class="md:w-3/5 text-center">
+            <p>
+              <i class="capitalize">{{ refuge.displayName }}</i> es un lugar muy
+              colorido lleno de peludos con ganas de hacer cosas, ser felices en
+              lugares, comer y dormir muchísimas horas – A veces juegan con
+              cartones o cajas, e incluso en algunas ocaciones especiales comen
+              zapallo desaforadadamente haciendo mucho ruido.
+            </p>
+          </div>
+        </div>
+        <hr class="mx-auto my-16" />
         <!-- specializations -->
         <div class="flex items-center flex-col">
           <p class="title is-4">Especializaciones</p>
@@ -156,9 +146,7 @@
         <div class="flex items-center flex-col">
           <p class="title is-4">Información de contacto</p>
           <div class="content">
-            <div class="image is-24x24 inline-block pt-1 m-1">
-              <img src="../assets/png/email.png" />
-            </div>
+            <font-awesome-icon icon="envelope" class="mr-3" size="lg" />
             {{ user.email }}
           </div>
         </div>
@@ -166,27 +154,39 @@
         <div class="flex items-center flex-col">
           <p class="title is-4">Redes sociales</p>
           <div class="content">
-            <div class="image is-24x24 inline-block pt-1 m-1">
-              <img src="../assets/png/facebook.png" />
+            <div class="d-flex align-center">
+              <font-awesome-icon
+                :icon="['fab', 'facebook-square']"
+                class="mr-3"
+                size="lg"
+              />
+              <span>{{ user.facebook }}</span>
             </div>
-            {{ user.facebook }}
             <br />
-            <div class="image is-24x24 inline-block pt-1 m-1">
-              <img src="../assets/png/twitter.png" />
+            <div class="d-flex align-center">
+              <font-awesome-icon
+                :icon="['fab', 'twitter']"
+                class="mr-3"
+                size="lg"
+              />
+              <span>{{ user.twitter }}</span>
             </div>
-            {{ user.twitter }}
             <br />
-            <div class="image is-24x24 inline-block pt-1 m-1">
-              <img src="../assets/png/instagram.png" />
+            <div class="d-flex align-center">
+              <font-awesome-icon
+                :icon="['fab', 'instagram-square']"
+                class="mr-3"
+                size="lg"
+              />
+              <span>{{ user.instagram }}</span>
             </div>
-            {{ user.instagram }}
           </div>
         </div>
         <hr class="mx-auto my-16" />
         <div class="flex items-center flex-col">
           <p class="title is-4">Donaciones</p>
           <div class="flex flex-wrap justify-center px-8">
-            <div v-for="n in 3" :key="n" class="m-4">
+            <div v-for="n in 2" :key="n" class="m-4">
               <DonationCard />
             </div>
           </div>
