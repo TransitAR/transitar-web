@@ -5,9 +5,7 @@
     >
       <button class="button is-danger">
         Donar
-        <div class="image is-24x24 inline-block pl-1">
-          <img src="../assets/png/donation.png" />
-        </div>
+        <font-awesome-icon icon="heart" class="ml-2" />
       </button>
     </div>
     <div class="my-16 md:my-24 pt-8 px-8 pb-16 card">
@@ -15,13 +13,13 @@
       <div class="flex mb-8 flex-col md:flex-row">
         <!-- mobile:2nd desktop:left -->
         <div class="flex-1 flex text-center mt-8 md:mt-0 order-1 md:order-0">
-          <div class="mr-4">
-            <p class="heading mb-0">Animales</p>
-            <p class="title">23</p>
+          <div class="mx-4">
+            <p class="heading mb-0">Voluntarios</p>
+            <p class="title">20</p>
           </div>
           <div class="mx-4">
-            <p class="heading mb-0">Comentarios</p>
-            <p class="title">8</p>
+            <p class="heading mb-0">Animales</p>
+            <p class="title">80</p>
           </div>
           <div class="ml-4">
             <p class="heading mb-0">Recomendaciones</p>
@@ -38,16 +36,19 @@
               src="../assets/refuge-example-image.jpg"
             />
           </figure>
-          <h1 class="title capitalize text-center">{{ refuge.displayName }}</h1>
+          <h1 class="title capitalize text-center">
+            {{ refuge.displayName }}
+            <div class="image is-24x24 inline-block pt-1 m-1">
+              <img :src="UserImage" />
+            </div>
+          </h1>
           <h2 class="subtitle">@{{ user.nickname }}</h2>
         </div>
         <!-- mobile:hidden desktop:right -->
         <div class="hidden md:flex flex-1 justify-end order-2">
           <button class="button is-danger">
             Donar
-            <div class="image is-24x24 inline-block pl-1">
-              <img src="../assets/png/donation.png" />
-            </div>
+            <font-awesome-icon icon="heart" class="ml-2" />
           </button>
         </div>
       </div>
@@ -81,7 +82,15 @@
         v-show="currentTab === tabs.home.key"
         class="flex items-center flex-col"
       >
-        Home
+        <div class="md:w-3/5 text-center">
+          <p>
+            <i class="capitalize">{{ refuge.displayName }}</i> es un lugar muy
+            colorido lleno de peludos con ganas de hacer cosas, ser felices en
+            lugares, comer y dormir muchísimas horas – A veces juegan con
+            cartones o cajas, e incluso en algunas ocaciones especiales comen
+            zapallo desaforadadamente haciendo mucho ruido.
+          </p>
+        </div>
       </div>
       <!-- adoptions tab -->
       <div
@@ -89,7 +98,7 @@
         class="flex items-center flex-col"
       >
         <div class="flex flex-wrap justify-center px-8">
-          <div v-for="n in 5" :key="n" class="m-4">
+          <div v-for="n in 8" :key="n" class="m-4">
             <PetCard class="w-64" />
           </div>
         </div>
@@ -146,16 +155,41 @@
         <!-- data -->
         <div class="flex items-center flex-col">
           <p class="title is-4">Información de contacto</p>
-          <p class="subtitle is-6">
+          <div class="content">
+            <div class="image is-24x24 inline-block pt-1 m-1">
+              <img src="../assets/png/email.png" />
+            </div>
             {{ user.email }}
-          </p>
+          </div>
         </div>
         <hr class="mx-auto my-16" />
         <div class="flex items-center flex-col">
           <p class="title is-4">Redes sociales</p>
-          <p class="subtitle is-6">
-            {{ user.email }}
-          </p>
+          <div class="content">
+            <div class="image is-24x24 inline-block pt-1 m-1">
+              <img src="../assets/png/facebook.png" />
+            </div>
+            {{ user.facebook }}
+            <br />
+            <div class="image is-24x24 inline-block pt-1 m-1">
+              <img src="../assets/png/twitter.png" />
+            </div>
+            {{ user.twitter }}
+            <br />
+            <div class="image is-24x24 inline-block pt-1 m-1">
+              <img src="../assets/png/instagram.png" />
+            </div>
+            {{ user.instagram }}
+          </div>
+        </div>
+        <hr class="mx-auto my-16" />
+        <div class="flex items-center flex-col">
+          <p class="title is-4">Donaciones</p>
+          <div class="flex flex-wrap justify-center px-8">
+            <div v-for="n in 3" :key="n" class="m-4">
+              <DonationCard />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -165,6 +199,7 @@
 <script>
 import Spinner from "../components/Spinner";
 import PetCard from "../components/cards/PetCard";
+import DonationCard from "../components/DonationCard";
 import { initMapProfile } from "../utils/map";
 
 const tabs = Object.freeze({
@@ -190,7 +225,8 @@ export default {
   name: "ProfileTest",
   components: {
     Spinner,
-    PetCard
+    PetCard,
+    DonationCard
   },
   data: () => ({
     tabs,
@@ -200,6 +236,25 @@ export default {
   computed: {
     user() {
       return this.$auth.mongoUser;
+    },
+    UserImage() {
+      let img = require(`../assets/png/${this.$auth.mongoUser.userType}.png`);
+      return img;
+    },
+    UserType() {
+      let type = this.$auth.mongoUser.userType;
+
+      if (type == "refuge") return "Refugio";
+      else if (type == "volunteer") return "Voluntario";
+      else if (type == "adoptant") return "Adoptante";
+      else if (type == "vet") return "Veterinaria";
+      else if (type == "founder") return "Fundador";
+      else return null;
+    },
+    createdAt() {
+      const DateObj = new Date(Date.parse(this.$auth.mongoUser.createdAt));
+      let parsedDate = `${DateObj.getDate()}/${DateObj.getMonth()}/${DateObj.getFullYear()}`;
+      return parsedDate;
     },
     refuge() {
       return {

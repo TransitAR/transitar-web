@@ -8,7 +8,8 @@ import {
   faPaw,
   faEnvelope,
   faAt,
-  faHandHoldingHeart
+  faHandHoldingHeart,
+  faHeart
 } from "@fortawesome/free-solid-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -16,7 +17,7 @@ import { Auth0Plugin } from "./plugins/auth0.plugin";
 import "bulma-extensions/dist/css/bulma-extensions.min.css";
 import "bulma-extensions/dist/js/bulma-extensions";
 
-library.add(faPaw, faEnvelope, faAt, faHandHoldingHeart, faInstagram);
+library.add(faPaw, faEnvelope, faAt, faHandHoldingHeart, faInstagram, faHeart);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
