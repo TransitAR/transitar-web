@@ -6,7 +6,7 @@
   >
     <div class="hero-body">
       <div class="columns is-centered">
-        <div class="column is-half">
+        <div class="column is-half text-left">
           <!-- VET FORM START -->
 
           <div>

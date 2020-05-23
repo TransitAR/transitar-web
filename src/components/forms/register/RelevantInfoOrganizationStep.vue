@@ -2,7 +2,7 @@
   <div class="step-content has-text-centered is-primary is-active">
     <div class="hero-body">
       <div class="columns is-centered">
-        <div class="column is-half">
+        <div class="column is-half text-left">
           <div>
             <div class="field">
               <p class="label pb-6">Nombre de la organizacion</p>
