@@ -33,13 +33,13 @@
           >
             <img
               class="rounded-full"
-              src="../assets/refuge-example-image.jpg"
+              src="../../assets/refuge-example-image.jpg"
             />
           </figure>
           <h1 class="title capitalize text-center">
             {{ refuge.displayName }}
             <div class="image is-24x24 inline-block pt-1 m-1">
-              <img :src="UserImage" />
+              <img src="../../assets/png/refuge.png" />
             </div>
           </h1>
           <h2 class="subtitle">@{{ user.nickname }}</h2>
@@ -197,10 +197,10 @@
 </template>
 
 <script>
-import Spinner from "../components/Spinner";
-import PetCard from "../components/cards/PetCard";
-import DonationCard from "../components/DonationCard";
-import { initMapProfile } from "../utils/map";
+import Spinner from "../Spinner";
+import PetCard from "../cards/PetCard";
+import DonationCard from "../DonationCard";
+import { initMapProfile } from "../../utils/map";
 
 const tabs = Object.freeze({
   home: {
@@ -222,7 +222,7 @@ const tabs = Object.freeze({
 });
 
 export default {
-  name: "ProfileTest",
+  name: "RefugeProfile",
   components: {
     Spinner,
     PetCard,
@@ -237,30 +237,14 @@ export default {
     user() {
       return this.$auth.mongoUser;
     },
-    UserImage() {
-      let img = require(`../assets/png/${this.$auth.mongoUser.userType}.png`);
-      return img;
-    },
-    UserType() {
-      let type = this.$auth.mongoUser.userType;
-
-      if (type == "refuge") return "Refugio";
-      else if (type == "volunteer") return "Voluntario";
-      else if (type == "adoptant") return "Adoptante";
-      else if (type == "vet") return "Veterinaria";
-      else if (type == "founder") return "Fundador";
-      else return null;
-    },
-    createdAt() {
-      const DateObj = new Date(Date.parse(this.$auth.mongoUser.createdAt));
-      let parsedDate = `${DateObj.getDate()}/${DateObj.getMonth()}/${DateObj.getFullYear()}`;
-      return parsedDate;
+    info() {
+      return this.user.refugeInfo;
     },
     refuge() {
       return {
-        displayName: this.user.refugeInfo?.displayName || "El Pandorofugio",
-        specialization: this.user.refugeInfo?.specialization.length
-          ? this.user.refugeInfo.specialization
+        displayName: this.info.displayName || "El Pandorofugio",
+        specialization: this.info.specialization.length
+          ? this.info.specialization
           : [
               "vacunacion",
               "cuidado",

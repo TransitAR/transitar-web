@@ -30,9 +30,6 @@
         <router-link class="navbar-item" to="/perfil" v-if="$auth.user"
           >Perfil</router-link
         >
-        <router-link class="navbar-item" to="/perfil-test" v-if="$auth.user"
-          >Perfil-Test</router-link
-        >
         <router-link class="navbar-item" to="/noticias">
           Noticias
         </router-link>
