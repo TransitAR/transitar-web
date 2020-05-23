@@ -1,6 +1,6 @@
 <template>
-  <article class="message is-primary">
-    <div class="message-header">
+  <article class="message">
+    <div class="message-header" v-if="title">
       <p>{{ title }}</p>
     </div>
     <div class="message-body">

@@ -1,8 +1,8 @@
 <template>
   <div class="step-content has-text-centered is-primary is-active">
-    <div class="hero-body">
+    <div class="hero-body" :class="{ 'py-2': narrow }">
       <div class="columns is-centered">
-        <div class="column is-half">
+        <div class="column is-half text-left">
           <div>
             <div class="field">
               <label class="label">¿Cómo podés ayudar?</label>
@@ -218,8 +218,15 @@ export default {
     Message
   },
   props: {
-    userType: String,
-    step: Object
+    narrow: Boolean,
+    step: {
+      type: Object,
+      required: true
+    },
+    userType: {
+      type: String,
+      required: true
+    }
   },
   data: () => ({
     keys,

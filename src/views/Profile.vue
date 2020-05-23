@@ -1,17 +1,20 @@
 <template>
   <div>
     <RefugeProfile v-if="isRefuge" />
+    <PersonProfile v-else-if="isAdoptant || isVolunteer" />
     <div v-else>Algo salió mal!</div>
   </div>
 </template>
 
 <script>
-import RefugeProfile from "../components/profiles/RefugeProfile";
+import RefugeProfile from "@/components/profiles/RefugeProfile";
+import PersonProfile from "@/components/profiles/PersonProfile";
 
 export default {
   name: "Profile",
   components: {
-    RefugeProfile
+    RefugeProfile,
+    PersonProfile
   },
   computed: {
     user() {
@@ -20,14 +23,14 @@ export default {
     isRefuge() {
       return this.user.userType === "refuge";
     },
+    isVet() {
+      return this.user.userType === "vet";
+    },
     isVolunteer() {
       return this.user.userType === "volunteer";
     },
     isAdoptant() {
       return this.user.userType === "adoptant";
-    },
-    isVet() {
-      return this.user.userType === "vet";
     }
   }
 };

@@ -1,7 +1,7 @@
 <template>
   <div class="field">
     <label class="label">{{ label }}</label>
-    <p class="help pb-6">{{ sublabel }}</p>
+    <p class="help" :class="narrow ? 'pb-3' : 'pb-6'">{{ sublabel }}</p>
     <div class="select">
       <select :placeholder="placeholder" @input="onInput" :value="value">
         <option v-for="option in options" :key="option">
@@ -19,6 +19,7 @@ export default {
     label: String,
     sublabel: String,
     placeholder: String,
+    narrow: Boolean,
     value: {
       type: String,
       required: true

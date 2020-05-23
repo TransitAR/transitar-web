@@ -1,8 +1,8 @@
 <template>
   <div class="step-content has-text-centered is-primary is-active">
-    <div class="hero-body">
+    <div class="hero-body" :class="{ 'py-2': narrow }">
       <div class="columns is-centered">
-        <div class="column is-half">
+        <div class="column is-half text-left">
           <div>
             <div>
               <label class="label">Datos personales</label>
@@ -79,6 +79,7 @@ export default {
     PhoneField
   },
   props: {
+    narrow: Boolean,
     step: Object
   },
   data: () => ({

@@ -31,15 +31,12 @@
           <figure
             class="refuge-image rounded-full border-solid border-4 border-gray-600 -my-16 mb-8"
           >
-            <img
-              class="rounded-full"
-              src="../../assets/refuge-example-image.jpg"
-            />
+            <img class="rounded-full" src="@/assets/refuge-example-image.jpg" />
           </figure>
           <h1 class="title capitalize text-center">
             {{ refuge.displayName }}
             <div class="image is-24x24 inline-block pt-1 m-1">
-              <img src="../../assets/png/refuge.png" />
+              <img src="@/assets/png/refuge.png" />
             </div>
           </h1>
           <h2 class="subtitle">@{{ user.nickname }}</h2>
@@ -197,10 +194,10 @@
 </template>
 
 <script>
-import Spinner from "../Spinner";
-import PetCard from "../cards/PetCard";
-import DonationCard from "../DonationCard";
-import { initMapProfile } from "../../utils/map";
+import Spinner from "@/components/Spinner";
+import PetCard from "@/components/cards/PetCard";
+import DonationCard from "@/components/DonationCard";
+import { initMapProfile } from "@/components/../utils/map";
 
 const tabs = Object.freeze({
   home: {
