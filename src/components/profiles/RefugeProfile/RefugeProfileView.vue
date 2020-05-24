@@ -30,7 +30,7 @@
             <img class="rounded-full" src="@/assets/refuge-example-image.jpg" />
           </figure>
           <h1 class="title capitalize text-center">
-            {{ info.displayName }}
+            {{ info.username }}
             <div class="image is-24x24 inline-block pt-1 m-1">
               <img src="@/assets/png/refuge.png" />
             </div>
