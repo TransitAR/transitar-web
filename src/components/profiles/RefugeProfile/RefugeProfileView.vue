@@ -3,7 +3,7 @@
     <div
       class="flex md:hidden justify-center fixed z-10 bottom-0 inset-x-0 border-t border-solid border-gray-200 bg-gray-100 p-2"
     >
-      <button class="button mr-8" @click="edit()">
+      <button v-if="!readOnly" class="button mr-8" @click="edit()">
         Editar
         <font-awesome-icon icon="pencil-alt" class="ml-2" />
       </button>
@@ -17,7 +17,7 @@
       <div class="flex mb-8 flex-col md:flex-row">
         <!-- mobile:2nd desktop:left -->
         <div class="flex-1 flex mt-8 md:mt-0 hidden md:block md:order-0">
-          <button class="button" @click="edit()">
+          <button v-if="!readOnly" class="button" @click="edit()">
             Editar
             <font-awesome-icon icon="pencil-alt" class="ml-2" />
           </button>
@@ -35,7 +35,7 @@
               <img src="@/assets/png/refuge.png" />
             </div>
           </h1>
-          <h2 class="subtitle">@{{ user.nickname }}</h2>
+          <h2 class="subtitle">@{{ refuge.nickname }}</h2>
         </div>
         <!-- mobile:hidden desktop:right -->
         <div class="hidden md:flex flex-1 justify-end order-2">
@@ -126,7 +126,7 @@
           <p class="title is-4">Información de contacto</p>
           <div class="content">
             <font-awesome-icon icon="envelope" class="mr-3" size="lg" />
-            {{ user.email }}
+            {{ refuge.email }}
           </div>
         </div>
         <hr class="mx-auto my-8 md:my-16" />
@@ -139,7 +139,7 @@
                 class="mr-3"
                 size="lg"
               />
-              <span>{{ user.facebook }}</span>
+              <span>{{ refuge.facebook }}</span>
             </div>
             <br />
             <div class="d-flex align-center">
@@ -148,7 +148,7 @@
                 class="mr-3"
                 size="lg"
               />
-              <span>{{ user.twitter }}</span>
+              <span>{{ refuge.twitter }}</span>
             </div>
             <br />
             <div class="d-flex align-center">
@@ -157,7 +157,7 @@
                 class="mr-3"
                 size="lg"
               />
-              <span>{{ user.instagram }}</span>
+              <span>{{ refuge.instagram }}</span>
             </div>
           </div>
         </div>
@@ -194,17 +194,21 @@ export default {
     TabsField,
     SelectField
   },
+  props: {
+    readOnly: Boolean,
+    refuge: {
+      type: Object,
+      required: true
+    }
+  },
   data: () => ({
     sections,
     mapLoaded: false,
     currentSection: sections[0]
   }),
   computed: {
-    user() {
-      return this.$auth.mongoUser;
-    },
     info() {
-      return this.user.refugeInfo;
+      return this.refuge.refugeInfo;
     },
     showInfoSection() {
       return this.currentSection === this.sections[0];
@@ -228,7 +232,7 @@ export default {
     const fallbackLocation = [-58.235084, -34.765982];
     const map = initMapProfile(
       this.$refs.map,
-      this.user.location || { coordinates: fallbackLocation }
+      this.refuge.location || { coordinates: fallbackLocation }
     );
     map.on("load", () => {
       this.mapLoaded = true;

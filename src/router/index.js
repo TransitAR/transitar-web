@@ -62,6 +62,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "pet" */ "../views/Pet.vue")
   },
   {
+    path: "/refugio/:identifier",
+    name: "refuge",
+    component: () => import(/* webpackChunkName: "pet" */ "../views/Refuge.vue")
+  },
+  {
     path: "/info",
     name: "info",
     component: () => import(/* webpackChunkName: "info" */ "../views/Info.vue")

@@ -1,7 +1,11 @@
 <template>
   <div>
     <RefugeProfileEdit v-if="isEditing" @finish-edit="finishEdit" />
-    <RefugeProfileView v-else @start-edit="startEdit" />
+    <RefugeProfileView
+      v-else
+      @start-edit="startEdit"
+      :refuge="$auth.mongoUser"
+    />
   </div>
 </template>
 
