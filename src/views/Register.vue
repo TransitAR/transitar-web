@@ -1,27 +1,29 @@
 <template>
-  <section class="container is-fullhd p-4 md:p-16">
-    <div class="columns is-centered is-vcentered">
-      <!-- verify email -->
-      <VerifyEmail v-if="!$auth.user.email_verified" />
-      <!-- user type -->
-      <div v-else-if="!submittedUserType">
+  <div class="container is-fullhd p-4 md:p-16">
+    <!-- verify email -->
+    <VerifyEmail v-if="!$auth.user.email_verified" />
+    <!-- user type -->
+    <div v-else-if="!submittedUserType">
+      <div class="flex justify-center">
         <RadioGroup name="user-type" v-model="userType" :options="userTypes" />
+      </div>
+      <div class="flex justify-end mt-8 px-8">
         <button
-          class="button is-light mt-8"
+          class="button is-light"
           :class="submittingUserType ? 'is-loading' : ''"
           @click="next()"
         >
           Continuar
         </button>
       </div>
-      <!-- register form -->
-      <RegisterForm
-        v-else
-        @change-user-type="submittedUserType = false"
-        :user-type="userType"
-      />
     </div>
-  </section>
+    <!-- register form -->
+    <RegisterForm
+      v-else
+      @change-user-type="submittedUserType = false"
+      :user-type="userType"
+    />
+  </div>
 </template>
 
 <script>

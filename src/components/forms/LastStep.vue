@@ -3,9 +3,12 @@
     <div class="hero-body">
       <div class="columns is-centered">
         <div class="column is-half">
-          <div>
+          <p class="mb-4 subtitle">
             ¡LISTO!
-          </div>
+          </p>
+          <button class="button is-primary">
+            <router-link to="/perfil">Ir a mi perfil</router-link>
+          </button>
         </div>
       </div>
     </div>

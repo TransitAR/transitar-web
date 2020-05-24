@@ -1,54 +1,52 @@
 <template>
-  <section class="container is-fullhd">
-    <div class="steps pt-6">
-      <!-- progress -->
+  <section class="steps pt-6">
+    <!-- progress -->
 
-      <FormStepMarker
-        v-for="(markerTitle, i) in stepMarkers"
-        :key="markerTitle"
-        :marker="markerTitle"
-        :number="i + 1"
-        :current-step="currentStep"
+    <FormStepMarker
+      v-for="(markerTitle, i) in stepMarkers"
+      :key="markerTitle"
+      :marker="markerTitle"
+      :number="i + 1"
+      :current-step="currentStep"
+    />
+
+    <!-- steps -->
+    <div class="steps-content">
+      <PersonalInfoStep
+        v-if="currentStep === 1"
+        :step.sync="form.personalInfo"
       />
 
-      <!-- steps -->
-      <div class="steps-content">
-        <PersonalInfoStep
-          v-if="currentStep === 1"
-          :step.sync="form.personalInfo"
+      <template v-if="currentStep === 2">
+        <RelevantInfoPersonStep
+          v-if="isPerson"
+          :user-type="userType"
+          :step.sync="form.relevantInfoPerson"
         />
 
-        <template v-if="currentStep === 2">
-          <RelevantInfoPersonStep
-            v-if="isPerson"
-            :user-type="userType"
-            :step.sync="form.relevantInfoPerson"
-          />
+        <RelevantInfoOrganizationStep
+          v-if="isOrganization"
+          :user-type="userType"
+          :step.sync="form.relevantInfoOrganization"
+        />
+      </template>
 
-          <RelevantInfoOrganizationStep
-            v-if="isOrganization"
-            :user-type="userType"
-            :step.sync="form.relevantInfoOrganization"
-          />
-        </template>
+      <LastStep v-if="currentStep === 3" :isActive="isActive(4)" />
+    </div>
 
-        <LastStep v-if="currentStep === 3" :isActive="isActive(4)" />
+    <!-- actions -->
+    <div class="steps-actions">
+      <div class="steps-action">
+        <a class="button is-light" v-on:click="prev()">Anterior</a>
       </div>
-
-      <!-- actions -->
-      <div class="steps-actions">
-        <div class="steps-action">
-          <a class="button is-light" v-on:click="prev()">Anterior</a>
-        </div>
-        <div class="steps-action">
-          <a
-            class="button is-light"
-            :class="{ 'is-loading': submittingStep }"
-            v-on:click="next()"
-            :disabled="currentStep == 3"
-            >Siguiente</a
-          >
-        </div>
+      <div class="steps-action">
+        <a
+          class="button is-light"
+          :class="{ 'is-loading': submittingStep }"
+          v-on:click="next()"
+          :disabled="currentStep == 3"
+          >Siguiente</a
+        >
       </div>
     </div>
   </section>
