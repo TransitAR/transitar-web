@@ -11,6 +11,19 @@
                 :value="step.displayName"
                 @input="updateStep(keys.displayName, $event)"
               />
+              <p class="label mt-8">
+                Nombre de de usuario para la organizacion
+              </p>
+              <p class="help pb-6">
+                Es la forma en que los demas miembros de nuestra comunidad van a
+                identificar al refugio
+              </p>
+              <TextField
+                placeholder="NombreDeUsuario"
+                :value="step.username"
+                @input="updateStep(keys.username, $event)"
+              />
+              <p class="help">Intenta no usar espacios.</p>
               <CheckboxField
                 class="mt-8"
                 label="Aparecer en el mapa de RefugiAR"
@@ -58,6 +71,7 @@ import TextField from "../../inputs/TextField";
 import CheckboxField from "../../inputs/CheckboxField";
 
 const keys = Object.freeze({
+  username: "username",
   displayName: "displayName",
   showInMap: "showInMap",
   specialization: "specialization",

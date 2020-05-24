@@ -40,6 +40,7 @@ export const getCleanForm = () => ({
     facebook: ""
   },
   relevantInfoOrganization: {
+    username: "",
     showInMap: true,
     displayName: "",
     specialization: "",
@@ -92,6 +93,7 @@ export const submitRelevantInfoPerson = async step => {
 export const submitRelevantInfoRefuge = step => {
   const data = {
     refugeInfo: {
+      username: step.username,
       displayName: step.displayName,
       specialization: step.specialization.split(",").map(str => str.trim()),
       showInMap: step.showInMap,
