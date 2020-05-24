@@ -35,7 +35,7 @@
               <img src="@/assets/png/refuge.png" />
             </div>
           </h1>
-          <h2 class="subtitle">@{{ refuge.username }}</h2>
+          <h2 class="subtitle">@{{ info.username }}</h2>
         </div>
         <!-- mobile:hidden desktop:right -->
         <div class="hidden md:flex flex-1 justify-end order-2">
