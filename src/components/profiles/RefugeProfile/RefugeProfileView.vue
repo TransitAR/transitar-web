@@ -30,12 +30,12 @@
             <img class="rounded-full" src="@/assets/refuge-example-image.jpg" />
           </figure>
           <h1 class="title capitalize text-center">
-            {{ info.username }}
+            {{ info.displayName }}
             <div class="image is-24x24 inline-block pt-1 m-1">
               <img src="@/assets/png/refuge.png" />
             </div>
           </h1>
-          <h2 class="subtitle">@{{ refuge.nickname }}</h2>
+          <h2 class="subtitle">@{{ refuge.username }}</h2>
         </div>
         <!-- mobile:hidden desktop:right -->
         <div class="hidden md:flex flex-1 justify-end order-2">
