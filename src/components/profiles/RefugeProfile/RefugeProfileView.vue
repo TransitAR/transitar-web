@@ -139,7 +139,7 @@
                 class="mr-3"
                 size="lg"
               />
-              <span>{{ refuge.facebook }}</span>
+              <span>{{ info.facebook }}</span>
             </div>
             <br />
             <div class="d-flex align-center">
@@ -148,7 +148,7 @@
                 class="mr-3"
                 size="lg"
               />
-              <span>{{ refuge.twitter }}</span>
+              <span>{{ info.twitter }}</span>
             </div>
             <br />
             <div class="d-flex align-center">
@@ -157,7 +157,7 @@
                 class="mr-3"
                 size="lg"
               />
-              <span>{{ refuge.instagram }}</span>
+              <span>{{ info.instagram }}</span>
             </div>
           </div>
         </div>
