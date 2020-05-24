@@ -1,6 +1,6 @@
 <template>
   <div class="step-content has-text-centered is-primary is-active">
-    <div class="hero-body">
+    <div class="hero-body" :class="{ 'pt-2': narrow }">
       <div class="columns is-centered">
         <div class="column is-half text-left">
           <div>
@@ -73,6 +73,7 @@ export default {
     CheckboxField
   },
   props: {
+    narrow: Boolean,
     userType: String,
     step: Object
   },

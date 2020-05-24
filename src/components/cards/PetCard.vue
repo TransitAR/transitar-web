@@ -9,11 +9,7 @@
       </figure>
     </div>
     <div class="card-content">
-      <div class="media">
-        <div class="media-content">
-          <p class="title is-4">Pandorino</p>
-        </div>
-      </div>
+      <p class="title is-4">Pandorino</p>
       <div class="content">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
         iaculis mauris.

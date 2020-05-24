@@ -4,7 +4,7 @@
       `step-content has-text-centered is-primary ${isActive ? 'is-active' : ''}`
     "
   >
-    <div class="hero-body">
+    <div class="hero-body" :class="{ 'pt-2': narrow }">
       <div class="columns is-centered">
         <div class="column is-half text-left">
           <!-- VET FORM START -->
@@ -156,6 +156,7 @@ const keys = Object.freeze({
 export default {
   name: "SecondStep",
   props: {
+    narrow: Boolean,
     isActive: Boolean,
     step: Object
   },

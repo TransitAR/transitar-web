@@ -7,7 +7,7 @@
         :class="{ 'is-active': value === tab }"
         @click="selectTab(tab)"
       >
-        <a class="capitalize">{{ tab }}</a>
+        <a>{{ tab }}</a>
       </li>
     </ul>
   </div>
