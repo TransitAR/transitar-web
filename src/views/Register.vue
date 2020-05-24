@@ -4,10 +4,15 @@
     <VerifyEmail v-if="!$auth.user.email_verified" />
     <!-- user type -->
     <div v-else-if="!submittedUserType">
-      <div class="flex justify-center">
+      <div class="flex items-center flex-col mb-12">
+        <p class="label">Seleccioná el tipo de usuario</p>
+        <p class="help pb-6">
+          Para más información acerca de los diferentes tipos de usuario podés
+          entrar <router-link to="/info" class="underline">acá</router-link>
+        </p>
         <RadioGroup name="user-type" v-model="userType" :options="userTypes" />
       </div>
-      <div class="flex justify-end mt-8 px-8">
+      <div class="flex justify-center">
         <button
           class="button is-light"
           :class="submittingUserType ? 'is-loading' : ''"
