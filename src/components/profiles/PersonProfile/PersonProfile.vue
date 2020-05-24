@@ -4,15 +4,15 @@
       <div class="message md:w-1/2 mx-auto mt-5">
         <Message>
           <p>
-            La informacion provista por vos solamente va a ser utilizada a la
-            hora de contactarte con algun ente externo dentro de RefugiAR, como
-            pueden ser Refugios o Veterinarias.
+            <strong
+              >Recorda que tu perfil es privado y sólo vos podés acceder a tus
+              datos.</strong
+            >
           </p>
           <p>
-            <strong
-              >Recorda que tu perfil es privado y solo lo vas a poder ver
-              vos!</strong
-            >
+            La información personal provista será compartida únicamente en el
+            caso de solicitar contacto con Refugios o Veterinarias, y siempre
+            dentro de RefugiAR.org.
           </p>
         </Message>
       </div>

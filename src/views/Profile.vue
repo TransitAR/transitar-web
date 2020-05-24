@@ -2,7 +2,7 @@
   <div>
     <RefugeProfile v-if="isRefuge" />
     <PersonProfile v-else-if="isAdoptant || isVolunteer" />
-    <div v-else>Algo salió mal!</div>
+    <div v-else>¡Algo salió mal!</div>
   </div>
 </template>
 
