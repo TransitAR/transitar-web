@@ -144,39 +144,37 @@
           <p class="title is-4">Redes sociales</p>
           <div class="content">
             <div class="d-flex align-center">
-              <font-awesome-icon
-                :icon="['fab', 'facebook-square']"
-                class="mr-3"
-                size="lg"
-              />
-              <span>{{ info.facebook }}</span>
+              <font-awesome-icon :icon="['fab', 'facebook-square']" size="lg" />
+              <span class="ml-3">{{ info.facebook }}</span>
             </div>
             <br />
             <div class="d-flex align-center">
-              <font-awesome-icon
-                :icon="['fab', 'twitter']"
-                class="mr-3"
-                size="lg"
-              />
-              <span>{{ info.twitter }}</span>
+              <font-awesome-icon :icon="['fab', 'twitter']" size="lg" />
+              <span class="ml-3">{{ info.twitter }}</span>
             </div>
             <br />
             <div class="d-flex align-center">
               <font-awesome-icon
                 :icon="['fab', 'instagram-square']"
-                class="mr-3"
                 size="lg"
               />
-              <span>{{ info.instagram }}</span>
+              <span class="ml-3">{{ info.instagram }}</span>
             </div>
           </div>
         </div>
         <hr class="mx-auto my-8 md:my-16" />
-        <div class="flex items-center flex-col">
+        <div class="flex items-center flex-col" v-if="info.donations">
           <p class="title is-4">Donaciones</p>
-          <div class="flex flex-wrap justify-center px-8">
-            <div v-for="n in 2" :key="n" class="m-4">
-              <DonationCard />
+          <div
+            class="flex flex-wrap justify-center px-8"
+            v-if="hasDonationBanks"
+          >
+            <div
+              v-for="bankInfo in donations.banks"
+              :key="bankInfo.accountID"
+              class="my-4 md:m-4"
+            >
+              <BankDonationCard :info="bankInfo" />
             </div>
           </div>
         </div>
@@ -188,7 +186,7 @@
 <script>
 import Spinner from "@/components/Spinner";
 import PetCard from "@/components/cards/PetCard";
-import DonationCard from "@/components/DonationCard";
+import BankDonationCard from "./BankDonationCard";
 import SelectField from "@/components/inputs/SelectField";
 import TabsField from "@/components/inputs/TabsField";
 import { initMapProfile } from "@/components/../utils/map";
@@ -200,7 +198,7 @@ export default {
   components: {
     Spinner,
     PetCard,
-    DonationCard,
+    BankDonationCard,
     TabsField,
     SelectField
   },
@@ -220,6 +218,9 @@ export default {
   computed: {
     info() {
       return this.refuge.refugeInfo;
+    },
+    hasDonationBanks() {
+      return this.info.donation?.banks?.length;
     },
     showInfoSection() {
       return this.currentSection === this.sections[0];
