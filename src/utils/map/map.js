@@ -16,7 +16,7 @@ mapboxgl.accessToken = accessToken;
 export const initMapProfile = (elem, location) => {
   const map = new mapboxgl.Map({
     container: elem,
-    style: "mapbox://styles/mapbox/outdoors-v11",
+    style: "mapbox://styles/mapbox/outdoors-v11?optimize=true",
     zoom: 14,
     center: location?.coordinates
   });
@@ -30,7 +30,7 @@ export const initMapProfile = (elem, location) => {
 export const initMap = elem =>
   new mapboxgl.Map({
     container: elem,
-    style: "mapbox://styles/mapbox/outdoors-v11",
+    style: "mapbox://styles/mapbox/outdoors-v11?optimize=true",
     zoom: 12,
     center: [-58.381592, -34.603722] // Capital Federal
   });
