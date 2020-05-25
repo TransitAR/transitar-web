@@ -109,7 +109,7 @@
             Por motivos de privacidad la ubicacion es aproximada y no exacta
           </p>
           <div
-            v-if="!mapLoaded"
+            v-show="!mapLoaded"
             class="map-placeholder bg-gray-100 flex justify-center items-center rounded-md border-solid border-2 border-gray-600"
           >
             <Spinner size="2rem" />
@@ -213,6 +213,7 @@ export default {
   },
   data: () => ({
     sections,
+    map: null,
     mapLoaded: false,
     currentSection: sections[0]
   }),
@@ -240,13 +241,16 @@ export default {
   },
   mounted() {
     const fallbackLocation = [-58.235084, -34.765982];
-    const map = initMapProfile(
+    this.map = initMapProfile(
       this.$refs.map,
       this.refuge.location || { coordinates: fallbackLocation }
     );
-    map.on("load", () => {
+    this.map.on("load", () => {
       this.mapLoaded = true;
     });
+  },
+  destroyed() {
+    this.map.remove();
   }
 };
 </script>
