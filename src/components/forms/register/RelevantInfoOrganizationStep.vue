@@ -62,6 +62,38 @@
                 :value="step.facebook"
                 @input="updateStep(keys.facebook, $event)"
               />
+              <div class="is-divider"></div>
+              <p class="label">Donaciones</p>
+              <label class="label has-text-weight-medium">Titular</label>
+              <TextField
+                placeholder="Titular"
+                :value="step.bankAccountHolder"
+                @input="updateStep(keys.bankAccountHolder, $event)"
+              />
+              <label class="label has-text-weight-medium">Banco</label>
+              <TextField
+                placeholder="Banco"
+                :value="step.bankAccount"
+                @input="updateStep(keys.bankAccount, $event)"
+              />
+              <label class="label has-text-weight-medium">Cuenta</label>
+              <TextField
+                placeholder="Cuenta"
+                :value="step.bankAccountID"
+                @input="updateStep(keys.bankAccountID, $event)"
+              />
+              <label class="label has-text-weight-medium">CBU</label>
+              <TextField
+                placeholder="CBU"
+                :value="step.bankAccountCBU"
+                @input="updateStep(keys.bankAccountCBU, $event)"
+              />
+              <label class="label has-text-weight-medium">Alias</label>
+              <TextField
+                placeholder="Alias"
+                :value="step.bankAccountAlias"
+                @input="updateStep(keys.bankAccountAlias, $event)"
+              />
             </div>
           </div>
         </div>
@@ -80,7 +112,16 @@ const keys = Object.freeze({
   specialization: "specialization",
   twitter: "twitter",
   instagram: "instagram",
-  facebook: "facebook"
+  facebook: "facebook",
+  mpLink: String,
+  mpAmount: String,
+  mpEmail: String,
+  mpBankAccountHolder: String,
+  bankAccountHolder: "bankAccountHolder",
+  bankAccount: "bankAccount",
+  bankAccountID: "bankAccountID",
+  bankAccountCBU: "bankAccountCBU",
+  bankAccountAlias: "bankAccountAlias"
 });
 
 export default {

@@ -103,7 +103,16 @@ export const submitRelevantInfoRefuge = step => {
       showInMap: step.showInMap,
       twitter: step.twitter,
       instagram: step.instagram,
-      facebook: step.facebook
+      facebook: step.facebook,
+      mpLink: step.mpLink,
+      mpAmount: step.mpAmount,
+      mpEmail: step.mpEmail,
+      mpBankAccountHolder: step.mpBankAccountHolder,
+      bankAccountHolder: step.bankAccountHolder,
+      bankAccount: step.bankAccount,
+      bankAccountID: step.bankAccountID,
+      bankAccountCBU: step.bankAccountCBU,
+      bankAccountAlias: step.bankAccountAlias
     }
   };
   return getInstance().updateUser(data);
