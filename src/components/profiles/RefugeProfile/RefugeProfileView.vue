@@ -85,7 +85,7 @@
         <!-- specializations -->
         <div class="flex items-center flex-col">
           <p class="title is-4">Especializaciones</p>
-          <p class="subtitle is-6">
+          <p class="subtitle is-6 pt-3">
             Areas particulares a la cuales
             <i class="capitalize">{{ info.displayName }}</i> se dedica y
             compromete
@@ -105,7 +105,7 @@
           <p class="title is-4">
             Ubicacion
           </p>
-          <p class="subtitle is-6">
+          <p class="subtitle is-6 pt-3">
             Por motivos de privacidad la ubicacion es aproximada y no exacta
           </p>
           <div
