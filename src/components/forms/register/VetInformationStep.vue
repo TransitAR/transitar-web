@@ -85,6 +85,7 @@
               <p class="help pb-6">
                 Redes sociales de la veterinaria
               </p>
+              <label class="label has-text-weight-medium">Instagram</label>
               <input
                 class="input"
                 type="text"
@@ -93,6 +94,7 @@
                 @input="updateStep(keys.instagram, $event)"
               />
             </div>
+            <label class="label has-text-weight-medium">Twitter</label>
             <div class="field">
               <input
                 class="input"
@@ -102,6 +104,7 @@
                 @input="updateStep(keys.twitter, $event)"
               />
             </div>
+            <label class="label has-text-weight-medium">Facebook</label>
             <div class="field">
               <input
                 class="input"

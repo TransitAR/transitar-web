@@ -10,40 +10,49 @@
                 Datos del responsable de esta cuenta
               </p>
             </div>
+            <label class="label has-text-weight-medium"
+              >Nombre de usuario</label
+            >
             <TextField
               placeholder="Nombre de usuario"
               :value="step.nickname"
               @input="updateStep(keys.nickname, $event)"
             />
+            <label class="label has-text-weight-medium">Nombre</label>
             <TextField
               placeholder="Nombres"
               :value="step.name"
               @input="updateStep(keys.name, $event)"
             />
+            <label class="label has-text-weight-medium">Apellido</label>
             <TextField
               placeholder="Apellido"
               :value="step.lastName"
               @input="updateStep(keys.lastName, $event)"
             />
+            <label class="label has-text-weight-medium"
+              >Fecha de nacimiento</label
+            >
             <DateField
               placeholder="Fecha de nacimiento"
               :value="step.dob"
               @input="updateStep(keys.dob, $event)"
             />
+            <label class="label has-text-weight-medium">Domicilio</label>
             <TextField
               placeholder="Domicilio"
               help-text="Calle, altura, localidad, provincia."
               :value="step.address"
               @input="updateStep(keys.address, $event)"
             />
+            <label class="label has-text-weight-medium">Teléfono fijo</label>
             <PhoneField
-              placeholder="Teléfono fijo"
               help-text="Sin guiones y sin el 0."
               :value="step.landlinePhone"
               @input="updateStep(keys.landlinePhone, $event)"
             />
+            <label class="label has-text-weight-medium">Celular</label>
             <PhoneField
-              placeholder="Teléfono celular"
               help-text="Sin guiones y sin el 0."
               :value="step.mobilePhone"
               @input="updateStep(keys.mobilePhone, $event)"

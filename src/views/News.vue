@@ -6,7 +6,7 @@
           <div class="tile">
             <div class="tile is-parent is-vertical">
               <article class="tile is-child notification is-info">
-                <p class="title">Patas de chorizo</p>
+                <p class="title">Patas felices</p>
                 <p class="subtitle">Nuevo refugio en nuestra comunidad</p>
                 <p class="subtitle is-4">¡Bienvenidos!</p>
               </article>

@@ -44,16 +44,19 @@
               />
               <div class="is-divider"></div>
               <p class="label">Redes sociales</p>
+              <label class="label has-text-weight-medium">Twitter</label>
               <TextField
                 placeholder="Usuario Twitter"
                 :value="step.twitter"
                 @input="updateStep(keys.twitter, $event)"
               />
+              <label class="label has-text-weight-medium">Instagram</label>
               <TextField
                 placeholder="Usuario Instagram"
                 :value="step.instagram"
                 @input="updateStep(keys.instagram, $event)"
               />
+              <label class="label has-text-weight-medium">Facebook</label>
               <TextField
                 placeholder="Usuario Facebook"
                 :value="step.facebook"

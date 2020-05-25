@@ -18,25 +18,25 @@
         <div class="level-item has-text-centered">
           <div>
             <p class="heading">Animales</p>
-            <p class="title">3,456</p>
+            <p class="title">0</p>
           </div>
         </div>
         <div class="level-item has-text-centered">
           <div>
             <p class="heading">Voluntarios</p>
-            <p class="title">123</p>
+            <p class="title">0</p>
           </div>
         </div>
         <div class="level-item has-text-centered">
           <div>
             <p class="heading">Adoptantes</p>
-            <p class="title">456K</p>
+            <p class="title">0</p>
           </div>
         </div>
         <div class="level-item has-text-centered">
           <div>
             <p class="heading">Refugios</p>
-            <p class="title">789</p>
+            <p class="title">0</p>
           </div>
         </div>
       </div>

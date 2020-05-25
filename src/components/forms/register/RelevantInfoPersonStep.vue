@@ -34,6 +34,18 @@
                   :checked="step.canHelp"
                   @input="updateStep(keys.canHelp, $event)"
                 />
+                <CheckboxField
+                  label="Tengo impresora 3D o puedo ayudar a fabricar prótesis"
+                  name="can-print"
+                  :checked="step.canPrint"
+                  @input="updateStep(keys.canPrint, $event)"
+                />
+                <CheckboxField
+                  label="Tengo materiales o puedo ayudar a construir cuchas"
+                  name="can-build"
+                  :checked="step.canBuild"
+                  @input="updateStep(keys.canBuild, $event)"
+                />
               </div>
             </div>
 
@@ -149,16 +161,19 @@
             </template>
             <div>
               <p class="label pb-3">Redes sociales</p>
+              <label class="label has-text-weight-medium">Twitter</label>
               <TextField
                 placeholder="Usuario Twitter"
                 :value="step.twitter"
                 @input="updateStep(keys.twitter, $event)"
               />
+              <label class="label has-text-weight-medium">Instagram</label>
               <TextField
                 placeholder="Usuario Instagram"
                 :value="step.instagram"
                 @input="updateStep(keys.instagram, $event)"
               />
+              <label class="label has-text-weight-medium">Facebook</label>
               <TextField
                 placeholder="Usuario Facebook"
                 :value="step.facebook"
@@ -189,6 +204,8 @@ const keys = Object.freeze({
   canAdopt: "canAdopt",
   canTransit: "canTransit",
   canHelp: "canHelp",
+  canPrint: "canPrint",
+  canBuild: "canBuild",
   alerts: "alerts",
   houseType: "houseType",
   hoursAway: "hoursAway",
@@ -202,6 +219,7 @@ const keys = Object.freeze({
   availability: "availability",
   experience: "experience",
   hasTransportBox: "hasTransportBox",
+
   twitter: "twitter",
   instagram: "instagram",
   facebook: "facebook"

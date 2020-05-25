@@ -30,7 +30,7 @@
         <router-link class="navbar-item" to="/perfil" v-if="$auth.user"
           >Perfil</router-link
         >
-        <router-link class="navbar-item" to="/noticias">
+        <router-link class="navbar-item" to="/noticias" v-if="false">
           Noticias
         </router-link>
         <router-link class="navbar-item" to="/explorar">
