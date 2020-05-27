@@ -12,12 +12,15 @@ import {
   faHeart,
   faPencilAlt,
   faPlus,
-  faTrash
+  faTrash,
+  faUniversity,
+  faHandHoldingUsd
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faInstagramSquare,
   faFacebookSquare,
-  faTwitter
+  faTwitter,
+  faPaypal
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { Auth0Plugin } from "./plugins/auth0.plugin";
@@ -35,7 +38,10 @@ library.add(
   faTwitter,
   faPencilAlt,
   faPlus,
-  faTrash
+  faTrash,
+  faPaypal,
+  faUniversity,
+  faHandHoldingUsd
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

@@ -163,13 +163,65 @@
           </div>
         </div>
         <hr class="mx-auto my-8 md:my-16" />
-        <div class="flex items-center flex-col" v-if="info.donations">
+        <div v-if="info.donations" class="flex items-center flex-col">
           <p class="title is-4">Donaciones</p>
-          <div
-            class="flex flex-wrap justify-center px-8"
-            v-if="info.donations.hasBank"
-          >
-            <BankDonationCard :info="info.donations.bank" class="my-4 md:m-4" />
+          <!-- paypal -->
+          <div v-if="info.donations.hasPaypal">
+            <font-awesome-icon :icon="['fab', 'paypal']" size="lg" />
+            <span class="font-semibold is-6 my-2 ml-3">Paypal</span>
+            <p>
+              <a :href="info.donations.paypal.link" target="_blank">{{
+                info.donations.paypal.link
+              }}</a>
+            </p>
+          </div>
+          <!-- banco -->
+          <div v-if="info.donations.hasBank" class="my-8">
+            <p class="mb-2">
+              <font-awesome-icon icon="university" size="lg" />
+              <span class="font-semibold is-6 ml-3"
+                >Banco {{ info.donations.bankName }}</span
+              >
+            </p>
+            <p class="font-semibold">
+              {{ info.donations.bank.owner }}
+            </p>
+            <p>
+              <span class="font-semibold is-6 mr-3">Cuenta:</span>
+              <span>{{ info.donations.bank.accountCBU }}</span>
+            </p>
+            <p>
+              <span class="font-semibold is-6 mr-3">Alias:</span>
+              <span>{{ info.donations.bank.accountAlias }}</span>
+            </p>
+            <!-- <BankDonationCard :info="info.donations.bank" class="my-4 md:m-4" /> -->
+          </div>
+          <!-- mercadopago -->
+          <div v-if="info.donations.hasMercadopago" class="my-8">
+            <p class="mb-3">
+              <font-awesome-icon icon="hand-holding-usd" size="lg" />
+              <span class="font-semibold is-6 ml-3">Mercadopago</span>
+            </p>
+            <div
+              v-for="link in info.donations.mercadopago.links"
+              :key="link.url"
+              class="mb-2"
+            >
+              <p>
+                <span class="font-semibold is-6 mr-2">Monto:</span>
+                <span>{{ link.amount }}</span>
+              </p>
+              <p>
+                <span class="font-semibold is-6 mr-2" v-if="link.description"
+                  >Descripcion:</span
+                >
+                <span>{{ link.description }}</span>
+              </p>
+              <p>
+                <span class="font-semibold is-6 mr-2">URL:</span>
+                <a :href="link.url" target="_blank">{{ link.url }}</a>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -180,7 +232,7 @@
 <script>
 import Spinner from "@/components/Spinner";
 import PetCard from "@/components/cards/PetCard";
-import BankDonationCard from "./BankDonationCard";
+// import BankDonationCard from "./BankDonationCard";
 import SelectField from "@/components/inputs/SelectField";
 import TabsField from "@/components/inputs/TabsField";
 import { initMapProfile } from "@/components/../utils/map";
@@ -192,7 +244,7 @@ export default {
   components: {
     Spinner,
     PetCard,
-    BankDonationCard,
+    // BankDonationCard,
     TabsField,
     SelectField
   },
@@ -207,7 +259,7 @@ export default {
     sections,
     map: null,
     mapLoaded: false,
-    currentSection: sections[0]
+    currentSection: sections[2]
   }),
   computed: {
     info() {
