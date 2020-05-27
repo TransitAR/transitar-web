@@ -69,7 +69,13 @@
                 @input="updateStepRadio(keys.hoursAway, $event)"
               />
               <div class="is-divider"></div>
-              <p class="label pb-3">Protección en el edificio</p>
+              <p class="label pb-3">Hogar y cuidados</p>
+              <CheckboxField
+                name="room"
+                label="Tengo espacio para aislar al transitado en alguna habitación"
+                :checked="step.hasRoom"
+                @input="updateStep(keys.hasRoom, $event)"
+              />
               <CheckboxField
                 name="house-protection"
                 label="Cuento con protección en balcones y/o medianeras"
@@ -86,6 +92,36 @@
                 >, si no contás con protecciones podés ver los servicios
                 recomendados por miembros de la comunidad <a>acá</a>.
               </Message>
+              <CheckboxField
+                name="food"
+                label="Puedo cubrir los gastos de alimento"
+                :checked="step.food"
+                @input="updateStep(keys.hasRoom, $event)"
+              />
+              <CheckboxField
+                name="litter"
+                label="Puedo cubrir los gastos de piedritas sanitarias"
+                :checked="step.litter"
+                @input="updateStep(keys.hasRoom, $event)"
+              />
+              <CheckboxField
+                name="meds"
+                label="Puedo cubrir gastos de medicamentos"
+                :checked="step.meds"
+                @input="updateStep(keys.meds, $event)"
+              />
+              <CheckboxField
+                name="vet"
+                label="Puedo llevar al animal a recibir atención veterinaria de ser necesario"
+                :checked="step.vet"
+                @input="updateStep(keys.vet, $event)"
+              />
+              <CheckboxField
+                name="ste"
+                label="De no estar esterilizado, puedo llevar al animal a esterilizar"
+                :checked="step.ste"
+                @input="updateStep(keys.ste, $event)"
+              />
               <div class="is-divider"></div>
               <p class="label">Integrantes del grupo familiar</p>
               <p class="help mb-6">Seleccioná todas las que apliquen</p>
@@ -125,6 +161,7 @@
                 :value="step.otherPets"
                 @input="updateStep(keys.otherPets, $event)"
               />
+
               <div class="is-divider"></div>
             </template>
             <template v-if="showAvailability">
