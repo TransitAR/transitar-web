@@ -167,15 +167,9 @@
           <p class="title is-4">Donaciones</p>
           <div
             class="flex flex-wrap justify-center px-8"
-            v-if="hasDonationBanks"
+            v-if="info.donations.hasBank"
           >
-            <div
-              v-for="bankInfo in donations.banks"
-              :key="bankInfo.accountID"
-              class="my-4 md:m-4"
-            >
-              <BankDonationCard :info="bankInfo" />
-            </div>
+            <BankDonationCard :info="info.donations.bank" class="my-4 md:m-4" />
           </div>
         </div>
       </div>
@@ -218,9 +212,6 @@ export default {
   computed: {
     info() {
       return this.refuge.refugeInfo;
-    },
-    hasDonationBanks() {
-      return this.info.donation?.banks?.length;
     },
     showInfoSection() {
       return this.currentSection === this.sections[0];

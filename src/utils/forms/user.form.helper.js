@@ -44,11 +44,37 @@ export const getCleanForm = () => ({
   relevantInfoOrganization: {
     username: "",
     showInMap: true,
-    displayName: "",
+    displayName: "", // cambiar a orgName?
     specialization: "",
     instagram: "",
     twitter: "",
-    facebook: ""
+    facebook: "",
+    donations: {
+      owner: "",
+      email: "",
+      hasBank: false,
+      bank: {
+        owner: "",
+        bankName: "",
+        accountId: "",
+        accountCBU: "",
+        accountAlias: ""
+      },
+      hasMercadopago: false,
+      mercadopago: {
+        links: [
+          // {
+          //   amount: number,
+          //   description: string,
+          //   url: string,
+          // },
+        ]
+      },
+      hasPaypal: false,
+      paypal: {
+        link: ""
+      }
+    }
   }
 });
 
@@ -95,6 +121,9 @@ export const submitRelevantInfoPerson = async step => {
 };
 
 export const submitRelevantInfoRefuge = step => {
+  step.donations.mercadopago.links = step.donations.mercadopago.links.filter(
+    link => link.amount && link.url
+  );
   const data = {
     refugeInfo: {
       username: step.username,
@@ -104,29 +133,26 @@ export const submitRelevantInfoRefuge = step => {
       twitter: step.twitter,
       instagram: step.instagram,
       facebook: step.facebook,
-      mpLink: step.mpLink,
-      mpAmount: step.mpAmount,
-      mpEmail: step.mpEmail,
-      mpBankAccountHolder: step.mpBankAccountHolder,
-      bankAccountHolder: step.bankAccountHolder,
-      bankAccount: step.bankAccount,
-      bankAccountID: step.bankAccountID,
-      bankAccountCBU: step.bankAccountCBU,
-      bankAccountAlias: step.bankAccountAlias
+      donations: step.donations
     }
   };
   return getInstance().updateUser(data);
 };
 
 export const submitRelevantInfoVet = step => {
+  step.donations.mercadopago.links = step.donations.mercadopago.links.filter(
+    link => link.amount && link.url
+  );
   const data = {
     vetInfo: {
+      username: step.username,
       displayName: step.displayName,
       specialization: step.specialization.split(",").map(str => str.trim()),
       showInMap: step.showInMap,
       twitter: step.twitter,
       instagram: step.instagram,
-      facebook: step.facebook
+      facebook: step.facebook,
+      donations: step.donations
     }
   };
   return getInstance().updateUser(data);

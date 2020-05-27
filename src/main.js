@@ -10,7 +10,9 @@ import {
   faAt,
   faHandHoldingHeart,
   faHeart,
-  faPencilAlt
+  faPencilAlt,
+  faPlus,
+  faTrash
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faInstagramSquare,
@@ -31,7 +33,9 @@ library.add(
   faHeart,
   faFacebookSquare,
   faTwitter,
-  faPencilAlt
+  faPencilAlt,
+  faPlus,
+  faTrash
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
