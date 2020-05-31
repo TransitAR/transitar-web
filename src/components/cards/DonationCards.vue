@@ -39,7 +39,7 @@
     <DonationCard
       v-if="info.hasMercadopago"
       class="m-8 flex-1"
-      :icon="['fab', 'paypal']"
+      icon="hand-holding-usd"
       title="Mercadopago"
     >
       <div v-for="link in info.mercadopago.links" :key="link._id">

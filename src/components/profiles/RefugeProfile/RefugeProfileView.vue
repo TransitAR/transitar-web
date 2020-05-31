@@ -132,42 +132,27 @@
       <!-- contact tab -->
       <div v-show="showContactSection" class="flex items-center flex-col">
         <p class="title is-4">Información de contacto</p>
-        <div class="columns">
-          <div class="column">
-            <!-- data -->
-            <div class="flex items-center flex-col">
-              <div class="content">
-                <div class="d-flex align-center">
-                  <font-awesome-icon icon="envelope" class="mr-3" size="lg" />
-                  {{ refuge.email }}
-                </div>
-              </div>
+
+        <div class="flex items-center flex-col">
+          <div class="content">
+            <div class="d-flex align-center mb-4">
+              <font-awesome-icon icon="envelope" size="lg" />
+              <span class="ml-3">{{ refuge.email }}</span>
             </div>
-          </div>
-          <div class="column">
-            <div class="flex items-center flex-col">
-              <div class="content">
-                <div class="d-flex align-center">
-                  <font-awesome-icon
-                    :icon="['fab', 'facebook-square']"
-                    size="lg"
-                  />
-                  <span class="ml-3">{{ info.facebook }}</span>
-                </div>
-                <br />
-                <div class="d-flex align-center">
-                  <font-awesome-icon :icon="['fab', 'twitter']" size="lg" />
-                  <span class="ml-3">{{ info.twitter }}</span>
-                </div>
-                <br />
-                <div class="d-flex align-center">
-                  <font-awesome-icon
-                    :icon="['fab', 'instagram-square']"
-                    size="lg"
-                  />
-                  <span class="ml-3">{{ info.instagram }}</span>
-                </div>
-              </div>
+            <div class="d-flex align-center mb-4">
+              <font-awesome-icon :icon="['fab', 'facebook-square']" size="lg" />
+              <span class="ml-3">{{ info.facebook }}</span>
+            </div>
+            <div class="d-flex align-center mb-4">
+              <font-awesome-icon :icon="['fab', 'twitter']" size="lg" />
+              <span class="ml-3">{{ info.twitter }}</span>
+            </div>
+            <div class="d-flex align-center mb-4">
+              <font-awesome-icon
+                :icon="['fab', 'instagram-square']"
+                size="lg"
+              />
+              <span class="ml-3">{{ info.instagram }}</span>
             </div>
           </div>
         </div>
