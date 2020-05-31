@@ -177,7 +177,7 @@
         <div v-if="info.donations" class="flex items-center flex-col">
           <p class="title is-4">Donaciones</p>
 
-          <DonationCards :info="info.donations" class="my-4 md:m-4" />
+          <DonationCards :info="info.donations" class="w-full my-4" />
         </div>
       </div>
     </div>
