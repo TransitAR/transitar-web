@@ -7,7 +7,7 @@
         Editar perfil
         <font-awesome-icon icon="pencil-alt" class="ml-2" />
       </button>
-      <button v-if="!readOnly" class="button is-primary ml-2" @click="edit()">
+      <button v-if="!readOnly" class="button is-primary ml-2">
         Publicar animal
         <font-awesome-icon icon="plus" class="ml-2" />
       </button>
@@ -25,11 +25,7 @@
             Editar perfil
             <font-awesome-icon icon="pencil-alt" class="ml-2" />
           </button>
-          <button
-            v-if="!readOnly"
-            class="button is-primary ml-2"
-            @click="edit()"
-          >
+          <button v-if="!readOnly" class="button is-primary ml-2">
             Publicar animal
             <font-awesome-icon icon="plus" class="ml-2" />
           </button>
