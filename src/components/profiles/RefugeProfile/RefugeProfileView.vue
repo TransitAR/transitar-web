@@ -150,7 +150,7 @@
             <div class="d-flex align-center mb-4">
               <font-awesome-icon
                 icon="envelope"
-                class="has-background-warning-dark"
+                class="has-text-warning-dark"
                 size="lg"
               />
               <span class="ml-3">{{ refuge.email }}</span>
