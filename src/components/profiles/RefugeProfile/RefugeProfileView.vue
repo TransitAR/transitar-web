@@ -4,10 +4,14 @@
       class="flex md:hidden justify-center fixed z-10 bottom-0 inset-x-0 border-t border-solid border-gray-200 bg-gray-100 p-2"
     >
       <button v-if="!readOnly" class="button mr-8" @click="edit()">
-        Editar
+        Editar perfil
         <font-awesome-icon icon="pencil-alt" class="ml-2" />
       </button>
-      <button class="button is-danger">
+      <button v-if="!readOnly" class="button is-primary ml-2" @click="edit()">
+        Publicar animal
+        <font-awesome-icon icon="plus" class="ml-2" />
+      </button>
+      <button v-if="readOnly" class="button is-danger">
         Donar
         <font-awesome-icon icon="heart" class="ml-2" />
       </button>
@@ -18,8 +22,16 @@
         <!-- mobile:2nd desktop:left -->
         <div class="flex-1 flex mt-8 md:mt-0 hidden md:block md:order-0">
           <button v-if="!readOnly" class="button" @click="edit()">
-            Editar
+            Editar perfil
             <font-awesome-icon icon="pencil-alt" class="ml-2" />
+          </button>
+          <button
+            v-if="!readOnly"
+            class="button is-primary ml-2"
+            @click="edit()"
+          >
+            Publicar animal
+            <font-awesome-icon icon="plus" class="ml-2" />
           </button>
         </div>
         <!-- mobile:1st desktop:center -->
@@ -39,7 +51,7 @@
         </div>
         <!-- mobile:hidden desktop:right -->
         <div class="hidden md:flex flex-1 justify-end order-2">
-          <button class="button is-danger">
+          <button v-if="readOnly" class="button is-danger">
             Donar
             <font-awesome-icon icon="heart" class="ml-2" />
           </button>
@@ -136,21 +148,34 @@
         <div class="flex items-center flex-col">
           <div class="content">
             <div class="d-flex align-center mb-4">
-              <font-awesome-icon icon="envelope" size="lg" />
+              <font-awesome-icon
+                icon="envelope"
+                class="has-background-warning-dark"
+                size="lg"
+              />
               <span class="ml-3">{{ refuge.email }}</span>
             </div>
             <div class="d-flex align-center mb-4">
-              <font-awesome-icon :icon="['fab', 'facebook-square']" size="lg" />
+              <font-awesome-icon
+                :icon="['fab', 'facebook-square']"
+                class="has-text-link"
+                size="lg"
+              />
               <span class="ml-3">{{ info.facebook }}</span>
             </div>
             <div class="d-flex align-center mb-4">
-              <font-awesome-icon :icon="['fab', 'twitter']" size="lg" />
+              <font-awesome-icon
+                :icon="['fab', 'twitter']"
+                class="has-text-info"
+                size="lg"
+              />
               <span class="ml-3">{{ info.twitter }}</span>
             </div>
             <div class="d-flex align-center mb-4">
               <font-awesome-icon
                 :icon="['fab', 'instagram-square']"
                 size="lg"
+                class="has-text-danger"
               />
               <span class="ml-3">{{ info.instagram }}</span>
             </div>

@@ -49,7 +49,7 @@
         </p>
         <p>
           <strong class="mr-2">Monto</strong>
-          <span>{{ link.amount }}</span>
+          <span>$ {{ link.amount }}</span>
         </p>
         <p>
           <strong class="mr-2">Link</strong>

@@ -2,7 +2,7 @@
   <div class="card shadow-xs rounded">
     <header class="card-header">
       <p class="m-3">
-        <font-awesome-icon :icon="icon" size="lg" />
+        <font-awesome-icon :icon="icon" size="lg" class="has-text-link" />
         <span class="font-semibold is-6 ml-3">{{ title }}</span>
       </p>
     </header>

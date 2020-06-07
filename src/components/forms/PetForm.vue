@@ -60,13 +60,13 @@
             :step.sync="form.firstStep"
           />
 
-          <PetHealth
+          <PetHealthStep
             v-if="currentStep === 2"
             :isActive="isActive(2)"
             :step.sync="form.secondStep"
           />
 
-          <PetTraitsAndStory
+          <PetTraitsAndStoryStep
             v-if="currentStep === 3"
             :isActive="isActive(3)"
             :step.sync="form.thirdStep"
@@ -100,16 +100,16 @@
 
 <script>
 import PetInformationStep from "../../components/forms/pet/PetInformationStep";
-import PetHealth from "../../components/forms/pet/PetHealth";
-import PetTraitsAndStory from "../../components/forms/pet/PetTraitsAndStory";
+import PetHealthStep from "../../components/forms/pet/PetHealthStep";
+import PetTraitsAndStoryStep from "../../components/forms/pet/PetTraitsAndStoryStep";
 import LastStep from "../../components/forms/LastStep";
 
 export default {
   name: "pet-form",
   components: {
     PetInformationStep,
-    PetHealth,
-    PetTraitsAndStory,
+    PetHealthStep,
+    PetTraitsAndStoryStep,
     LastStep
   },
   data: () => ({
